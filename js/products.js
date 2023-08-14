@@ -8,14 +8,16 @@ document.addEventListener('DOMContentLoaded', function () {
         
          data.products.map((x) => {
             element.innerHTML +=`
+            <a href="product-info.html" class"links-products">
             <div class="cards">
-                 <img src="${x.image}" class="card mb-4 shadow-sm custom-card cursor-active" alt="${x.name}">
+                 <img src="${x.image}" class="img-card" alt="${x.name}">
                  <div class="body-card">
-                   <h4 class="text-card">${x.name}</h4>
-                   <p>${x.description}</p>
-                   <p>${x.cost}</p>
+                   <h4 class="text-card card-title">${x.name}</h4>
+                   <p class="text-card description">${x.description}</p>
+                   <p class="text-card">${x.cost}$</p>
                  </div>
             </div>
+            </a> 
             `;
          });
         console.log(data.products);
