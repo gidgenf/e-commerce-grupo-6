@@ -9,10 +9,7 @@ body {
     justify-content: center;
     height: 100vh;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-<<<<<<< Updated upstream
     background: rgb(218, 236, 255);
-=======
->>>>>>> Stashed changes
 }
 .container {
     display: flex;
