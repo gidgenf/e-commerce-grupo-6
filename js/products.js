@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
             </a> 
             `;
          });
-        console.log(data.products);
+        console.log(data);
        })
        .catch(error => console.log('Error:', error));   
  });
