@@ -9,7 +9,10 @@ body {
     justify-content: center;
     height: 100vh;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+<<<<<<< Updated upstream
     background: rgb(218, 236, 255);
+=======
+>>>>>>> Stashed changes
 }
 .container {
     display: flex;
@@ -18,14 +21,7 @@ body {
     padding-top: 10px;
     background: rgb(250, 250, 250);
 }
-.usuario {
-    color: black;
-    margin: 3px;
-    border-radius: 2px;
-    border-color: black;
-
-}
-.contraseña {
+.usuario, .contraseña {
     color: black;
     margin: 3px;
     border-radius: 2px;
