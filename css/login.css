@@ -9,15 +9,14 @@ body {
     justify-content: center;
     height: 100vh;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background: rgb(81, 81, 184)
-
-
+    background: rgb(218, 236, 255);
 }
 .container {
     display: flex;
     justify-content: center; 
     align-items: center;
     padding-top: 10px;
+    background: rgb(250, 250, 250);
 }
 .usuario {
     color: black;
@@ -48,9 +47,6 @@ body {
     text-align: center;
     font-family: initial;
     color:rgb(154, 154, 160); 
-    
-    
-
 }
 .checkbox {
     margin-top: 10px;
