@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
-   let url = 'https://japceibal.github.io/emercado-api/cats_products/101.json';
-
+   const catID = localStorage.getItem("catID");
+   let catID_json = catID +".json"
+   let url = 'https://japceibal.github.io/emercado-api/cats_products/'+catID_json;
    fetch(url)
       .then(response => response.json())
       .then(data => {
@@ -20,15 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
             </a> 
             `;
          });
-<<<<<<< HEAD
         console.log(data);
        })
        .catch(error => console.log('Error:', error));   
  });
- 
-=======
-         console.log(data.products);
-      })
-      .catch(error => console.log('Error:', error));
-});
->>>>>>> Desarrollo
+
