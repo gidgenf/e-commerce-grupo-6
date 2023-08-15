@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
-    let url = 'https://japceibal.github.io/emercado-api/cats_products/101.json';
-    
-    fetch(url)
-       .then(response => response.json())
-       .then(data => {
-        let element = document.getElementById('objet-conteiner')
-        
+   let url = 'https://japceibal.github.io/emercado-api/cats_products/101.json';
+
+   fetch(url)
+      .then(response => response.json())
+      .then(data => {
+         let element = document.getElementById('objet-conteiner')
+
          data.products.map((x) => {
-            element.innerHTML +=`
+            element.innerHTML += `
             <a href="product-info.html" class"links-products">
             <div class="cards">
                  <img src="${x.image}" class="img-card" alt="${x.name}">
@@ -20,8 +20,15 @@ document.addEventListener('DOMContentLoaded', function () {
             </a> 
             `;
          });
+<<<<<<< HEAD
         console.log(data);
        })
        .catch(error => console.log('Error:', error));   
  });
  
+=======
+         console.log(data.products);
+      })
+      .catch(error => console.log('Error:', error));
+});
+>>>>>>> Desarrollo
