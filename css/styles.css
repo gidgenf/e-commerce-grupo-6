@@ -9,6 +9,11 @@
   font-weight: bold;
 }
 
+.mouseHover:hover {
+  transform: scale(1.05);
+  transition: all 0.5s;
+}
+
 nav a {
   text-decoration: none;
 }

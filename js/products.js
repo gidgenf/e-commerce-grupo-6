@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
          data.products.map((x) => {
             element.innerHTML += `
             <a href="product-info.html" class"links-products">
-            <div class="cards">
+            <div class="cards mouseHover">
                  <img src="${x.image}" class="img-card" alt="${x.name}">
                  <div class="body-card">
                    <h4 class="text-card card-title">${x.name}</h4>
