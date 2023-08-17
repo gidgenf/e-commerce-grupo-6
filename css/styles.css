@@ -14,7 +14,15 @@
   transition: all 0.5s;
   box-shadow: 4px 6px 20px black;
 }
-
+.btn-outline-primary :hover{
+  color:blue;
+}
+.btn-outline-danger :hover{
+  color: red;
+}
+.btn-outline-warning :hover{
+ color: rgb(255, 255, 0);
+}
 nav a {
   text-decoration: none;
 }
