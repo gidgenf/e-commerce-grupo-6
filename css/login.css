@@ -9,23 +9,26 @@ body {
     justify-content: center;
     height: 100vh;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-image: linear-gradient(to bottom, rgb(18, 112, 189), white);
+    background-image: linear-gradient(to bottom,rgb(15, 38, 172),rgb(56, 59, 223), rgb(51, 144, 219), white);
 }
 .container {
     display: flex;
+    border-radius: 20px;
+    box-shadow: 2px 3px 10px black;
     justify-content: center; 
     align-items: center;
-    padding-top: 50px;
-    background: rgb(255, 254, 254);
+    padding-top: 200px;
+    background: rgba(255, 254, 254, 0.514);
 }
 .usuario, .contraseña {
     color: black;
-    margin: 6px;
+    margin: 8px;
     border-radius: 2px;
     border-color: black;
 }
 #sesionIni {
-  margin-top: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   display: flexbox;
   padding: 5px;
   background: white;
@@ -37,12 +40,14 @@ body {
     background-color: rgb(197, 197, 224);
 }
 .bienvenido {
+    margin-top: 5px;
+    margin-bottom: 20px;
     text-align: center;
-    font-family: initial;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
     color:rgb(154, 154, 160); 
 }
 .checkbox {
-    margin-top: 45px;
+    margin-top: 50px;
     margin-right: 4px;
     margin-left: 4px;
     border-color: black;
