@@ -40,11 +40,12 @@ body {
     color: rgb(20, 86, 207);
     background-color: rgb(197, 197, 224);
 }
+
 .bienvenido {
     margin-top: 5px;
     margin-bottom: 20px;
     text-align: center;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color:rgb(154, 154, 160); 
 }
 .checkbox {
