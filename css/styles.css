@@ -12,6 +12,7 @@
 .mouseHover:hover {
   transform: scale(1.05);
   transition: all 0.5s;
+  box-shadow: 4px 6px 20px black;
 }
 
 nav a {
