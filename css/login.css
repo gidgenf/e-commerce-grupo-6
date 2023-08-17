@@ -17,8 +17,8 @@ body {
     box-shadow: 2px 3px 10px black;
     justify-content: center; 
     align-items: center;
-    padding-top: 200px;
-    background: rgba(255, 254, 254, 0.514);
+    padding-top: 30px;
+    background: rgba(238, 234, 234, 0.829);
 }
 .usuario, .contraseña {
     color: black;
@@ -30,6 +30,7 @@ body {
 #sesionIni {
   margin-top: 10px;
   margin-bottom: 10px;
+  margin-left: 10px;
   display: flexbox;
   padding: 5px;
   background: white;
@@ -45,7 +46,7 @@ body {
     margin-top: 5px;
     margin-bottom: 20px;
     text-align: center;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     color:rgb(13, 13, 49); 
 }
 .checkbox {
@@ -61,7 +62,6 @@ body {
     min-width: 300px;
     border-radius: 10px;
     margin: 10px;
-    border:solid 1px;
 }
 
 .psw {
@@ -70,10 +70,20 @@ body {
     font-size: smaller;
 }
 
+.psw:hover {
+    color: rgb(15, 15, 77);
+    background-color: antiquewhite;
+}
+
 .linkjs {
     position: relative;
     margin-top: 600px;
-    margin-right: 200px
+    margin-right: 200px;
 }
 
-
+.logousuario {
+    margin: 30px;
+    margin-left: 70px;
+    width: 50%;
+    height: 50%;
+}
