@@ -12,3 +12,10 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 });
+
+
+/*cierra la sesion y quita la autentificacion*/
+document.getElementById('cerrarSesion').addEventListener('click', function () {
+    localStorage.removeItem('authenticated');
+    window.location.href = "login.html"; 
+});
