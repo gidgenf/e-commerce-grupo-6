@@ -40,6 +40,8 @@ let getJSONData = function (url) {
     });
 }
 
+/*verifica que estén autentificado con anterioridad el inicio de sesion, 
+en caso de no estar autentificado redirecciona al login.html*/
 document.addEventListener("DOMContentLoaded", function () {
   if (localStorage.getItem('authenticated') !== 'true') {
     window.location.href = "login.html";
