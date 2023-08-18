@@ -25,6 +25,31 @@
 }
 nav a {
   text-decoration: none;
+  position: relative;
+  display: inline-block
+}
+
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 100%; 
+  left: 100%;
+  padding: 4px 8px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 4px;
+  font-size: 12px;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+[data-tooltip]:hover::before {
+  visibility: visible;
+  opacity: 1;
 }
 
 .bd-placeholder-img {
@@ -199,6 +224,21 @@ a.custom-card:hover {
   text-decoration: inherit;
 }
 
+
+
 .checked {
   color: orange;
+}
+
+
+
+  .fa-solid{
+   color: #fff;
+   margin-top: 10px;
+    }
+    
+.fa-solid:hover{
+color: #a0a0a0;
+
+
 }

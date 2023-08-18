@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -20,20 +21,30 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
+
           <li class="nav-item">
-            <a class="nav-link active" href="index.html">Inicio</a>
+            <a href="index.html"data-tooltip="Inicio"> <i class="fa-solid fa-house"></i> </a> <a class="nav-link active" href="index.html"></a>
           </li>
+
           <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
+            <a  href="products.html"data-tooltip="Categoria"> <i class="fa-solid fa-list"></i></a> <a class="nav-link" href="categories.html"></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
+
+          <li class="barra">
+            <a href="sell.html" data-tooltip="Vender"> <i class="fa-solid fa-cart-shopping"></i></a><a class="nav-link" href="sell.html"></a>
           </li>
-          <li class="nav-item">
+
+          <li class="barra">
           </li>
+
           <li>
             <a type="button" class="nav-link" id="cerrarSesion">cerrar sesion</a>
           </li>
+          
+          <li>
+            <a href="my-profile.html" data-tooltip="Perfil"> <i class="fa-solid fa-user"></i></a>
+          </li>
+                  
         </ul>
       </div>
     </div>
