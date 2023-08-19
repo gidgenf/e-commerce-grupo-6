@@ -69,6 +69,23 @@
               <textarea name="productDescription" class="form-control" id="productDescription"></textarea>
             </div>
           </div>
+          <div class="invalid-feedback">
+            Ingresa una categoría válida.
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-7 mb-3">
+          <label for="productCategory">Categoría</label>
+          <select name="productCategory" class="custom-select form-select d-block w-100" id="productCategory">
+            <option value="">Elija la categoría...</option>
+            <option>Autos</option>
+            <option>Juguetes</option>
+            <option>Muebles</option>
+            <option>Herramientas</option>
+            <option>Computadoras</option>
+            <option>Vestimenta</option>
+          </select>
           <div class="row">
             <div class="col-md-3 mb-3">
               <label for="productCostInput">Costo</label>
@@ -82,26 +99,14 @@
               <label for="productCurrency">Moneda</label>
               <select name="productCurrency" class="form-select custom-select d-block w-100" id="productCurrency" required>
                 <option value="" hidden selected>Seleccionar moneda</option>
-                <option>Pesos Uruguayos (UYU)</option>
-                <option>Dólares (USD)</option>
+                <option>$</option>
+                <option>US$</option>
               </select>
               <div class="invalid-feedback">
                 Ingresa una categoría válida.
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-7 mb-3">
-              <label for="productCategory">Categoría</label>
-              <select name="productCategory" class="custom-select form-select d-block w-100" id="productCategory">
-                <option value="">Elija la categoría...</option>
-                <option>Autos</option>
-                <option>Juguetes</option>
-                <option>Muebles</option>
-                <option>Herramientas</option>
-                <option>Computadoras</option>
-                <option>Vestimenta</option>
-              </select>
               <div class="invalid-feedback">
                 Por favor ingresa una categoría válida.
               </div>
