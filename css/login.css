@@ -9,16 +9,28 @@ body {
     justify-content: center;
     height: 100vh;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-image: linear-gradient(to bottom,rgb(15, 38, 172),rgb(56, 59, 223), rgb(51, 144, 219), white);
+    background-image: url(https://img.freepik.com/vector-gratis/fondo-abstracto-formas-blancas_79603-1362.jpg?w=996&t=st=1692325432~exp=1692326032~hmac=b5b78d6f8aa6e807956b904f55d94bbad863a994ba4e30b8a8944c0bebaf9598);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
 }
-.container {
+
+.center-wrapper {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+    margin: 0 auto;
+ 
+}
+
+.container {
+    display: block;
     border-radius: 20px;
     box-shadow: 2px 3px 10px black;
-    justify-content: center; 
-    align-items: center;
-    padding-top: 30px;
-    background: rgba(238, 234, 234, 0.829);
+    padding: 20px;
+    background: rgba(238, 234, 234, 0.9);
 }
 .usuario, .contraseña {
     color: black;
@@ -31,16 +43,17 @@ body {
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 10px;
-  display: flexbox;
+  display: flexbox ;
   padding: 5px;
   background: white;
   color: rgb(81, 81, 88);
   border-radius: 2em;
 }
 #sesionIni:hover {
-    color: rgb(20, 86, 207);
+    color: rgb(81, 81, 88);
     background-color: rgb(197, 197, 224);
 }
+
 
 .bienvenido {
     margin-top: 5px;
@@ -72,13 +85,15 @@ body {
 
 .psw:hover {
     color: rgb(15, 15, 77);
-    background-color: antiquewhite;
+    background-color: rgb(173, 173, 182);
+    border-radius: 40px;
+    text-align: center;
 }
 
 .linkjs {
-    position: relative;
-    margin-top: 600px;
-    margin-right: 200px;
+    position: flex;
+    margin-top: 700px;
+    text-align: center;
 }
 
 .logousuario {
@@ -87,3 +102,4 @@ body {
     width: 50%;
     height: 50%;
 }
+
