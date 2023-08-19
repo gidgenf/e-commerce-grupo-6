@@ -7,6 +7,7 @@ document.getElementById('sesionIni').addEventListener('click', function () {
         window.location.href = "index.html";
     }
 });
+
 /*
 Se le agrega un evento 'click' al boton de id="sesionIni", 
 establece las constantes locales de usuario y contraseña 
