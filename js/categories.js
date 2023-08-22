@@ -1,6 +1,9 @@
 const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_BY_PROD_COUNT = "Cant.";
+const ORDER_ASC_BY_COST = "UP";
+const ORDER_DESC_BY_COST = "DOWN";
+
 let currentCategoriesArray = [];
 let currentSortCriteria = undefined;
 let minCount = undefined;
