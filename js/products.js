@@ -47,7 +47,7 @@ sortProductsDesc.addEventListener('click', function () { //evento click para el 
 });
 
 function maximoMinimo(elemento) {
-   let min = parseInt(document.getElementById('rangeFilterCostMin').value);
+   let min = parseInt(document.getElementById('rangeFilterCostMin').value); //filtro de precios que compara los precios de los articulos dentro de los rangos, si los cumple los devuelve
    let max = parseInt(document.getElementById('rangeFilterCostMax').value);
 
    return elemento.cost >= min && elemento.cost <= max;
@@ -56,7 +56,7 @@ function maximoMinimo(elemento) {
 const filtrar = document.getElementById('filtrarCosto') //se declara la constante filtrar del boton filtrarCosto
 
 filtrar.addEventListener('click', function () { //evento para el boton de filtrado que toma la lista original de productos y le aplica el filtro, luego muestra las tarjetas
-   data.products = listaOriginal.filter(maximoMinimo);
+   data.products = listaOriginal.filter(maximoMinimo); //utiliza la funcion de maximoMinimo como metodo de filtro
    mostrarTarjetas();
    
 });
