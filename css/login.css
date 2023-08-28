@@ -20,7 +20,7 @@ body {
     padding-top: 30px;
     background: rgba(238, 234, 234, 0.829);
 }
-.usuario, .contraseña {
+.usuario, .contra {
     color: black;
     margin: 8px;
     border-radius: 2px;

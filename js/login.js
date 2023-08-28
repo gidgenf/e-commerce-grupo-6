@@ -1,6 +1,6 @@
 document.getElementById('sesionIni').addEventListener('click', function () {
     const usuario = document.getElementById('usuario').value;
-    const contraseña = document.getElementById('contraseña').value;
+    const contraseña = document.getElementById('pswd').value;
     if (!contraseña || !usuario) {
         window.alert ("Debes completar los campos vacíos!");
     } else {
