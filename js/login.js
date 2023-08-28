@@ -2,6 +2,7 @@ document.getElementById('sesionIni').addEventListener('click', function () {
     const usuario = document.getElementById('usuario').value;
     const contraseña = document.getElementById('contraseña').value;
     if (!contraseña || !usuario) {
+        window.alert ("Debes completar los campos vacíos!");
     } else {
         localStorage.setItem('authenticated', 'true');
         window.location.href = "index.html";
