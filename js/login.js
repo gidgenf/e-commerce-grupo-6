@@ -1,9 +1,11 @@
 document.getElementById('sesionIni').addEventListener('click', function () {
-    const usuario = document.getElementById('usuario').value;
+    let usuario = document.getElementById("usuario")
+   
     const contraseña = document.getElementById('contraseña').value;
-    if (!contraseña || !usuario) {
+    if (!contraseña || !usuario.value) {
     } else {
         localStorage.setItem('authenticated', 'true');
+        localStorage.setItem("user-name", usuario.value)
         window.location.href = "index.html";
     }
 });
