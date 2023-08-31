@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
     busqueda.addEventListener('input', () => { //evento input para busqueda
         let inputtext = busqueda.value; //se toma el valor de la busqueda
         let busquedafiltrada = filtradobusqueda(listabusqueda, inputtext); //se pasan como argumentos la lista que tiene los datos de los productos y tambien el valor del input de busqueda
-        console.log(busquedafiltrada); //se muestra en consola el resultado 
+        console.log(busquedafiltrada); //se muestra en consola todos los elementos filtrados
     });
 
     document.getElementById('cerrarSesion').addEventListener('click', function () {  //function que cierra sesión por medio del evento click en el elemento de id "cerrarSesion"
