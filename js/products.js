@@ -35,6 +35,15 @@ function mostrarTarjetas() {  //funcion que muestra las tarjetas de los producto
 
 sortProductsAsc = document.getElementById('sortCostAsc'); //variables de los botones para ordenado ascendente y decendente
 sortProductsDesc = document.getElementById('sortCostDesc');
+sortByRel= document.getElementById('sortByRel'); 
+
+
+//Orden de relevancia//
+
+sortByRel.addEventListener('click', function () { //evento click para el boton de ordenado ascendente y muestra las tarjetas
+   data.products.sort((a, b) => b.soldCount - a.soldCount); 
+   mostrarTarjetas();
+});
 
 sortProductsAsc.addEventListener('click', function () { //evento click para el boton de ordenado ascendente y muestra las tarjetas
    data.products.sort((a, b) => a.cost - b.cost); 
