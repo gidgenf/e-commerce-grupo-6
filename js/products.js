@@ -27,7 +27,7 @@ function mostrarTarjetas() {  //funcion que muestra las tarjetas de los producto
                 <h4 class="text-card card-title">${x.name}</h4>
                 <p class="text-card description">${x.description}</p>
                 <p class="text-card">${x.cost}$</p>
-              </div>
+              </div>              
          </div>
          </a>`;
    });
