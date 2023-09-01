@@ -40,6 +40,8 @@ document.addEventListener("DOMContentLoaded", function () {
         let inputtext = busqueda.value; //se toma el valor de la busqueda
         let busquedafiltrada = filtradobusqueda(listabusqueda, inputtext); //se pasan como argumentos la lista que tiene los datos de los productos y tambien el valor del input de busqueda
         console.log(busquedafiltrada); //se muestra en consola todos los elementos filtrados
+
+        hojaBusqueda(busquedafiltrada);
     });
 
     document.getElementById('cerrarSesion').addEventListener('click', function () {  //function que cierra sesión por medio del evento click en el elemento de id "cerrarSesion"
@@ -47,4 +49,27 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "login.html";
     });
 });
+let contenedor = document.getElementById("containerSearch")
+function hojaBusqueda(array){
+    contenedor.innerHTML=``
+if(array.length>4){
+for (let index = 0; index < 4; index++) {
+    const element = array[index];
+    contenedor.innerHTML +=`<a class href="product-info.html">
+    <h4>${element.name}</h4> 
+    <h6>${element.description}</h6>
+    </a>`
+
+    
+    }
+}else{
+    for (let index = 0; index < 4; index++) {
+        const element = array[index];
+        contenedor.innerHTML +=`<a class href="product-info.html">
+        <h4>${element.name}</h4> 
+        <h6>${element.description}</h6>
+        </a>`
+    }
+}
+}
 
