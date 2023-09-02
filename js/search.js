@@ -55,10 +55,10 @@ function hojaBusqueda(array) {
     } else {
         for (let index = 0; index < array.length; index++) {
             const element = array[index];
-            contenedor.innerHTML += `<a class href="product-info.html">
+            contenedor.innerHTML += `<div><a class href="product-info.html">
     <h4>${element.name}</h4> 
     <h6>${element.description}</h6>
-    </a>`
+    </a></div>`
         }
     }
 }

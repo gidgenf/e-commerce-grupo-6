@@ -241,3 +241,29 @@ a.custom-card:hover {
 color: #a0a0a0;
 
 }
+
+#busqueda {
+  text-align: justify;
+  border-radius: 55px;
+  margin: 20px;
+}
+
+#containerSearch {
+  background-color: rgba(240, 225, 255, 0.685);
+  text-align: center;
+  margin-left: 400px;
+  margin-right: 400px;
+}
+
+h4 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  color: black;
+}
+
+h6 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-seri;
+}
+
+
+
