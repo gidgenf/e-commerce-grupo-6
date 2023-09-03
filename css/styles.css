@@ -248,13 +248,14 @@ a.custom-card:hover {
 
 #busqueda {
   text-align: justify;
-  border-radius: 55px;
+  border-radius: 60px;
   margin: 20px;
 }
 
 #containerSearch {
   background-color: rgba(240, 225, 255, 0.685);
-  text-align: center;
+  text-align: justify;
+  border-radius: 10px;
   margin-left: 400px;
   margin-right: 400px;
 }
@@ -267,6 +268,23 @@ h4 {
 
 h6 {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-seri;
+  color: rgb(70, 70, 160);
+  font-size:14px;
+}
+
+a:link, a:visited, a:active {
+  text-decoration:none;
+}
+.search-result {
+    position: absolute;
+    background-color: rgb(20, 22, 58);
+    box-shadow: 2px 4px 10px black;
+    margin: 35px 20px;
+    margin-top: 10px;
+}
+
+.srLink {
+  min-width: 600px;
 }
 
 .imageMini {
