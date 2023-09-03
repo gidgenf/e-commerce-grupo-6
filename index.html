@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -22,32 +22,34 @@
         <ul class="navbar-nav w-100 justify-content-between">
 
           <li class="nav-item">
-            <a class="nav-link" href="index.html"data-tooltip="Inicio"> <i class="fa-solid fa-house"></i> </a> 
+            <a class="nav-link" href="index.html" data-tooltip="Inicio"> <i class="fa-solid fa-house"></i> </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="categories.html"data-tooltip="Categoria"> <i class="fa-solid fa-list"></i></a> 
+            <a class="nav-link" href="categories.html" data-tooltip="Categoria"> <i class="fa-solid fa-list"></i></a>
           </li>
 
           <li class="barra">
-            <a class="nav-link" href="sell.html" data-tooltip="Vender">  <i class="fa-solid fa-cart-shopping"></i>  </a>
+            <a class="nav-link" href="sell.html" data-tooltip="Vender"> <i class="fa-solid fa-cart-shopping"></i> </a>
           </li>
-
-          <li class="barra">
-          </li>
+          <input type="search" placeholder="Busca tu articulo aquí" id="busqueda">
+          
 
           <li>
-            <a class="nav-link" type="button"data-tooltip="Cerrar Sesion" id="cerrarSesion"> <i class="fa-solid fa-arrow-right-from-bracket"></i></a> 
+            <a class="nav-link" type="button" data-tooltip="Cerrar Sesion" id="cerrarSesion"> <i
+                class="fa-solid fa-arrow-right-from-bracket"></i></a>
           </li>
-          
+
           <li id="usuario">
-            <a  class="nav-link" href="my-profile.html" data-tooltip="Perfil"> <i class="fa-solid fa-user"></i></a>
+            <a class="nav-link" href="my-profile.html" data-tooltip="Perfil"> <i class="fa-solid fa-user"></i></a>
           </li>
-                  
+
         </ul>
       </div>
     </div>
+    </div>
   </nav>
+  <div class="search-result" id="containerSearch"></div>
   <main>
     <div class="jumbotron text-center"></div>
     <div class="album py-5 bg-light">
@@ -67,7 +69,7 @@
             <div class="card mb-4 shadow-sm custom-card cursor-active" id="juguetes">
               <img class="bd-placeholder-img card-img-top" src="img/toys_index.jpg"
                 alt="Imgagen representativa de la categoría 'Juguetes'">
-              <h3 class="m-3" >Juguetes</h3>
+              <h3 class="m-3">Juguetes</h3>
               <div class="card-body">
                 <p class="card-text">Encuentra aquí los mejores precios para niños/as de cualquier edad.</p>
               </div>
@@ -85,7 +87,8 @@
           </div>
         </div>
         <div class="row">
-          <a class="btn btn-light btn-lg  btn-outline-success btn-block mouseHover" href="categories.html">Y mucho más!</a>
+          <a class="btn btn-light btn-lg  btn-outline-success btn-block mouseHover" href="categories.html">Y mucho
+            más!</a>
         </div>
       </div>
     </div>
@@ -95,14 +98,14 @@
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
     </div>
   </footer>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/index.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/search.js"></script>
 </body>
 
 </html>
-
-

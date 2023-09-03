@@ -33,50 +33,50 @@ function mostrarTarjetas() {  //funcion que muestra las tarjetas de los producto
    });
 }
 
-sortProductsAsc = document.getElementById('sortCostAsc'); //variables de los botones para ordenado ascendente y decendente
+sortProductsAsc = document.getElementById('sortCostAsc'); //variables de los botones para ordenado ascendente, decendente y relevancia
 sortProductsDesc = document.getElementById('sortCostDesc');
-sortByRel= document.getElementById('sortByRel'); 
+sortByRel = document.getElementById('sortByRel');
 
 
-//Orden de relevancia//
-
-sortByRel.addEventListener('click', function () { //evento click para el boton de ordenado ascendente y muestra las tarjetas
-   data.products.sort((a, b) => b.soldCount - a.soldCount); 
+sortByRel.addEventListener('click', function () { //evento click para el boton de ordenado por relevancia y muestra las tarjetas
+   data.products.sort((a, b) => b.soldCount - a.soldCount);
    mostrarTarjetas();
 });
 
 sortProductsAsc.addEventListener('click', function () { //evento click para el boton de ordenado ascendente y muestra las tarjetas
-   data.products.sort((a, b) => a.cost - b.cost); 
+   data.products.sort((a, b) => a.cost - b.cost);
    mostrarTarjetas();
 });
 
 sortProductsDesc.addEventListener('click', function () { //evento click para el boton ordenado decendente y muestra las tarjetas
-   data.products.sort((a, b) => b.cost - a.cost); 
+   data.products.sort((a, b) => b.cost - a.cost);
    mostrarTarjetas();
 });
 
-function maximoMinimo(elemento) {
-   let min = parseInt(document.getElementById('rangeFilterCostMin').value); //filtro de precios que compara los precios de los articulos dentro de los rangos, si los cumple los devuelve
-   let max = parseInt(document.getElementById('rangeFilterCostMax').value);
-
+function maximoMinimo(elemento) { //funcion que se va a usar para aplicar el rango de filtro de precios
    return elemento.cost >= min && elemento.cost <= max;
 }
 
-const filtrar = document.getElementById('filtrarCosto') //se declara la constante filtrar del boton filtrarCosto
+const filtrar = document.getElementById('filtrarCosto'); //viable para el boton de filtro
 
-filtrar.addEventListener('click', function () { //evento para el boton de filtrado que toma la lista original de productos y le aplica el filtro, luego muestra las tarjetas
-   data.products = listaOriginal.filter(maximoMinimo); //utiliza la funcion de maximoMinimo como metodo de filtro
-   mostrarTarjetas();
-   
+filtrar.addEventListener('click', function () {  //evento click para el boton de filtro
+   min = parseInt(document.getElementById('rangeFilterCostMin').value); //variables de campos de costo maximo y minimo
+   max = parseInt(document.getElementById('rangeFilterCostMax').value);
+
+   if (isNaN(min) || isNaN(max)) { //isNaN nos permite determinar en este caso si los valores numericos de max y min existen
+      alert("Por favor, complete los campos")
+   } else {
+      data.products = listaOriginal.filter(maximoMinimo); //se aplica el filtro a la lista original de productos y se muestran las tarjetas de productos
+      mostrarTarjetas();
+   }
 });
 
-//Limpia los rangos de costo maximo y costo minimo pero como deja los campos vacios los productos desaparecen al ser mostradas las tarjetas
+//evento para el el elmento de id limpiarRangos que al darle click limpia los campos de costo de maximo y minimo
 document.getElementById("limpiarRangos").addEventListener("click", function () {
    document.getElementById("rangeFilterCostMin").value = "";
    document.getElementById("rangeFilterCostMax").value = "";
 
    mostrarTarjetas();
-   
 });
 
 
