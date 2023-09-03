@@ -1,7 +1,7 @@
 document.getElementById('sesionIni').addEventListener('click', function () {
     const usuario = document.getElementById('usuario').value;
-    const contraseña = document.getElementById('pswd').value;
-    if (!contraseña || !usuario) {
+    const contrasena = document.getElementById('pswd').value;
+    if (!contrasena || !usuario) {
         window.alert ("Debes completar los campos vacíos!");
     } else {
         localStorage.setItem('authenticated', 'true');
