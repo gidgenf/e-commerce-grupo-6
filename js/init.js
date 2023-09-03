@@ -39,6 +39,11 @@ let getJSONData = function (url) {
       return result;
     });
 }
+let name_user = localStorage.getItem("user-name");
+let botonDeUsuario = document.getElementById("usuario")
+botonDeUsuario.innerHTML = `<a class="nav-link" href="my-profile.html" data-tooltip="Perfil">${name_user} <i class="fa-solid fa-user"></i></a>`
+
+
 
 /*verifica que estén autentificado con anterioridad el inicio de sesion, 
 en caso de no estar autentificado redirecciona al login.html*/
