@@ -55,7 +55,7 @@ sortProductsDesc.addEventListener('click', function () { //evento click para el 
    mostrarTarjetas();
 });
 
-function maximoMinimo(elemento) { //fincion que se va a usar para aplciar el rango de filtro de precios
+function maximoMinimo(elemento) { //funcion que se va a usar para aplicar el rango de filtro de precios
    return elemento.cost >= min && elemento.cost <= max;
 }
 

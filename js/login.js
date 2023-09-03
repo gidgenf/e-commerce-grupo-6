@@ -1,12 +1,11 @@
 document.getElementById('sesionIni').addEventListener('click', function () {
-    let usuario = document.getElementById("usuario")
-   
-    const contraseña = document.getElementById('contraseña').value;
-    if (!contraseña || !usuario.value) {
-        alert("por favor rellene los campos vacios") //alert en caso de estar vacios los campos al intentar iniciar sesión
+    const usuario = document.getElementById('usuario').value;
+    const contraseña = document.getElementById('pswd').value;
+    if (!contraseña || !usuario) {
+        window.alert ("Debes completar los campos vacíos!");
     } else {
         localStorage.setItem('authenticated', 'true');
-        localStorage.setItem("user-name", usuario.value)
+        localStorage.setItem("user-name", usuario)
         window.location.href = "index.html";
     }
 });
