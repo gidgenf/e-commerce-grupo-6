@@ -13,6 +13,10 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch(error => console.log('Error:', error));
 });
 
+function setProductID(id) {
+   localStorage.setItem("productID", id);
+   window.location = "products-info.html"
+}
 
 function mostrarTarjetas() {  //funcion que muestra las tarjetas de los productos
    let element = document.getElementById('objet-conteiner');
@@ -20,8 +24,7 @@ function mostrarTarjetas() {  //funcion que muestra las tarjetas de los producto
 
    data.products.forEach(x => { //por cada producto agrega una tarjeta al elemento vacio
       element.innerHTML += `
-         <a href="product-info.html" class="links-products">
-         <div class="cards mouseHover">
+         <div class="cards mouseHover" onclick="setProductID(${x.id})">
               <img src="${x.image}" class="img-card" alt="${x.name}">
               <div class="body-card">
                 <h4 class="text-card card-title">${x.name}</h4>
@@ -29,7 +32,7 @@ function mostrarTarjetas() {  //funcion que muestra las tarjetas de los producto
                 <p class="text-card">${x.cost}$</p>
               </div>
          </div>
-         </a>`;
+         `;
    });
 }
 
@@ -80,6 +83,4 @@ document.getElementById("limpiarRangos").addEventListener("click", function () {
 
    mostrarTarjetas();
 });
-
-
 
