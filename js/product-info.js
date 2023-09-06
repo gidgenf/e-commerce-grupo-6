@@ -1,14 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
     const listabusqueda = [];
-    const fetchPromises = [];
-
     let idobjetos = 100;
-    for (let index = 0; index < 3; index++) {   //for que genera las url de las categorias para luego obtener la data.products de cada uno
+    const fetchPromises = [];
+    //for que genera las url de las categorias para luego obtener la data.products de cada uno
+
+    for (let index = 0; index < 3; index++) {
+        idobjetos++
         let catID_json = idobjetos + ".json";
         let url = 'https://japceibal.github.io/emercado-api/cats_products/' + catID_json;  //arma un url del catid por cada bucle
 
-        const promise = fetch(url)  //se realiza un fetch que usa la irl formada anteriormente y se pushea sus datos en listabusqueda, al mismo tiempo se convierte en constante y se pushea dentro de fetchPromises
-            .then(response => response.json())
+
+        const promise = fetch(url)                      //se realiza un fetch que usa la irl formada anteriormente y se pushea sus datos en listabusqueda
+            .then(response => response.json())          //al mismo tiempo se convierte en constante y se pushea dentro de fetchPromises que se usará luego
             .then(responseData => {
                 let data = responseData;
                 listabusqueda.push(...data.products);
