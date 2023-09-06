@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-   const catID = localStorage.getItem("catID"); //se declara la constante catID del local storage catID
+   const catID = localStorage.getItem("catID");  //se declara la constante catID del local storage catID
    let catID_json = catID + ".json";
    let url = 'https://japceibal.github.io/emercado-api/cats_products/' + catID_json;
 
-   fetch(url) // fetch que muestra los productos 
+   fetch(url)                                    //fetch que muestra los productos 
       .then(response => response.json())
       .then(responseData => {
          data = responseData;
@@ -13,15 +13,18 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch(error => console.log('Error:', error));
 });
 
+function setProductID(id) {
+   localStorage.setItem("productID", id);        //setea el ID del producto y nos relocaliza a product-info.html
+   window.location.href = "product-info.html";
+}
 
-function mostrarTarjetas() {  //funcion que muestra las tarjetas de los productos
+function mostrarTarjetas() {                    //funcion que muestra las tarjetas de los productos
    let element = document.getElementById('objet-conteiner');
-   element.innerHTML = '';  //elemento vacio
+   element.innerHTML = '';                      //elemento vacio
 
-   data.products.forEach(x => { //por cada producto agrega una tarjeta al elemento vacio
+   data.products.forEach(x => {                 //por cada producto agrega una tarjeta al elemento vacio
       element.innerHTML += `
-         <a href="product-info.html" class="links-products">
-         <div class="cards mouseHover">
+         <div class="cards mouseHover" onclick="setProductID(${x.id})">
               <img src="${x.image}" class="img-card" alt="${x.name}">
               <div class="body-card">
                 <h4 class="text-card card-title">${x.name}</h4>
@@ -29,7 +32,7 @@ function mostrarTarjetas() {  //funcion que muestra las tarjetas de los producto
                 <p class="text-card">${x.cost}$</p>
               </div>
          </div>
-         </a>`;
+         `;
    });
 }
 
@@ -80,6 +83,4 @@ document.getElementById("limpiarRangos").addEventListener("click", function () {
 
    mostrarTarjetas();
 });
-
-
 

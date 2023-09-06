@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const listabusqueda = [];  //declaramos una lista vacia donde iran los resultados del fetch
-    const busqueda = document.getElementById('busqueda'); //decalramos variable busqueda que toma el elemento de id busqueda
+    const busqueda = document.getElementById('busqueda'); //declaramos variable busqueda que toma el elemento de id busqueda
 
     let idobjetos = 100;
     for (let index = 0; index < 3; index++) {
@@ -41,26 +41,31 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+function setProductID(id) {
+    localStorage.setItem("productID", id);       
+    window.location.href = "product-info.html";
+}
+
 let contenedor = document.getElementById("containerSearch") //tomamos el contenedor por su id
 function hojaBusqueda(array) {
     contenedor.innerHTML = ``
     if (array.length > 4) {
         for (let index = 0; index < 4; index++) {
             const element = array[index];
-            contenedor.innerHTML += `<a class= "srLink btn btn-outilne-light btn-lg  btn-light btn-block mouseHover" href="product-info.html">
+            contenedor.innerHTML += `<div class="srLink btn btn-outilne-light btn-lg  btn-light btn-block mouseHover" onclick="setProductID(${element.id})">
             <img src="${element.image}" class="miniImage">
             <h4>${element.name}</h4> 
 <h6>${element.description}</h6>
-</a>`
+</div>`
         }
     } else {
         for (let index = 0; index < array.length; index++) {
             const element = array[index];
-            contenedor.innerHTML += `<div><a class="srLink btn btn-outline-light btn-lg btn-light btn-block mouseHover" href="product-info.html">     
+            contenedor.innerHTML += `<div class="srLink btn btn-outline-light btn-lg btn-light btn-block mouseHover" onclick="setProductID(${element.id})">     
             <img src="${element.image}" class="miniImage">
             <h4>${element.name}</h4> 
     <h6>${element.description}</h6>
-    </a></div>`
+    </div>`
         }
     }
 }
