@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const listabusqueda = [];
     const fetchPromises = [];
-    
+
     //for que genera las url de las categorias para luego obtener el data.products en cada iteración
     let idobjetos = 100;
     for (let index = 0; index < 3; index++) {
@@ -31,8 +31,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (idProduct) {
             const productSearch = listabusqueda.find(product => parseInt(product.id) === parseInt(idProduct));
-                console.log(productSearch);
-            
+            console.log(productSearch);
+            showPoductInfo(productSearch);
+
         }
+    }
+    let container = document.getElementById('container');
+    function showPoductInfo(product) {
+        container.innerHTML = ``
+        container.innerHTML = `<div class="img-main">
+      <img src="${product.image}">
+       </div>
+       <div class="card" style="width: 18rem;">
+  <div class=" card-body">
+    <h3 class="card-title">${product.name}</h3>
+    <h4 class="card-text">${product.cost}</h4>
+    <a href="#" class="btn btn-primary">comprar</a>
+    <a href="#" class="btn btn-secundary">agregar carrito</a>
+  </div>
+</div>`
     }
 });
