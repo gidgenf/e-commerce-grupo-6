@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     Promise.all(fetchPromises)  //promise.all lo que hace es tomar un array de promesas y se asegura que todas se interpreten como 1 sola, si alguna de ellas no se cumple la promesa fracasa
         .then(() => {
-            console.log(listabusqueda);
             searchProductById();
         })
         .catch(error => console.log('Error', error));
@@ -32,10 +31,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (idProduct) {
             const productSearch = listabusqueda.find(product => parseInt(product.id) === parseInt(idProduct));
-
-            if (productSearch) {
                 console.log(productSearch);
-            }
+            
         }
     }
 });
