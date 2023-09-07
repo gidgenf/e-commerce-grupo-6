@@ -39,16 +39,22 @@ document.addEventListener("DOMContentLoaded", function () {
     let container = document.getElementById('container');
     function showPoductInfo(product) {
         container.innerHTML = ``
-        container.innerHTML = `<div class="img-main">
-      <img src="${product.image}">
+        container.innerHTML = `<div>
+      <img class="img-card-top img-main" src="${product.image}">
+
+    </div>
+        <div class="card" style="width: 22rem;">
+        <div class=" card-body card-buy">
+        <div>
+        <h2 class="card-title">${product.name}</h2>
+        <h4 class="card-text">${product.description}<h4>
+        </div>
+        <h3 class="card-text">$${product.cost}</h3>
+        <div>
+        <button  class="btn btn-primary">comprar</button>
+        <button  class="btn btn-success">agregar carrito</button>
+        </div>
        </div>
-       <div class="card" style="width: 18rem;">
-  <div class=" card-body">
-    <h3 class="card-title">${product.name}</h3>
-    <h4 class="card-text">${product.cost}</h4>
-    <a href="#" class="btn btn-primary">comprar</a>
-    <a href="#" class="btn btn-secundary">agregar carrito</a>
-  </div>
-</div>`
+    </div>`
     }
 });
