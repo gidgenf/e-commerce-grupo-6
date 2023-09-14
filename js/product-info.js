@@ -76,22 +76,28 @@ document.addEventListener("DOMContentLoaded", function () {
         star.addEventListener('click', setRating);
     });
 
+
+    let goldStars = 0
+    let blackStars = 0
+
     function setRating(e) {
-        const rating = e.target.getAttribute('data-rating');
-        const stars = ratingContainer.querySelectorAll('.star');
+        const rating = e.target.getAttribute('score');
 
         stars.forEach(star => {
-            if (star.getAttribute('data-rating') <= rating) {
+            if (star.getAttribute('score') <= rating) {
                 star.style.color = 'gold';
+                goldStars += 1
             } else {
                 star.style.color = 'black';
+                blackStars += 1
             }
         });
+
     }
 
     let urlComments = "https://japceibal.github.io/emercado-api/products_comments/" + idProduct + ".json"
 
-    function getComments(url) {
+    function getComments(url) {  //trae los comentarios del objeto en base a su id directo de la api
 
         const promise = fetch(url)
             .then(response => response.json())
@@ -108,21 +114,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     getComments(urlComments)
 
-    function showComments(data) {
-
+    function showComments(data) {   //funcion que toma la data de los comentarios y los transforma para enviar al html como comentario
         let commentsdiv = document.getElementById('commentsdiv')
 
         data.forEach(element => {
+            const formattedDate = dateChange(element.dateTime);
 
             commentsdiv.innerHTML += `<li class="list-group-item">
-                                        <p>${element.user} - ${element.dateTime} - ${starsScore(element.score)}</p>
+                                        <p>${element.user} - ${formattedDate} - ${starsScore(element.score)}</p>
                                         <p>${element.description}</p>
                                       </li>`
         });
-        console.log(dateChange(date))
     }
 
-    function starsScore(score) {
+    function starsScore(score) {   //toma el score de estrellas y lo convierte en estrellas doradas
         starContainer = ``;
         for (let i = 0; i < score; i++) {
             starContainer += `<span class="fa fa-star star" style="color: gold;"></span>`
@@ -132,27 +137,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let btncommenting = document.getElementById('btncommenting');
 
+    btncommenting.addEventListener('click', () => {    //add event listener para el boton de enviar comentario
 
-    btncommenting.addEventListener('click', () => {
+        userName = localStorage.getItem('user-name');        //traemos los datos 
+        score = goldStars
+        goldStars = 0
+        descripcion = document.getElementById('commenttext').value
+        dateTipe = dateChange(new Date())
 
-        commentStructure = {};
+        const commentStructure = {   //arreglo de datos
+            product: idProduct,
+            score: score,
+            description: descripcion,
+            date: dateTipe,
+            user: userName
+        };
 
-        starsScore(score)
+        console.log(dateTipe)
+        console.log(commentStructure)
 
     });
 
-    function dateChange(date) {
+    function dateChange(date) {  //cambio de fecha en base a la fecha actual o la fecha dentro del url API comments
         const dateComment = date;
         const dateNew = new Date(dateComment);
 
-        const day = date.getDate();
-        const month = date.getMonth() + 1;
-        const year = date.getFullYear();
+        const day = dateNew.getDate();
+        const month = dateNew.getMonth() + 1;
+        const year = dateNew.getFullYear();
 
-        const formatedDate = `${day}/${month}/${year}`;
+        const formattedDate = `${day}/${month}/${year}`;
 
-        console.log(formatedDate);
-    };
+        return formattedDate;
+    }
+
 
 });
 
