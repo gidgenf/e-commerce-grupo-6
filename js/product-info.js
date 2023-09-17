@@ -1,38 +1,38 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-    const listabusqueda = [];
-    const fetchPromises = [];
+    const productList = [];     //lista a donde van todos los productos de todas las categorias
+    const fetchPromises = [];     //lista de promesas de los productos 
 
     // for que genera las URL de las categorías para luego obtener el data.products en cada iteración
-    let idobjetos = 100;
+    let catobjetos = 100;
     for (let index = 0; index < 3; index++) {
-        idobjetos++
-        let catID_json = idobjetos + ".json";
+        catobjetos++
+        let catID_json = catobjetos + ".json";
         let url = 'https://japceibal.github.io/emercado-api/cats_products/' + catID_json;  //arma un URL del catid por cada bucle
 
-        const promise = fetch(url)                      //se realiza un fetch que usa la URL formada anteriormente y se pushea sus datos en listabusqueda
+        const promise = fetch(url)                      //se realiza un fetch que usa la URL formada anteriormente y se pushea sus datos en productList
             .then(response => response.json())          //al mismo tiempo se convierte en constante y se pushea dentro de fetchPromises que se usará luego
             .then(responseData => {
                 let data = responseData;
-                listabusqueda.push(...data.products);
+                productList.push(...data.products);
             })
             .catch(error => console.log('Error:', error));
 
         fetchPromises.push(promise);
     }
 
-    Promise.all(fetchPromises)  //promise.all lo que hace es tomar un array de promesas y se asegura que todas se interpreten como 1 sola, si alguna de ellas no se cumple la promesa fracasa
+    Promise.all(fetchPromises)  //promise.all lo que hace es tomar un array de promesas y se asegura que todas se interpreten como 1 sola, si alguna de ellas no se cumple, la promesa fracasa
         .then(() => {
             searchProductById();
         })
         .catch(error => console.log('Error', error));
 
-    const idProduct = localStorage.getItem('productID');
+    const idProduct = localStorage.getItem('productID');   //id del producto actual
 
-    function searchProductById() {  //función que busca por medio del id del local storage, se usa find para encontrar el equivalente dentro de listabusqueda
+    function searchProductById() {  //función que busca por medio del id del local storage, se usa find para encontrar el equivalente dentro de productList
 
         if (idProduct) {
-            const productSearch = listabusqueda.find(product => parseInt(product.id) === parseInt(idProduct));
+            const productSearch = productList.find(product => parseInt(product.id) === parseInt(idProduct));
             console.log(productSearch);
             showPoductInfo(productSearch);
         }
@@ -58,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
             <button  class="btn btn-success">agregar carrito</button>
             </div>
            </div>`;
-
     }
 
     const ratingContainer = document.querySelector('.rating');
@@ -67,7 +66,6 @@ document.addEventListener("DOMContentLoaded", function () {
     stars.forEach(star => {
         star.addEventListener('click', setRating);
     });
-
 
     let goldStars = 0
     let blackStars = 0
@@ -84,9 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 blackStars += 1
             }
         });
-
     }
-    
 
     let urlComments = "https://japceibal.github.io/emercado-api/products_comments/" + idProduct + ".json"
 
@@ -100,9 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 showComments(data)
 
             })
-
             .catch(error => console.log('Error:', error));
-
     };
 
     getComments(urlComments)
@@ -127,29 +121,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         return starContainer
     }
-
-    let btncommenting = document.getElementById('btncommenting');
-
-    btncommenting.addEventListener('click', () => {    //add event listener para el boton de enviar comentario
-
-        userName = localStorage.getItem('user-name');        //traemos los datos 
-        score = goldStars
-        goldStars = 0
-        descripcion = document.getElementById('commenttext').value
-        dateTipe = dateChange(new Date())
-
-        const commentStructure = {   //arreglo de datos
-            product: idProduct,
-            score: score,
-            description: descripcion,
-            date: dateTipe,
-            user: userName
-        };
-
-        console.log(dateTipe)
-        console.log(commentStructure)
-
-    });
 
     function dateChange(date) {  //cambio de fecha en base a la fecha actual o la fecha dentro del url API comments
         const dateComment = date;
@@ -184,23 +155,26 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    let btncommenting = document.getElementById('btncommenting');
+
     btncommenting.addEventListener('click', function () {
         let userName = localStorage.getItem('user-name');
-        let descripcion = document.getElementById('commenttext').value;
+        let commentText = document.getElementById('commenttext').value;
         let dateTipe = new Date().toLocaleString();
 
         const commentStructure = {
             product: localStorage.getItem('productID'),
             score: selectedScore,
-            description: descripcion,
+            description: commentText,
             date: dateTipe,
             user: userName
         };
 
         saveCommentToLocalStorage(commentStructure);
         displayComment(commentStructure);
-        descripcion = '';
+        document.getElementById('commenttext').value = '';
         resetStars();
+
     });
 
     function saveCommentToLocalStorage(comment) {
@@ -241,6 +215,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const productComments = comments.filter(comment => comment.product === productId);
         productComments.forEach(comment => displayComment(comment));
     }
-
 });
+
 
