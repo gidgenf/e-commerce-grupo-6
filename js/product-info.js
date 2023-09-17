@@ -63,23 +63,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const ratingContainer = document.querySelector('.rating');
     const stars = ratingContainer.querySelectorAll('.star');
 
-    stars.forEach(star => {
-        star.addEventListener('click', setRating);
+    stars.forEach(star => {   //se le agrega un evento click a cada estrella que le pasa como argumento setRating()
+        star.addEventListener('click', setCommentRating);
     });
-
-    let goldStars = 0
-    let blackStars = 0
-
-    function setRating(e) {
+    
+    function setCommentRating(e) {   //al marcar una estrella tambien se marca el score, para todas las estrellas si el score es mayor se pintan de dorado y si es menor de negro
         const rating = e.target.getAttribute('score');
 
         stars.forEach(star => {
             if (star.getAttribute('score') <= rating) {
                 star.style.color = 'gold';
-                goldStars += 1
             } else {
                 star.style.color = 'black';
-                blackStars += 1
             }
         });
     }
@@ -114,12 +109,16 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    function starsScore(score) {   //toma el score de estrellas y lo convierte en estrellas doradas
-        starContainer = ``;
+    function starsScore(score) {   // función que crea estrellas segun el score del comentario mostrado
+        starContainer = '';
         for (let i = 0; i < score; i++) {
-            starContainer += `<span class="fa fa-star star" style="color: gold;"></span>`
+            starContainer += '<span class="fa fa-star star" style="color: gold;"></span>';
         }
-        return starContainer
+    
+        for (let i = score; i < 5; i++) {
+            starContainer += '<span class="fa fa-star star" style="color: black;"></span>';
+        }
+        return starContainer;
     }
 
     function dateChange(date) {  //cambio de fecha en base a la fecha actual o la fecha dentro del url API comments
@@ -144,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
         star.addEventListener('click', setRating);
     });
 
-    function setRating(e) { // Dentro de setRating, obtenemos el "score" (calificación) de la estrella seleccionada.
+    function setRating(e) { // Dentro de setRating, obtenemos el "score" (calificación) de la estrella seleccionada para pintar las estrellas del comentario creado
         selectedScore = parseInt(e.target.getAttribute('score'));
         starsrate.forEach(star => {
             if (parseInt(star.getAttribute('score')) <= selectedScore) {
