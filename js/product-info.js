@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let btncommenting = document.getElementById('btncommenting');
 
-    btncommenting.addEventListener('click', function () {
+    btncommenting.addEventListener('click', () => {
         let userName = localStorage.getItem('user-name');
         let commentText = document.getElementById('commenttext').value;
         let dateTipe = new Date().toLocaleString();
