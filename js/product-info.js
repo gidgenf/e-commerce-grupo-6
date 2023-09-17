@@ -1,13 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    let commentsDiv = document.getElementById('commentsdiv');
-    let commentsContenedor = localStorage.getItem('comments'); // Obtener los comentarios almacenados en localStorage
-
-    // Verificar si hay comentarios en localStorage
-    if (commentsContenedor) {
-        commentsDiv.innerHTML = commentsContenedor;
-    }
-
     const listabusqueda = [];
     const fetchPromises = [];
 
@@ -94,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     }
+    
 
     let urlComments = "https://japceibal.github.io/emercado-api/products_comments/" + idProduct + ".json"
 
@@ -171,22 +164,18 @@ document.addEventListener("DOMContentLoaded", function () {
         return formattedDate;
     }
 
+    let selectedScore = 0; // Variable global para almacenar la calificación seleccionada.
 
-});
- 
-let selectedScore = 0; // Variable global para almacenar la calificación seleccionada.
+    loadCommentsFromLocalStorage(idProduct);
 
-document.addEventListener("DOMContentLoaded", function() {
-    loadCommentsFromLocalStorage();
-
-    const stars = document.querySelectorAll('.rating .star');
-    stars.forEach(star => {
+    const starsrate = document.querySelectorAll('.rating .star');
+    starsrate.forEach(star => {
         star.addEventListener('click', setRating);
     });
 
     function setRating(e) { // Dentro de setRating, obtenemos el "score" (calificación) de la estrella seleccionada.
         selectedScore = parseInt(e.target.getAttribute('score'));
-        stars.forEach(star => {
+        starsrate.forEach(star => {
             if (parseInt(star.getAttribute('score')) <= selectedScore) {
                 star.style.color = 'gold';
             } else {
@@ -195,8 +184,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    let btncommenting = document.getElementById('btncommenting');
-    btncommenting.addEventListener('click', function() {
+    btncommenting.addEventListener('click', function () {
         let userName = localStorage.getItem('user-name');
         let descripcion = document.getElementById('commenttext').value;
         let dateTipe = new Date().toLocaleString();
@@ -211,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         saveCommentToLocalStorage(commentStructure);
         displayComment(commentStructure);
-        document.getElementById('commenttext').value = '';
+        descripcion = '';
         resetStars();
     });
 
@@ -220,7 +208,7 @@ document.addEventListener("DOMContentLoaded", function() {
         comments.push(comment);
         localStorage.setItem('userComments', JSON.stringify(comments));
     }
-// Las funciones saveCommentToLocalStorage y displayComment se encargan de guardar los comentarios en localStorage y mostrarlos en la página, respectivamente.
+    // Las funciones saveCommentToLocalStorage y displayComment se encargan de guardar los comentarios en localStorage y mostrarlos en la página, respectivamente.
     function displayComment(comment) {
         let commentsdiv = document.getElementById('commentsdiv');
         commentsdiv.innerHTML += `
@@ -248,8 +236,11 @@ document.addEventListener("DOMContentLoaded", function() {
         selectedScore = 0; // Reiniciar la calificación seleccionada.
     }
 
-    function loadCommentsFromLocalStorage() { // Se encarga de cargar y mostrar todos los comentarios guardados en localStorage cuando se carga la página.
+    function loadCommentsFromLocalStorage(productId) {
         let comments = JSON.parse(localStorage.getItem('userComments')) || [];
-        comments.forEach(comment => displayComment(comment));
+        const productComments = comments.filter(comment => comment.product === productId);
+        productComments.forEach(comment => displayComment(comment));
     }
+
 });
+
