@@ -173,5 +173,83 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 });
+ 
+let selectedScore = 0; // Variable global para almacenar la calificación seleccionada.
 
+document.addEventListener("DOMContentLoaded", function() {
+    loadCommentsFromLocalStorage();
 
+    const stars = document.querySelectorAll('.rating .star');
+    stars.forEach(star => {
+        star.addEventListener('click', setRating);
+    });
+
+    function setRating(e) { // Dentro de setRating, obtenemos el "score" (calificación) de la estrella seleccionada.
+        selectedScore = parseInt(e.target.getAttribute('score'));
+        stars.forEach(star => {
+            if (parseInt(star.getAttribute('score')) <= selectedScore) {
+                star.style.color = 'gold';
+            } else {
+                star.style.color = 'black';
+            }
+        });
+    }
+
+    let btncommenting = document.getElementById('btncommenting');
+    btncommenting.addEventListener('click', function() {
+        let userName = localStorage.getItem('user-name');
+        let descripcion = document.getElementById('commenttext').value;
+        let dateTipe = new Date().toLocaleString();
+
+        const commentStructure = {
+            product: localStorage.getItem('productID'),
+            score: selectedScore,
+            description: descripcion,
+            date: dateTipe,
+            user: userName
+        };
+
+        saveCommentToLocalStorage(commentStructure);
+        displayComment(commentStructure);
+        document.getElementById('commenttext').value = '';
+        resetStars();
+    });
+
+    function saveCommentToLocalStorage(comment) {
+        let comments = JSON.parse(localStorage.getItem('userComments')) || [];
+        comments.push(comment);
+        localStorage.setItem('userComments', JSON.stringify(comments));
+    }
+// Las funciones saveCommentToLocalStorage y displayComment se encargan de guardar los comentarios en localStorage y mostrarlos en la página, respectivamente.
+    function displayComment(comment) {
+        let commentsdiv = document.getElementById('commentsdiv');
+        commentsdiv.innerHTML += `
+            <li class="list-group-item">
+                <p>${comment.user} - ${comment.date} - ${generateStars(comment.score)}</p>
+                <p>${comment.description}</p>
+            </li>`;
+    }
+
+    function generateStars(score) { // Toma un número (la calificación) y devuelve una cadena de caracteres que contiene estrellas doradas según el número dado.
+        let stars = '';
+        for (let i = 0; i < score; i++) {
+            stars += `<span class="fa fa-star" style="color: gold;"></span>`;
+        }
+        for (let i = score; i < 5; i++) {
+            stars += `<span class="fa fa-star"></span>`;
+        }
+        return stars;
+    }
+
+    function resetStars() { // Se invoca después de que un comentario es enviado para reiniciar la calificación seleccionada y las estrellas a su estado inicial.
+        stars.forEach(star => {
+            star.style.color = 'black';
+        });
+        selectedScore = 0; // Reiniciar la calificación seleccionada.
+    }
+
+    function loadCommentsFromLocalStorage() { // Se encarga de cargar y mostrar todos los comentarios guardados en localStorage cuando se carga la página.
+        let comments = JSON.parse(localStorage.getItem('userComments')) || [];
+        comments.forEach(comment => displayComment(comment));
+    }
+});
