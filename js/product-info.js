@@ -51,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div>
             <h2 class="card-title">${product.name}</h2>
             <h4 class="card-text">${product.description}<h4>
+            <h5 class="card-text">cantidad de ventas: ${product.soldCount}</h5>
             </div>
             <h3 class="card-text">$${product.cost}</h3>
             <div>
