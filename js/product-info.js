@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
         star.addEventListener('click', setRating);
     });
 
-    function setRating(e) { // Dentro de setRating, obtenemos el "score" (calificación) de la estrella seleccionada para pintar las estrellas del comentario creado
+    function setRating(e) { // Dentro de setRating, obtenemos el "score" (calificación) para pintar las estrellas del comentario
         selectedScore = parseInt(e.target.getAttribute('score'));
         starsrate.forEach(star => {
             if (parseInt(star.getAttribute('score')) <= selectedScore) {
