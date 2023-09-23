@@ -21,3 +21,37 @@ body{
 .chat{
     margin-top: 20px;
 }
+#relatedProducts{
+    height: 300px;
+    width: 70%;
+    overflow: hidden;
+    margin-top: 40px;
+    margin-left:100px ;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 25px;
+}
+#move-right{
+    height: 300px;
+    width: 50px;
+    left: 80%;
+    top: 95%;
+    position: absolute; 
+}
+#move-left{
+    height: 300px;
+    width: 50px;
+    left: 2%;
+    position: absolute;
+}
+.img-card{
+    height: 150px;
+    width: auto;
+    border-radius: 5px;
+
+}
+.cards{
+    border-radius: 10px;
+    height: 260px;
+    margin: 20px;
+}
