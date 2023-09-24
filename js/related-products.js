@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
      // Agregar las tarjetas de los productos relacionados
      productosRelacionados.forEach(x => {
          element.innerHTML += `
-             <div class="cards mouseHover"style="width: 22rem;" onclick="setProductID(${x.id})">
+             <div class="cards slide mouseHover"style="width: 22rem;" onclick="setProductID(${x.id})">
                  <img src="${x.image}" class="img-card" alt="${x.name}">
                  <div class="body-card">
                      <h4 class="text-card card-title">${x.name}</h4>
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         currentIndex = index;
-        const translateX = -currentIndex * 60;
+        const translateX = -currentIndex * 100;
         slider.style.transform = `translateX(${translateX}%)`;
     }
 
