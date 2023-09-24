@@ -35,4 +35,29 @@ document.addEventListener("DOMContentLoaded", function () {
          `;
      });
     }
+    const slider = document.querySelector("#relatedProducts");
+    const prevButton = document.getElementById("move-left");
+    const nextButton = document.getElementById("move-right");
+    
+    let currentIndex = 0;
+
+    function slideTo(index) {
+        if (index < 0) {
+            index = 0;
+        } else if (index >= slider.children.length) {
+            index = slider.children.length - 1;
+        }
+
+        currentIndex = index;
+        const translateX = -currentIndex * 60;
+        slider.style.transform = `translateX(${translateX}%)`;
+    }
+
+    prevButton.addEventListener("click", function () {
+        slideTo(currentIndex - 1);
+    });
+
+    nextButton.addEventListener("click", function () {
+        slideTo(currentIndex + 1);
+    });
 });

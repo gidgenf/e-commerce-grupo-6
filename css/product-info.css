@@ -24,7 +24,7 @@ body{
 #relatedProducts{
     height: 300px;
     width: 70%;
-    overflow: hidden;
+    
     margin-top: 40px;
     margin-left:100px ;
     display: flex;
@@ -36,13 +36,15 @@ body{
     width: 50px;
     left: 80%;
     top: 95%;
-    position: absolute; 
+    position: absolute;
+    z-index: 100; 
 }
 #move-left{
     height: 300px;
     width: 50px;
     left: 2%;
     position: absolute;
+    z-index: 100;
 }
 .img-card{
     height: 150px;
