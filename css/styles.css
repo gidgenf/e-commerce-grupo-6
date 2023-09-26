@@ -4,7 +4,9 @@
 .site-header {
   font-family: 'Verdana', serif !important;
 }
-
+body{
+  background-color: rgb(112, 112, 112);
+}
 .jumbotron .display-4 {
   font-weight: bold;
 }

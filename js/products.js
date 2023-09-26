@@ -29,7 +29,7 @@ function mostrarTarjetas() {                    //funcion que muestra las tarjet
               <div class="body-card">
                 <h4 class="text-card card-title">${x.name}</h4>
                 <p class="text-card description">${x.description}</p>
-                <p class="text-card">${x.cost}$</p>
+                <p class="text-card text">${x.cost}$</p>
               </div>
          </div>
          `;
