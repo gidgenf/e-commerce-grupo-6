@@ -1,46 +1,34 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const categoryList = [];   //lista a donde van todos los productos de la categoria
+    const productCat = localStorage.getItem('catID');  //categoria actual del local storage
+    const idProduct = localStorage.getItem('productID'); // ID del producto actual
 
-    const productList = [];     //lista a donde van todos los productos de todas las categorias
-    const fetchPromises = [];     //lista de promesas de los productos 
+    const url = `https://japceibal.github.io/emercado-api/cats_products/${productCat}.json`;
 
-    // for que genera las URL de las categorías para luego obtener el data.products en cada iteración
-    let catobjetos = 100;
-    for (let index = 0; index < 3; index++) {
-        catobjetos++
-        let catID_json = catobjetos + ".json";
-        let url = 'https://japceibal.github.io/emercado-api/cats_products/' + catID_json;  //arma un URL del catid por cada bucle
+    fetch(url)                             // Fetch que utiliza el URL con el catID
+        .then(response => response.json())
+        .then(responseData => {
+            let data = responseData;
 
-        const promise = fetch(url)                      //se realiza un fetch que usa la URL formada anteriormente y se pushea sus datos en productList
-            .then(response => response.json())          //al mismo tiempo se convierte en constante y se pushea dentro de fetchPromises que se usará luego
-            .then(responseData => {
-                let data = responseData;
-                productList.push(...data.products);
-            })
-            .catch(error => console.log('Error:', error));
+            categoryList.push(...data.products);
+            console.log(categoryList);
+            searchProductById(idProduct);
+            mostrarTarjetas(categoryList, idProduct); // Mueve esta llamada aquí
 
-        fetchPromises.push(promise);
-    }
-
-    Promise.all(fetchPromises)  //promise.all lo que hace es tomar un array de promesas y se asegura que todas se interpreten como 1 sola, si alguna de ellas no se cumple, la promesa fracasa
-        .then(() => {
-            searchProductById();
         })
-        .catch(error => console.log('Error', error));
+        .catch(error => console.log('Error:', error));
 
-    const idProduct = localStorage.getItem('productID');   //id del producto actual
+    function searchProductById(id) {    //busca el producto por su id almacenada y lo muestra
+        if (id) {
+            const productSearch = categoryList.find(product => parseInt(product.id) === parseInt(id));
 
-    function searchProductById() {  //función que busca por medio del id del local storage, se usa find para encontrar el equivalente dentro de productList
-
-        if (idProduct) {
-            const productSearch = productList.find(product => parseInt(product.id) === parseInt(idProduct));
-            console.log(productSearch);
-            showPoductInfo(productSearch);
+            showProductInfo(productSearch);
         }
     }
 
     let container = document.getElementById('container');
 
-    function showPoductInfo(product) {
+    function showProductInfo(product) {   //crea un elemento div con los datos del producto y lo coloca en el contenedor
 
         container.innerHTML = '';
         container.innerHTML = `<div>
@@ -67,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     stars.forEach(star => {   //se le agrega un evento click a cada estrella que le pasa como argumento setRating()
         star.addEventListener('click', setCommentRating);
     });
-    
+
     function setCommentRating(e) {   //al marcar una estrella tambien se marca el score, para todas las estrellas si el score es mayor se pintan de dorado y si es menor de negro
         const rating = e.target.getAttribute('score');
 
@@ -88,7 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(response => response.json())
             .then(responseData => {
                 let data = responseData
-                console.log(data)
                 showComments(data)
 
             })
@@ -115,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
         for (let i = 0; i < score; i++) {
             starContainer += '<span class="fa fa-star star" style="color: gold;"></span>';
         }
-    
+
         for (let i = score; i < 5; i++) {
             starContainer += '<span class="fa fa-star star" style="color: black;"></span>';
         }
@@ -215,6 +202,50 @@ document.addEventListener("DOMContentLoaded", () => {
         const productComments = comments.filter(comment => comment.product === productId);
         productComments.forEach(comment => displayComment(comment));
     }
+
+    const prevButton = document.getElementById('move-left');
+    const nextButton = document.getElementById('move-right');
+
+    //nextButton.addEventListener('click', () => {
+    // });
+
+    // prevButton.addEventListener('click', () => {
+    //});
+
+    let pag = 0; // Variable para rastrear la página actual en la lista de productos
+
+    function createIndicatorButtons(button, indicators) {
+
+        const indicatorButton = document.createElement('button');
+        indicatorButton.setAttribute('type', 'button');
+        indicatorButton.setAttribute('data-bs-target', '#carouselExampleCaptions');
+        indicatorButton.setAttribute('data-bs-slide-to', index.toString());
+        indicatorButton.setAttribute('aria-label', `Slide ${index + 1}`);
+        if (index === 0) {
+            button.classList.add('active');
+        }
+        indicators.appendChild(button);
+    }
+
+    function mostrarTarjetas(productosRelacionados, id) {
+        let relatedProduct = document.getElementsByClassName('carousel-inner')[0];
+
+        console.log(relatedProduct)
+        relatedProduct.innerHTML = '';
+
+        const filteredProducts = productosRelacionados.filter(product => parseInt(product.id) != parseInt(id));
+
+        filteredProducts.forEach((product, index) => {
+            const card = `
+                <div class="card-class carousel-item ${index === 0 ? 'active' : ''}" alt="..." onclick="setProductID(${product.id})"> 
+                    <img src="${product.image}" class="d-block w-100" alt="${product.name}"> 
+                    <div class="product-info">
+                        <h4 class="product-title">${product.name}</h4>
+                        <p class="product-price">${product.cost}$</p> 
+                    </div>
+                </div>
+            `;
+            relatedProduct.innerHTML += card;
+        });
+    }
 });
-
-

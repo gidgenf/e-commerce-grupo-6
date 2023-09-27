@@ -1,67 +1,46 @@
-body{
+body {
     background-color: rgb(228, 224, 224);
     margin: 0px;
     padding: 0px;
 }
-#container{
-   margin-top: 40px;
-   display: grid;
-   grid-template-columns: 3fr 1fr;
-   gap: 35px;
 
+.img-main {
+    border: 6px solid #fff;
+    border-radius: 10px;
 }
-.card-buy{
+
+#container {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 35px;
+}
+
+.chat {
+    margin-top: 20px;
+}
+
+.card-buy {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     padding: 20px;
     box-shadow: 1px 1px 10px black;
     border-radius: 10px;
+    float: right;
 }
-.chat{
-    margin-top: 20px;
-}
-.related-products{
-    margin-top: 40px;
-    margin-left:150px;
-    overflow: hidden;
-    height: 300px;
-    max-width: 1000px;
-    align-items: center;
-}
-#relatedProducts{
+
+#carouselExampleCaptions {
     display: flex;
-    flex-wrap: nowrap;
-    gap: 50px;
-}
-.slide {
-    transition: transform 0.5s ease-in-out;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3%;
+    margin-left: 35%;
+    margin-right: 35%;
 }
 
-#move-right{
-    height: 300px;
-    width: 50px;
-    left: 85%;
-    top: 95%;
-    position: absolute;
-    z-index: 100; 
-}
-#move-left{
-    height: 300px;
-    width: 50px;
-    left: 5%;
-    position: absolute;
-    z-index: 100;
-}
-.img-card{
-    height: 150px;
-    width: auto;
-    border-radius: 5px;
-
-}
-.cards{
+.card-class {
+    width: 400px;
+    border: 6px solid #fff;
     border-radius: 10px;
-    height: 260px;
-    margin: 20px;
-    z-index: -1;
 }

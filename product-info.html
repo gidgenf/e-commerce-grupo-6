@@ -8,9 +8,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/product-info.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -45,7 +45,7 @@
           <li id="usuario">
             <a class="nav-link" href="my-profile.html" data-tooltip="Perfil"> <i class="fa-solid fa-user"></i></a>
           </li>
-                    <li id="boxButton">
+          <li id="boxButton">
           </li>
 
         </ul>
@@ -54,44 +54,59 @@
     </div>
   </nav>
   <div class="search-result" id="containerSearch"></div>
+
+
   <main>
     <div class="container" id="container">
 
     </div>
-   <div>
-    <button type="button" id="move-left" class="btn btn-outline-secondary"><</button>
-    <div class="related-products">
-      <div id="relatedProducts"></div>
-    </div>
-    <div>
-      <button type="button" id="move-right" class="btn btn-outline-secondary">></button>
-    </div>
-      <div class="chat card">
-        <div class="card-body">
-          <blockquote class="blockquote mb-0">
-            <label for="">Agregar comentario.</label>
-            <div class="rating" id="stars">
-              <div id="estrellas">
-                <span class="fa fa-star star" score="1"></span>
-                <span class="fa fa-star star" score="2"></span>
-                <span class="fa fa-star star" score="3"></span>
-                <span class="fa fa-star star" score="4"></span>
-                <span class="fa fa-star star" score="5"></span>
-              </div>
-            </div>
-            <input type="text" id="commenttext" placeholder="Ingresa un comentario...">
-            <button id="btncommenting" class="btn btn-primary">Enviar</button>
-        </div>
-      </div>
-      <div class="card-header">
-        <h3>Comentarios.</h3>
-      </div>
-      <div id="commentsdiv">
 
+
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      
+      <div class="carousel-inner">
+       
       </div>
+      
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+
+    <div class="chat card">
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <label for="">Agregar comentario.</label>
+          <div class="rating" id="stars">
+            <div id="estrellas">
+              <span class="fa fa-star star" score="1"></span>
+              <span class="fa fa-star star" score="2"></span>
+              <span class="fa fa-star star" score="3"></span>
+              <span class="fa fa-star star" score="4"></span>
+              <span class="fa fa-star star" score="5"></span>
+            </div>
+          </div>
+          <input type="text" id="commenttext" placeholder="Ingresa un comentario...">
+          <button id="btncommenting" class="btn btn-primary">Enviar</button>
+      </div>
+    </div>
+
+    <div class="card-header">
+      <h3>Comentarios.</h3>
+    </div>
+
+    <div id="commentsdiv">
+
     </div>
   </main>
-
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -113,9 +128,9 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
-  <script src="js/related-products.js"></script>
   <script src="js/search.js"></script>
   <script src="js/night.js"></script>
+  <script src="ruta/a/bootstrap.min.js"></script>
 </body>
 
 </html>
