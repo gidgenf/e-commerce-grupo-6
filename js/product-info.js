@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+
     const categoryList = [];   //lista a donde van todos los productos de la categoria
     const productCat = localStorage.getItem('catID');  //categoria actual del local storage
     const idProduct = localStorage.getItem('productID'); // ID del producto actual
@@ -13,8 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
             categoryList.push(...data.products);
             console.log(categoryList);
             searchProductById(idProduct);
-            mostrarTarjetas(categoryList, idProduct); // Mueve esta llamada aquí
-
+            mostrarTarjetas(categoryList, idProduct);
         })
         .catch(error => console.log('Error:', error));
 
@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     let container = document.getElementById('container');
+
 
     function showProductInfo(product) {   //crea un elemento div con los datos del producto y lo coloca en el contenedor
 
@@ -212,23 +213,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // prevButton.addEventListener('click', () => {
     //});
 
-    let pag = 0; // Variable para rastrear la página actual en la lista de productos
-
-    function createIndicatorButtons(button, indicators) {
-
-        const indicatorButton = document.createElement('button');
-        indicatorButton.setAttribute('type', 'button');
-        indicatorButton.setAttribute('data-bs-target', '#carouselExampleCaptions');
-        indicatorButton.setAttribute('data-bs-slide-to', index.toString());
-        indicatorButton.setAttribute('aria-label', `Slide ${index + 1}`);
-        if (index === 0) {
-            button.classList.add('active');
-        }
-        indicators.appendChild(button);
-    }
 
     function mostrarTarjetas(productosRelacionados, id) {
+
         let relatedProduct = document.getElementsByClassName('carousel-inner')[0];
+
 
         console.log(relatedProduct)
         relatedProduct.innerHTML = '';
@@ -236,16 +225,37 @@ document.addEventListener("DOMContentLoaded", () => {
         const filteredProducts = productosRelacionados.filter(product => parseInt(product.id) != parseInt(id));
 
         filteredProducts.forEach((product, index) => {
+
             const card = `
                 <div class="card-class carousel-item ${index === 0 ? 'active' : ''}" alt="..." onclick="setProductID(${product.id})"> 
                     <img src="${product.image}" class="d-block w-100" alt="${product.name}"> 
-                    <div class="product-info">
+
+                    <div class="carousel-caption d-none d-md-block">
                         <h4 class="product-title">${product.name}</h4>
                         <p class="product-price">${product.cost}$</p> 
                     </div>
+
                 </div>
             `;
             relatedProduct.innerHTML += card;
         });
     }
+
+
+   // function createIndicatorButtons() {
+   //     let indicatorsDivButtons = document.getElementsByClassName('carousel-indicators')[0];
+
+   //     const indicatorButton = document.createElement('button');
+   //     indicatorButton.setAttribute('type', 'button');
+   //     indicatorButton.setAttribute('data-bs-target', '#carouselExampleCaptions');
+   //     indicatorButton.setAttribute('data-bs-slide-to', index.toString());
+    //    indicatorButton.setAttribute('aria-label', `Slide ${index + 1}`);
+    //    if (index === 0) {
+    //        button.classList.add('active');
+    //    }
+    //    indicatorsDivButtons.appendChild(button);
+   // }
 });
+
+
+
