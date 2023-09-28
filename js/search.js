@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             for (let index = 0; index < productoslistados.length; index++) {
                 const producto = productoslistados[index];
-                contenedor.innerHTML += `<div class="srLink btn btn-outline-light btn-lg btn-light btn-block mouseHover" onclick="setProductID(${producto.id}, ${array[0].catID})">     
+                contenedor.innerHTML += `<div class="srLink btn btn-outline-light btn-lg btn-light btn-block mouseHover" onclick="setProductIdAndCat(${producto.id}, ${array[0].catID})">     
                 <img src="${producto.image}" class="miniImage">
                 <h4>${producto.name}</h4> 
                 <h6>${producto.description}</h6>
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-function setProductID(id, cat) {   //funcion que cambia los valores de id y catID del localstorage
+function setProductIdAndCat(id, cat) {   //funcion que cambia los valores de id y catID del localstorage
     localStorage.setItem("productID", id);
     localStorage.setItem("catID", cat);
     window.location.href = "product-info.html";

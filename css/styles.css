@@ -4,9 +4,11 @@
 .site-header {
   font-family: 'Verdana', serif !important;
 }
-body{
+
+body {
   background-color: rgb(112, 112, 112);
 }
+
 .jumbotron .display-4 {
   font-weight: bold;
 }
@@ -256,10 +258,14 @@ a.custom-card:hover {
 
 #containerSearch {
   background-color: rgba(240, 225, 255, 0.685);
-  text-align: justify;
   border-radius: 10px;
-  margin-left: 400px;
-  margin-right: 400px;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  position: absolute;
+  margin-left: 30%;
+  margin-right: 30%;
+  box-shadow: 10px 10px 10px black;
 }
 
 h4 {
@@ -282,10 +288,9 @@ a:active {
 
 .search-result {
   position: absolute;
-  background-color: rgb(20, 22, 58);
-  box-shadow: 2px 4px 10px black;
   margin: 35px 20px;
   margin-top: 10px;
+  
 }
 
 .srLink {
