@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (productoslistados.length > 4) {  // esta parte de la funcion solo va a permitir mostrar 4 productos de los encontrados 
             for (let index = 0; index < 4; index++) {   //las tarjetas creadas al hacerles click se va a ejecutar la funcion setProductIdAndCat que va a alojar en el localstorage el id y categoria del producto seleccionado
                 const producto = productoslistados[index];
-                contenedor.innerHTML += `<div class="srLink btn btn-outline-light btn-lg btn-light btn-block mouseHover" onclick="setProductIdAndCat(${producto.id}, ${array[0].catID})">     
+                contenedor.innerHTML += `<div class="srLink btn btn-outline-light btn-lg btn-light btn-block card-class mouseHover" onclick="setProductIdAndCat(${producto.id}, ${array[0].catID})">     
                 <img src="${producto.image}" class="miniImage">
                 <h4>${producto.name}</h4> 
                 <h6>${producto.description}</h6>
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             for (let index = 0; index < productoslistados.length; index++) {
                 const producto = productoslistados[index];
-                contenedor.innerHTML += `<div class="srLink btn btn-outline-light btn-lg btn-light btn-block mouseHover" onclick="setProductIdAndCat(${producto.id}, ${array[0].catID})">     
+                contenedor.innerHTML += `<div class="srLink btn btn-outline-light btn-lg btn-light btn-block card-class mouseHover" onclick="setProductIdAndCat(${producto.id}, ${array[0].catID})">     
                 <img src="${producto.image}" class="miniImage">
                 <h4>${producto.name}</h4> 
                 <h6>${producto.description}</h6>

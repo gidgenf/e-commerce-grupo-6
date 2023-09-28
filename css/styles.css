@@ -256,7 +256,7 @@ a.custom-card:hover {
   margin: 20px;
 }
 
-#containerSearch {
+#containerSearch {   /*clase del contenedor de las tarjetas de search*/
   background-color: rgba(240, 225, 255, 0.685);
   border-radius: 10px;
   justify-content: center;
@@ -286,11 +286,11 @@ a:active {
   text-decoration: none;
 }
 
-.search-result {
+.search-result {  /*clase del contenedor de las tarjetas de search*/
   position: absolute;
   margin: 35px 20px;
   margin-top: 10px;
-  
+
 }
 
 .srLink {
@@ -305,4 +305,8 @@ a:active {
 
 .data-rating {
   color: orange;
+}
+
+.card-class {  /*clase de las tarjetas de search*/
+  border: 1px solid rgb(0, 0, 0);
 }
