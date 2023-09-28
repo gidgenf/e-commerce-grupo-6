@@ -202,16 +202,6 @@ document.addEventListener("DOMContentLoaded", () => {
         productComments.forEach(comment => displayComment(comment));
     }
 
-    const prevButton = document.getElementById('move-left');
-    const nextButton = document.getElementById('move-right');
-
-    //nextButton.addEventListener('click', () => {
-    // });
-
-    // prevButton.addEventListener('click', () => {
-    //});
-
-
     function mostrarTarjetas(productosRelacionados, id) {
 
         let relatedProduct = document.getElementsByClassName('carousel-inner')[0];
@@ -236,22 +226,10 @@ document.addEventListener("DOMContentLoaded", () => {
             relatedProduct.innerHTML += card;
         });
     }
-
-
-    // function createIndicatorButtons() {
-    //     let indicatorsDivButtons = document.getElementsByClassName('carousel-indicators')[0];
-
-    //     const indicatorButton = document.createElement('button');
-    //     indicatorButton.setAttribute('type', 'button');
-    //     indicatorButton.setAttribute('data-bs-target', '#carouselExampleCaptions');
-    //     indicatorButton.setAttribute('data-bs-slide-to', index.toString());
-    //    indicatorButton.setAttribute('aria-label', `Slide ${index + 1}`);
-    //    if (index === 0) {
-    //        button.classList.add('active');
-    //    }
-    //    indicatorsDivButtons.appendChild(button);
-    // }
 });
 
-
+function setProductID(id) {
+    localStorage.setItem("productID", id);        //setea el ID del producto y nos relocaliza a product-info.html
+    window.location.href = "product-info.html";
+}
 
