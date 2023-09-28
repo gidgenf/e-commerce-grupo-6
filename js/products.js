@@ -12,12 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch(error => console.log('Error:', error));
 
-
-   function setProductID(id) {
-      localStorage.setItem("productID", id);        //setea el ID del producto y nos relocaliza a product-info.html
-      window.location.href = "product-info.html";
-   }
-
    function mostrarTarjetas() {                    //funcion que muestra las tarjetas de los productos
       let element = document.getElementById('objet-conteiner');
       element.innerHTML = '';                      //elemento vacio
@@ -85,3 +79,8 @@ document.addEventListener("DOMContentLoaded", function () {
    });
 
 });
+
+function setProductID(id) {
+   localStorage.setItem("productID", id);        //setea el ID del producto y nos relocaliza a product-info.html
+   window.location.href = "product-info.html";
+}

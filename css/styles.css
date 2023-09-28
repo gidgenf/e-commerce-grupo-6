@@ -256,7 +256,8 @@ a.custom-card:hover {
   margin: 20px;
 }
 
-#containerSearch {   /*clase del contenedor de las tarjetas de search*/
+#containerSearch {
+  /*clase del contenedor de las tarjetas de search*/
   background-color: rgba(240, 225, 255, 0.685);
   border-radius: 10px;
   justify-content: center;
@@ -286,7 +287,8 @@ a:active {
   text-decoration: none;
 }
 
-.search-result {  /*clase del contenedor de las tarjetas de search*/
+.search-result {
+  /*clase del contenedor de las tarjetas de search*/
   position: absolute;
   margin: 35px 20px;
   margin-top: 10px;
@@ -307,6 +309,13 @@ a:active {
   color: orange;
 }
 
-.card-class {  /*clase de las tarjetas de search*/
+.card-class {
+  /*clase de las tarjetas de search*/
   border: 1px solid rgb(0, 0, 0);
+}
+
+#profileMenu {
+  background-color: aquamarine;
+  width: 20%;
+  float: right;
 }

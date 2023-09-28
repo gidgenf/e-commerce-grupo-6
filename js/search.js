@@ -35,11 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    document.getElementById('cerrarSesion').addEventListener('click', function () {  // Función que cierra sesión mediante el evento click en el elemento de id "cerrarSesion"
-        localStorage.removeItem('authenticated');
-        window.location.href = "login.html";
-    });
-
     let contenedor = document.getElementById("containerSearch"); // Tomamos el contenedor por su id
 
     function hojaBusqueda(array) {  //toma el array que contiene los  datos de todas las categorias de productos y los mismos
@@ -74,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     }
+
 });
 
 function setProductIdAndCat(id, cat) {   //funcion que cambia los valores de id y catID del localstorage
@@ -81,3 +77,4 @@ function setProductIdAndCat(id, cat) {   //funcion que cambia los valores de id 
     localStorage.setItem("catID", cat);
     window.location.href = "product-info.html";
 }
+

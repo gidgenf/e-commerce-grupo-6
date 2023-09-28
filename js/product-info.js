@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let container = document.getElementById('container');
 
-
     function showProductInfo(product) {   //crea un elemento div con los datos del producto y lo coloca en el contenedor
 
         container.innerHTML = '';
@@ -239,19 +238,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-   // function createIndicatorButtons() {
-   //     let indicatorsDivButtons = document.getElementsByClassName('carousel-indicators')[0];
+    // function createIndicatorButtons() {
+    //     let indicatorsDivButtons = document.getElementsByClassName('carousel-indicators')[0];
 
-   //     const indicatorButton = document.createElement('button');
-   //     indicatorButton.setAttribute('type', 'button');
-   //     indicatorButton.setAttribute('data-bs-target', '#carouselExampleCaptions');
-   //     indicatorButton.setAttribute('data-bs-slide-to', index.toString());
+    //     const indicatorButton = document.createElement('button');
+    //     indicatorButton.setAttribute('type', 'button');
+    //     indicatorButton.setAttribute('data-bs-target', '#carouselExampleCaptions');
+    //     indicatorButton.setAttribute('data-bs-slide-to', index.toString());
     //    indicatorButton.setAttribute('aria-label', `Slide ${index + 1}`);
     //    if (index === 0) {
     //        button.classList.add('active');
     //    }
     //    indicatorsDivButtons.appendChild(button);
-   // }
+    // }
 });
 
 

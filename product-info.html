@@ -30,31 +30,29 @@
           <li class="nav-item">
             <a class="nav-link" href="categories.html" data-tooltip="Categoria"> <i class="fa-solid fa-list"></i></a>
           </li>
-
-          <li class="barra">
-            <a class="nav-link" href="sell.html" data-tooltip="Vender"> <i class="fa-solid fa-cart-shopping"></i> </a>
-          </li>
           <input type="search" placeholder="Busca tu articulo aquí..." id="busqueda">
 
-
-          <li>
-            <a class="nav-link" type="button" data-tooltip="Cerrar Sesion" id="cerrarSesion"> <i
-                class="fa-solid fa-arrow-right-from-bracket"></i></a>
-          </li>
-
-          <li id="usuario">
-            <a class="nav-link" href="my-profile.html" data-tooltip="Perfil"> <i class="fa-solid fa-user"></i></a>
-          </li>
-          <li id="boxButton">
-          </li>
-
         </ul>
+        <button id="menu">soy el menu</button>
       </div>
     </div>
     </div>
   </nav>
+
   <div class="search-result" id="containerSearch"></div>
 
+  <div id="profileMenu"> <!-- contenedor del menu-->
+    <li id="boxButton">
+
+    </li>
+    <li class="barra">
+      <a class="nav-link" href="sell.html" data-tooltip="Vender"> <i class="fa-solid fa-cart-shopping"></i> </a>
+    </li>
+    <li>
+      <a class="nav-link" type="button" data-tooltip="Cerrar Sesion" id="cerrarSesion"> <i
+          class="fa-solid fa-arrow-right-from-bracket"></i></a>
+    </li>
+  </div>
 
   <main>
     <div class="container" id="container">
@@ -64,14 +62,14 @@
 
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
 
-     <!--<div class="carousel-indicators">
+      <!--<div class="carousel-indicators">
 
       </div>-->
 
       <div class="carousel-inner">
 
       </div>
-      
+
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
         data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -135,6 +133,7 @@
   <script src="js/product-info.js"></script>
   <script src="js/search.js"></script>
   <script src="js/night.js"></script>
+  <script src="js/profile-menu.js"></script>
 </body>
 
 </html>
