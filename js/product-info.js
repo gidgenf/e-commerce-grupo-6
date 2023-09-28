@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
             let data = responseData;
 
             categoryList.push(...data.products);
-            console.log(categoryList);
             searchProductById(idProduct);
             mostrarTarjetas(categoryList, idProduct);
         })
@@ -218,8 +217,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let relatedProduct = document.getElementsByClassName('carousel-inner')[0];
 
-
-        console.log(relatedProduct)
         relatedProduct.innerHTML = '';
 
         const filteredProducts = productosRelacionados.filter(product => parseInt(product.id) != parseInt(id));
