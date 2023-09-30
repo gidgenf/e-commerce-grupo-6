@@ -9,8 +9,8 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <link href="css/product-info.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/product-info.css" rel="stylesheet">
 </head>
 
 <body>
@@ -57,61 +57,77 @@
 
   <div class="search-result" id="containerSearch"></div>
 
-  <main>
-    <div class="container" id="container">
+    <div>
+      <div id="productinfo">
+        <div id="container">
 
-    </div>
-
-
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-
-      <!--<div class="carousel-indicators">
-
-      </div>-->
-
-      <div class="carousel-inner">
-
+        </div>
       </div>
 
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
+      <div id="carousel1div">
+        <div id="carousel1" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner carousel1">
 
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-
-
-    <div class="chat card">
-      <div class="card-body">
-        <blockquote class="blockquote mb-0">
-          <label for="">Agregar comentario.</label>
-          <div class="rating" id="stars">
-            <div id="estrellas">
-              <span class="fa fa-star star" score="1"></span>
-              <span class="fa fa-star star" score="2"></span>
-              <span class="fa fa-star star" score="3"></span>
-              <span class="fa fa-star star" score="4"></span>
-              <span class="fa fa-star star" score="5"></span>
-            </div>
           </div>
-          <input type="text" id="commenttext" placeholder="Ingresa un comentario...">
-          <button id="btncommenting" class="btn btn-primary">Enviar</button>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+
+          <button class="carousel-control-next" type="button" data-bs-target="#carousel1" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
       </div>
-    </div>
 
-    <div class="card-header">
-      <h3>Comentarios.</h3>
-    </div>
+      <div class="relatedproductsdiv">
+        <p>Productos relacionados</p>
 
-    <div id="commentsdiv">
+        <div id="carousel2div">
+          <div id="carousel2" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner carousel2">
 
-    </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <label for="">Agregar comentario.</label>
+            <div class="rating" id="stars">
+              <div id="estrellas">
+                <span class="fa fa-star star" score="1"></span>
+                <span class="fa fa-star star" score="2"></span>
+                <span class="fa fa-star star" score="3"></span>
+                <span class="fa fa-star star" score="4"></span>
+                <span class="fa fa-star star" score="5"></span>
+              </div>
+            </div>
+            <input type="text" id="commenttext" placeholder="Ingresa un comentario...">
+            <button id="btncommenting" class="btn btn-primary">Enviar</button>
+        </div>
+
+
+        <div class="card-header">
+          <h3>Comentarios.</h3>
+        </div>
+
+        <div id="commentsdiv">
+
+        </div>
   </main>
   <footer class="text-muted">
     <div class="container">
