@@ -7,7 +7,6 @@
 
 body {
   background-color: rgb(112, 112, 112);
-  overflow-x: hidden;
 }
 
 .jumbotron .display-4 {
@@ -316,7 +315,8 @@ a:active {
   border: 1px solid rgb(0, 0, 0);
 }
 
-
-.noneborder{
-  border: none;
+#profileMenu {
+  background-color: aquamarine;
+  width: 20%;
+  float: right;
 }
