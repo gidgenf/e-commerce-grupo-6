@@ -12,10 +12,8 @@ body {
 #container {
     margin-top: 40px;
     display: grid;
+    grid-template-columns: 3fr 1fr;
     gap: 35px;
-    width: 400px;
-    float: right;
-    height: auto;
 }
 
 .chat {
@@ -42,30 +40,7 @@ body {
 }
 
 .card-class {
-
+    width: 400px;
     border: 6px solid #000000;
     border-radius: 10px;
-}
-
-#carousel1div {
-    width: 700px;
-    margin: 5%;
-}
-
-#carousel2div {
-    width: 400px;
-    justify-content: center;
-    align-items: center;
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-    background-color: rgba(104, 104, 104, 0.226);
-}
-
-.relatedproductsdiv {
-    background-color: aliceblue;
-    width: 30%;
-    border-radius: 15px;
-    padding: 3%;
 }

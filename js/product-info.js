@@ -30,8 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function showProductInfo(product) {   //crea un elemento div con los datos del producto y lo coloca en el contenedor
 
         container.innerHTML = '';
-        container.innerHTML = `
-            <div class="cardinfo">
+        container.innerHTML = `<div>
+            <img class="img-card-top img-main" src="${product.image}">
+            </div>
+            <div class="card" style="width: 22rem;">
             <div class=" card-body card-buy">
             <div>
             <h2 class="card-title">${product.name}</h2>
@@ -202,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function mostrarTarjetas(productosRelacionados, id) {
 
-        let relatedProduct = document.getElementsByClassName('carousel-inner')[1];
+        let relatedProduct = document.getElementsByClassName('carousel-inner')[0];
 
         relatedProduct.innerHTML = '';
 
@@ -222,36 +224,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `;
             relatedProduct.innerHTML += card;
-        });
-    }
-
-    const PRODUCT_INFO_URL = `https://japceibal.github.io/emercado-api/products/${idProduct}.json`;
-
-    fetch(PRODUCT_INFO_URL)
-        .then(response => response.json())
-        .then(responseData => {
-            let data = responseData;
-            productImages(data)
-        })
-        .catch(error => console.log('Error:', error));
-
-
-    function productImages(productinfo) {
-
-        let imagesarray = productinfo.images
-        let imagescarousel = document.getElementsByClassName('carousel-inner')[0];
-        imagescarousel.innerHTML = '';
-
-        console.log(imagesarray)
-
-        imagesarray.forEach((images, index) => {
-            console.log(images)
-
-            const imagecard = ` <div class="card-class carousel-item ${index === 0 ? 'active' : ''}" alt="...">
-            <img class="d-block w-100" src="${images}">`
-
-            imagescarousel.innerHTML += imagecard;
-            ;
         });
     }
 });
