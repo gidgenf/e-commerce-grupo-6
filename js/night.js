@@ -5,11 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function changes(value) {
       if (value === 'false') {
-        boxButton.innerHTML = '<button class="btn btn-outline-dark" ><i class="fa-solid fa-sun"></i></button>';
+        boxButton.innerHTML = '<button class="btn noneborder btn-outline-dark  btn-lg" ><i class="fa-solid fa-sun"></i></button>';
        document.body.style.backgroundColor = 'rgb(49, 49, 49)';
        text.style.color = 'white'
       } else {
-        boxButton.innerHTML = '<button class="btn btn-outline-dark" ><i class="fa-solid fa-moon"></i></button>';
+        boxButton.innerHTML = '<button class="btn noneborder btn-outline-dark  btn-lg" ><i class="fa-solid fa-moon"></i></button>';
         document.body.style.backgroundColor = 'white';
         text.style.color = 'black';
       }
