@@ -319,3 +319,6 @@ a:active {
 .noneborder{
   border: none;
 }
+#containerSearch{
+  z-index: 10;
+}
