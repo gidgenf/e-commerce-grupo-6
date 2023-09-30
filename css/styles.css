@@ -315,8 +315,6 @@ a:active {
   border: 1px solid rgb(0, 0, 0);
 }
 
-#profileMenu {
-  background-color: aquamarine;
-  width: 20%;
-  float: right;
+.noneborder{
+  border: none;
 }

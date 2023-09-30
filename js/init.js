@@ -42,7 +42,7 @@ let getJSONData = function (url) {
 let name_user = localStorage.getItem("user-name");
 let botonDeUsuario = document.getElementById("usuario")
 
-botonDeUsuario.innerHTML = `<a class="nav-link" data-tooltip="Perfil">${name_user} <i class="fa-solid fa-user"></i></a>`
+botonDeUsuario.innerHTML = `<a class="nav-link" href="my-profile.html" data-tooltip="Perfil">${name_user} <i class="fa-solid fa-user"></i></a>`
 
 document.getElementById('cerrarSesion').addEventListener('click', function () {  // Función que cierra sesión mediante el evento click en el elemento de id "cerrarSesion"
   localStorage.removeItem('authenticated');
