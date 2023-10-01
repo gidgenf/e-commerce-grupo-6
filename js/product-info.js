@@ -32,10 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
         container.innerHTML = '';
         container.innerHTML = `
             <div class="cardinfo">
-            <div class=" card-body card-buy">
+            <div class=" card-body text card-buy">
             <div>
             <h2 class="card-title">${product.name}</h2>
-            <h4 class="card-text">${product.description}<h4>
+            <h4 class="card-text text">${product.description}<h4>
             <h5 class="card-text">cantidad de ventas: ${product.soldCount}</h5>
             </div>
             <h3 class="card-text">$${product.cost}</h3>
@@ -215,8 +215,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     <img src="${product.image}" class="d-block w-100" alt="${product.name}"> 
 
                     <div class="carousel-caption d-none d-md-block">
-                        <h4 class="product-title">${product.name}</h4>
-                        <p class="product-price">${product.cost}$</p> 
+                        <h4 class="product-title text">${product.name}</h4>
+                        <p class="product-price text ">${product.cost}$</p> 
                     </div>
 
                 </div>
