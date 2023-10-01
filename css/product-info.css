@@ -48,23 +48,25 @@ body {
 }
 
 #carousel1div {
-    width: 700px;
+    width: 50%;
     margin: 5%;
+    height: auto;
 }
 
 #carousel2div {
-    width: 400px;
+    width: auto;
     justify-content: center;
     align-items: center;
+    height: auto;
 }
 
 .carousel-control-prev,
 .carousel-control-next {
     background-color: rgba(104, 104, 104, 0.226);
+    height: auto;
 }
 
 .relatedproductsdiv {
-    background-color: aliceblue;
     width: 30%;
     border-radius: 15px;
     padding: 3%;
