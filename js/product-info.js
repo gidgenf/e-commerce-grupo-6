@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <h3 class="card-text">$${product.cost}</h3>
             <div>
             <button  class="btn btn-primary">comprar</button>
-            <button  class="btn btn-success">agregar carrito</button>
+            <button  class="btn btn-success id="addtocart">agregar carrito</button>
             </div>
            </div>`;
     }
@@ -258,6 +258,13 @@ document.addEventListener("DOMContentLoaded", () => {
             ;
         });
     }
+
+
+    const btnaddcart = document.getElementById('addtocart')
+
+
+
+
 });
 
 function setProductID(id) {
