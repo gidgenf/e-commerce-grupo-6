@@ -4,47 +4,6 @@ body {
     padding: 0px;
 }
 
-.img-main {
-    border: 6px solid #fff;
-    border-radius: 10px;
-}
-
-.chat {
-    margin-top: 20px;
-}
-
-.card-buy {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 20px;
-    box-shadow: 1px 1px 10px black;
-    border-radius: 10px;
-    float: right;
-}
-
-#carouselExampleCaptions {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 3%;
-    margin-left: 35%;
-    margin-right: 35%;
-}
-
-#carousel1div {
-    width: 50%;
-    margin: 5%;
-    height: auto;
-}
-
-#carousel2div {
-    width: auto;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-}
-
 .carousel-control-prev,
 .carousel-control-next {
     background-color: rgba(104, 104, 104, 0.226);

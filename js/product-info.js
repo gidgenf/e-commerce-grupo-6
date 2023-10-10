@@ -64,8 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         container.innerHTML = '';
         container.innerHTML = `
-                <div class="row">
-                    <div class="col-md-6 text-align-center">
+                <div class="row align-self-end">
+                    <div class="text-align-center">
                         <h2 class="card-title">${product.name}</h2>
                         <h4 class="card-text text">${product.description}<h4>
                         <h5 class="card-text">cantidad de ventas: ${product.soldCount}</h5>
