@@ -64,18 +64,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         container.innerHTML = '';
         container.innerHTML = `
-            <div class="cardinfo">
-            <div class=" card-body text card-buy">
-            <div>
-            <h2 class="card-title">${product.name}</h2>
-            <h4 class="card-text text">${product.description}<h4>
-            <h5 class="card-text">cantidad de ventas: ${product.soldCount}</h5>
-            </div>
-            <h3 class="card-text">$${product.cost}</h3>
-           </div>`;
+                <div class="row">
+                    <div class="col-md-6 text-align-center">
+                        <h2 class="card-title">${product.name}</h2>
+                        <h4 class="card-text text">${product.description}<h4>
+                        <h5 class="card-text">cantidad de ventas: ${product.soldCount}</h5>
+                        <h3 class="card-text">$${product.cost}</h3>
+                    </div>
+                </div>`;
 
 
     }
+  
 
     const ratingContainer = document.querySelector('.rating');
     const stars = ratingContainer.querySelectorAll('.star');
