@@ -9,15 +9,6 @@ body {
     border-radius: 10px;
 }
 
-#container {
-    margin-top: 40px;
-    display: grid;
-    gap: 35px;
-    width: 400px;
-    float: right;
-    height: auto;
-}
-
 .chat {
     margin-top: 20px;
 }
@@ -39,12 +30,6 @@ body {
     padding: 3%;
     margin-left: 35%;
     margin-right: 35%;
-}
-
-.card-class {
-
-    border: 6px solid #000000;
-    border-radius: 10px;
 }
 
 #carousel1div {

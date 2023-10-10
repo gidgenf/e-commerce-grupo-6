@@ -36,19 +36,21 @@
           </li>
           <input type="search" placeholder="Busca tu articulo aquí..." id="busqueda">
           <div class="dropdown nav-item">
-               <a class="btn btn-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa-solid fa-user"></i>
-               </a>
+            <a class="btn btn-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <i class="fa-solid fa-user"></i>
+            </a>
 
-                <ul class="dropdown-menu aling-text dropdown-menu-dark">
-                <li class="dropdown-item"  id="usuario">
+            <ul class="dropdown-menu aling-text dropdown-menu-dark">
+              <li class="dropdown-item" id="usuario">
                 <i class="fa-solid fa-user"></i>
-               </li>
-               <li><a class="dropdown-item" href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-              <li><a class="nav-link dropdown-item" type="button" data-tooltip="Cerrar Sesion" id="cerrarSesion"> <i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
-              <li class="dropdown-item"  id="boxButton"></li>
+              </li>
+              <li><a class="dropdown-item" href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+              <li><a class="nav-link dropdown-item" type="button" data-tooltip="Cerrar Sesion" id="cerrarSesion"> <i
+                    class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+              <li class="dropdown-item" id="boxButton"></li>
             </ul>
-           </div>
+          </div>
         </ul>
       </div>
     </div>
@@ -57,9 +59,15 @@
   <div class="mini" id="containerSearch"></div>
   <main>
     <div>
-      <div id="productinfo">
-        <div id="container">
+      <div id="productinfo" class="">
+        <div id="container" class="card card-body text card-buy border border-1 text-align-center">
 
+        </div>
+
+        </div>
+        <div class="d-grid gap-2 d-md-block">
+          <button class="btn btn-primary" type="button">Comprar</button>
+          <button class="btn btn-success" id="addtocart" type="button">Sgregar carrito</button>
         </div>
       </div>
 
@@ -146,12 +154,13 @@
       <div></div>
     </div>
   </div>
-  <script src="js/bootstrap.bundle.min.js"></script>
+
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
   <script src="js/search.js"></script>
   <script src="js/night.js"></script>
   <script src="js/profile-menu.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

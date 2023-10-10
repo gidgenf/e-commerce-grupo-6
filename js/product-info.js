@@ -2,11 +2,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const categoryList = [];   //lista a donde van todos los productos de la categoria
     const productCat = localStorage.getItem('catID');  //categoria actual del local storage
-    const idProduct = localStorage.getItem('productID'); // ID del producto actual
+    const idProduct = localStorage.getItem('productID');
+    const btnaddtocart = document.getElementById('addtocart');
+    let actualproduct = null;
 
     const url = `https://japceibal.github.io/emercado-api/cats_products/${productCat}.json`;
 
-    fetch(url)                             // Fetch que utiliza el URL con el catID
+    fetch(url)
         .then(response => response.json())
         .then(responseData => {
             let data = responseData;
@@ -17,36 +19,63 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => console.log('Error:', error));
 
-    function searchProductById(id) {    //busca el producto por su id almacenada y lo muestra
+    function searchProductById(id) {
         if (id) {
-            const productSearch = categoryList.find(product => parseInt(product.id) === parseInt(id));
-
-            showProductInfo(productSearch);
+            actualproduct = categoryList.find(product => parseInt(product.id) === parseInt(id));  //se busca en category list el producto por su id
+            showProductInfo(actualproduct);  //se muestra el producto
         }
     }
+
+    btnaddtocart.addEventListener('click', () => {  //evento click para el boton de addtocart
+        if (actualproduct) {
+            addtocart(actualproduct);  //se declara funcion
+        }
+    });
+
+    function addtocart(productId) {
+        let usercart = JSON.parse(localStorage.getItem('usercart')) || [];  //se trae el carrito del local storage o una lista vacia
+
+        if (productId) {
+            const productexist = usercart.find(item => item.id === productId.id);  //se busca el producto en el carrito
+
+            if (productexist) {  //si el producto existe en el carrito, se eleva su contador en 1
+                productexist.count++;
+            } else {
+                usercart.push({  //se pushea el producto al carrito
+                    id: productId.id,
+                    name: productId.name,
+                    count: 1,
+                    unitCost: productId.cost,
+                    currency: "USD",
+                    image: productId.image
+                });
+            }
+            localStorage.setItem('usercart', JSON.stringify(usercart));  //se envia el carrito con los nuevos productos al local storage
+
+            console.log(localStorage.getItem('usercart'));
+        }
+    }
+
 
     let container = document.getElementById('container');
 
     function showProductInfo(product) {   //crea un elemento div con los datos del producto y lo coloca en el contenedor
 
+
         container.innerHTML = '';
-        container.innerHTML = `<div>
-            <img class="img-card-top img-main" src="${product.image}">
-            </div>
-            <div class="card" style="width: 22rem;">
-            <div class=" card-body card-buy">
-            <div>
-            <h2 class="card-title">${product.name}</h2>
-            <h4 class="card-text">${product.description}<h4>
-            <h5 class="card-text">cantidad de ventas: ${product.soldCount}</h5>
-            </div>
-            <h3 class="card-text">$${product.cost}</h3>
-            <div>
-            <button  class="btn btn-primary">comprar</button>
-            <button  class="btn btn-success">agregar carrito</button>
-            </div>
-           </div>`;
+        container.innerHTML = `
+                <div class="row">
+                    <div class="col-md-6 text-align-center">
+                        <h2 class="card-title">${product.name}</h2>
+                        <h4 class="card-text text">${product.description}<h4>
+                        <h5 class="card-text">cantidad de ventas: ${product.soldCount}</h5>
+                        <h3 class="card-text">$${product.cost}</h3>
+                    </div>
+                </div>`;
+
+
     }
+  
 
     const ratingContainer = document.querySelector('.rating');
     const stars = ratingContainer.querySelectorAll('.star');
@@ -223,13 +252,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 </div>
             `;
-            relatedProduct.innerHTML += card;
+            relatedProduct.innerHTML += card;  //se suma la tarjeta del producto a relatedProduct para todos los productos
         });
     }
+
+    const PRODUCT_INFO_URL = `https://japceibal.github.io/emercado-api/products/${idProduct}.json`;
+
+    fetch(PRODUCT_INFO_URL)
+        .then(response => response.json())
+        .then(responseData => {
+            let data = responseData;
+            productImages(data)
+        })
+        .catch(error => console.log('Error:', error));
+
+
+    function productImages(productinfo) {
+
+        let imagesarray = productinfo.images
+        let imagescarousel = document.getElementsByClassName('carousel-inner')[0];
+        imagescarousel.innerHTML = '';
+
+        console.log(imagesarray)
+
+        imagesarray.forEach((images, index) => {
+            console.log(images)
+
+            const imagecard = ` <div class="card-class carousel-item ${index === 0 ? 'active' : ''}" alt="...">
+            <img class="d-block w-100" src="${images}">`
+
+            imagescarousel.innerHTML += imagecard;
+            ;
+        });
+    }
+
+
 });
 
 function setProductID(id) {
     localStorage.setItem("productID", id);        //setea el ID del producto y nos relocaliza a product-info.html
     window.location.href = "product-info.html";
 }
+
 

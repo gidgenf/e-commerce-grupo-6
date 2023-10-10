@@ -56,6 +56,5 @@ document.addEventListener("DOMContentLoaded", function () {
   if (localStorage.getItem('authenticated') !== 'true') {
     window.location.href = "login.html";
     localStorage.remove('authenticated');
-  } 
+  }
 });
-
