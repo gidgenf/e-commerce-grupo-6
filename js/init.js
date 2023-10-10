@@ -54,3 +54,9 @@ document.addEventListener("DOMContentLoaded", function () {
   } 
 });
 
+let idobjetos = 100;
+for (let index = 0; index < 3; index++) {
+ idobjetos+=
+ let catID_json =idobjetos+".json";
+ let url = 'https://japceibal.github.io/emercado-api/cats_products/' + catID_json;
+}
