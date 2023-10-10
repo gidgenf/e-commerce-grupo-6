@@ -16,18 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(cartList)
         })
         .catch(error => console.error('Error:', error));
-<<<<<<< Updated upstream
-});
-
-
-
-
-
-
-
-
-=======
->>>>>>> Stashed changes
 
         const carrito= JSON.parse(localStorage.getItem('usercart'))
         console.log(carrito)
