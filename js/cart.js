@@ -6,9 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return response.json();
         })
         .then(cartdata => {
-            localStorage.setItem('usercart', JSON.stringify(cartdata));
+            localStorage.setItem('usercartprecharged', JSON.stringify(cartdata));
 
-            const storedCartData = JSON.parse(localStorage.getItem('usercart'));
+            const storedCartData = JSON.parse(localStorage.getItem('usercartprecharged'));
 
             const productName = storedCartData.articles[0].name;
             console.log(productName);
