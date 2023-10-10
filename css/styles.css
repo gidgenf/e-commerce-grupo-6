@@ -14,15 +14,19 @@
   transition: all 0.5s;
   box-shadow: 4px 6px 20px black;
 }
-.btn-outline-primary :hover{
-  color:blue;
+
+.btn-outline-primary :hover {
+  color: blue;
 }
-.btn-outline-danger :hover{
+
+.btn-outline-danger :hover {
   color: red;
 }
-.btn-outline-warning :hover{
- color: rgb(255, 255, 0);
+
+.btn-outline-warning :hover {
+  color: rgb(255, 255, 0);
 }
+
 nav a {
   text-decoration: none;
   position: relative;
@@ -36,7 +40,7 @@ nav a {
 [data-tooltip]::before {
   content: attr(data-tooltip);
   position: absolute;
-  top: 100%; 
+  top: 100%;
   left: 100%;
   padding: 4px 8px;
   background-color: rgba(0, 0, 0, 0.8);
@@ -232,13 +236,13 @@ a.custom-card:hover {
 
 
 
-  .fa-solid{
-   color: #fff;
-   margin-top: 15px;
-    }
-    
-.fa-solid:hover{
-color: #a0a0a0;
+.fa-solid {
+  color: #fff;
+  margin-top: 15px;
+}
+
+.fa-solid:hover {
+  color: #a0a0a0;
 
 }
 
@@ -283,5 +287,8 @@ a:link, a:visited, a:active {
   min-width: 600px;
 }
 
-
-
+.imageMini {
+  height: 30px;
+  width: auto;
+  float: left;
+}

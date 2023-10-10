@@ -27,20 +27,18 @@ function mostrarTarjetas() {  //funcion que muestra las tarjetas de los producto
                 <h4 class="text-card card-title">${x.name}</h4>
                 <p class="text-card description">${x.description}</p>
                 <p class="text-card">${x.cost}$</p>
-              </div>
+              </div>              
          </div>
          </a>`;
    });
 }
 
-sortProductsAsc = document.getElementById('sortCostAsc'); //variables de los botones para ordenado ascendente y decendente
+sortProductsAsc = document.getElementById('sortCostAsc'); //variables de los botones para ordenado ascendente, decendente y relevancia
 sortProductsDesc = document.getElementById('sortCostDesc');
 sortByRel = document.getElementById('sortByRel');
 
 
-//Orden de relevancia//
-
-sortByRel.addEventListener('click', function () { //evento click para el boton de ordenado ascendente y muestra las tarjetas
+sortByRel.addEventListener('click', function () { //evento click para el boton de ordenado por relevancia y muestra las tarjetas
    data.products.sort((a, b) => b.soldCount - a.soldCount);
    mostrarTarjetas();
 });
@@ -55,14 +53,14 @@ sortProductsDesc.addEventListener('click', function () { //evento click para el 
    mostrarTarjetas();
 });
 
-function maximoMinimo(elemento) { //fincion que se va a usar para aplciar el rango de filtro de precios
+function maximoMinimo(elemento) { //funcion que se va a usar para aplicar el rango de filtro de precios
    return elemento.cost >= min && elemento.cost <= max;
 }
 
-const filtrar = document.getElementById('filtrarCosto'); //se declara el boton de filtrado como filtrar
+const filtrar = document.getElementById('filtrarCosto'); //viable para el boton de filtro
 
-filtrar.addEventListener('click', function () {  //evento click que retorna los valores del rango minimo y maximo
-   min = parseInt(document.getElementById('rangeFilterCostMin').value);
+filtrar.addEventListener('click', function () {  //evento click para el boton de filtro
+   min = parseInt(document.getElementById('rangeFilterCostMin').value); //variables de campos de costo maximo y minimo
    max = parseInt(document.getElementById('rangeFilterCostMax').value);
 
    if (isNaN(min) || isNaN(max)) { //isNaN nos permite determinar en este caso si los valores numericos de max y min existen
