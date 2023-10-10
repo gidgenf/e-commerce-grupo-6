@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             categoryList.push(...data.products);
             searchProductById(idProduct);
-            mostrarTarjetas(categoryList, idProduct);  //se llama la funcion de los productos relacionados tomando la lista de productos de la categoria y el id del producto a filtrar
+            mostrarTarjetas(categoryList, idProduct);
         })
         .catch(error => console.log('Error:', error));
 
@@ -30,12 +30,14 @@ document.addEventListener("DOMContentLoaded", () => {
     function showProductInfo(product) {   //crea un elemento div con los datos del producto y lo coloca en el contenedor
 
         container.innerHTML = '';
-        container.innerHTML = `
-            <div class="cardinfo">
-            <div class=" card-body text card-buy">
+        container.innerHTML = `<div>
+            <img class="img-card-top img-main" src="${product.image}">
+            </div>
+            <div class="card" style="width: 22rem;">
+            <div class=" card-body card-buy">
             <div>
             <h2 class="card-title">${product.name}</h2>
-            <h4 class="card-text text">${product.description}<h4>
+            <h4 class="card-text">${product.description}<h4>
             <h5 class="card-text">cantidad de ventas: ${product.soldCount}</h5>
             </div>
             <h3 class="card-text">$${product.cost}</h3>
@@ -200,62 +202,28 @@ document.addEventListener("DOMContentLoaded", () => {
         productComments.forEach(comment => displayComment(comment));
     }
 
-    function mostrarTarjetas(productosRelacionados, id) {  //funcion para mostrar los productos relacionados en el segundo carrucel
+    function mostrarTarjetas(productosRelacionados, id) {
 
-        let relatedProduct = document.getElementsByClassName('carousel-inner')[1];  //de los elementos de clase carousel-inner utiliza el segundo en la lista
+        let relatedProduct = document.getElementsByClassName('carousel-inner')[0];
 
-        relatedProduct.innerHTML = '';  //se vacia el elemento
+        relatedProduct.innerHTML = '';
 
-        const filteredProducts = productosRelacionados.filter(product => parseInt(product.id) != parseInt(id));  //se filtra usando el id del producto mostrado en la pagina para solo manejar los productos relacionados
+        const filteredProducts = productosRelacionados.filter(product => parseInt(product.id) != parseInt(id));
 
-        filteredProducts.forEach((product, index) => {  //forEach para cada uno de los productos de los productos relacionados que crea sus respectivas tarjetas
-            // si el producto es el primero en ser mostrado, se le adicionará la clase active que nos servira para que luego el botstrap cambie de imagenes de forma automatica
-            // el resto de productos no obtendran la clase active
+        filteredProducts.forEach((product, index) => {
+
             const card = `
                 <div class="card-class carousel-item ${index === 0 ? 'active' : ''}" alt="..." onclick="setProductID(${product.id})"> 
                     <img src="${product.image}" class="d-block w-100" alt="${product.name}"> 
 
                     <div class="carousel-caption d-none d-md-block">
-                        <h4 class="product-title text">${product.name}</h4>
-                        <p class="product-price text ">${product.cost}$</p> 
+                        <h4 class="product-title">${product.name}</h4>
+                        <p class="product-price">${product.cost}$</p> 
                     </div>
 
                 </div>
             `;
-            relatedProduct.innerHTML += card;  //se suma la tarjeta del producto a relatedProduct para todos los productos
-        });
-    }
-
-
-
-
-    const PRODUCT_INFO_URL = `https://japceibal.github.io/emercado-api/products/${idProduct}.json`;
-
-    fetch(PRODUCT_INFO_URL)
-        .then(response => response.json())
-        .then(responseData => {
-            let data = responseData;
-            productImages(data)
-        })
-        .catch(error => console.log('Error:', error));
-
-
-    function productImages(productinfo) {
-
-        let imagesarray = productinfo.images
-        let imagescarousel = document.getElementsByClassName('carousel-inner')[0];
-        imagescarousel.innerHTML = '';
-
-        console.log(imagesarray)
-
-        imagesarray.forEach((images, index) => {
-            console.log(images)
-
-            const imagecard = ` <div class="card-class carousel-item ${index === 0 ? 'active' : ''}" alt="...">
-            <img class="d-block w-100" src="${images}">`
-
-            imagescarousel.innerHTML += imagecard;
-            ;
+            relatedProduct.innerHTML += card;
         });
     }
 });
