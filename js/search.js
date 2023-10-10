@@ -55,7 +55,7 @@ function hojaBusqueda(array) {
     } else {
         for (let index = 0; index < array.length; index++) {
             const element = array[index];
-            contenedor.innerHTML += `<div><a class="srLink btn btn-outline-light btn-lg btn-light btn-block mouseHover"  href="product-info.html">     
+            contenedor.innerHTML += `<div><a class="srLink btn btn-outline-light btn-lg btn-light btn-block mouseHover" href="product-info.html">     
     <h4>${element.name}</h4> 
     <h6>${element.description}</h6>
     </a></div>`
