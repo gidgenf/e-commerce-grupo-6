@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 document.addEventListener('DOMContentLoaded', () => {
     const URLidcart = 'https://japceibal.github.io/emercado-api/user_cart/25801.json';
 
@@ -27,4 +25,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
->>>>>>> Stashed changes
