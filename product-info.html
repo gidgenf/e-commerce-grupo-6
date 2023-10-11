@@ -16,130 +16,149 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
 
-
     <div class="container">
-
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse order-lg-last" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
 
-          <li class="nav-item">
-            <a class="nav-link" href="index.html" data-tooltip="Inicio"> <i class="fa-solid fa-house"></i> </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html" data-tooltip="Categoria"> <i class="fa-solid fa-list"></i></a>
-          </li>
-
-          <li class="barra nav-item">
-            <a class="nav-link" href="sell.html" data-tooltip="Vender"> <i class="fa-solid fa-cart-shopping"></i> </a>
-          </li>
-          <input type="search" placeholder="Busca tu articulo aquí..." id="busqueda">
-          <div class="dropdown nav-item">
-            <a class="btn btn-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+          <div class="dropdown nav-item order-lg-last aling item center">
+            <a class="btn btn-dark dropdown-toggle" href="dropdownmenu" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
-              <i class="fa-solid fa-user"></i>
+              <i class="fa-solid fa-user">Usuario</i>
             </a>
 
-            <ul class="dropdown-menu aling-text dropdown-menu-dark">
+            <ul id="dropdownmenu" class="dropdown-menu aling-text dropdown-menu-dark">
               <li class="dropdown-item" id="usuario">
                 <i class="fa-solid fa-user"></i>
               </li>
-              <li><a class="dropdown-item" href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-              <li><a class="nav-link dropdown-item" type="button" data-tooltip="Cerrar Sesion" id="cerrarSesion"> <i
-                    class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
-              <li class="dropdown-item" id="boxButton"></li>
+
+              <li>
+                <a class="dropdown-item" href="cart.html">
+                  <i class="fa-solid fa-cart-shopping"> Carrito</i>
+                </a>
+              </li>
+              <div class="row">
+                <li class="dropdown-item col col-4" id="boxButton">
+
+                </li>
+              </div>
+              <li>
+                <a class="dropdown-item" type="button" data-tooltip="Cerrar Sesion" id="cerrarSesion">
+                  <i class="fa-solid fa-arrow-right-from-bracket"> Cerrar sesion</i>
+                </a>
+              </li>
             </ul>
           </div>
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.html" data-tooltip="Inicio"> <i class="fa-solid fa-house"> Inicio</i> </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html" data-tooltip="Categoria"> <i class="fa-solid fa-list">
+                Categorias</i></a>
+          </li>
+
+          <li class="barra nav-item">
+            <a class="nav-link" href="sell.html" data-tooltip="Vender"> <i class="fa-solid fa-cart-shopping"> Vender
+                productos</i> </a>
+          </li>
+
+          <form class="d-flex order-lg-0">
+            <input type="search" class="form-control me-2" placeholder="Busca tu artículo aquí..." id="busqueda">
+          </form>
+
         </ul>
       </div>
     </div>
     </div>
   </nav>
-  <div class="mini" id="containerSearch"></div>
+
+  <div class="text-lg-center text-md-center" id="containerSearch">
+
+  </div>
 
   <main>
 
-    <div class="row align-self-end">
-      <div id="carousel1div" class="col-8">
-        <div id="carousel1" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner carousel1">
-            
-          </div>
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-
-          <button class="carousel-control-next" type="button" data-bs-target="#carousel1" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      </div>
-
-      <div id="productinfo" class="col-2 card card-body text card-buy border border-1">
-        <div id="container">
-
-        </div>
-        <div class="d-grid gap-2 d-md-block">
-          <button class="btn btn-primary" type="button">Comprar</button>
-          <button class="btn btn-success" id="addtocart" type="button">Agregar al carrito</button>
-        </div>
-      </div>
-
-    </div>
-    <div class="relatedproductsdiv text">
-      <p>Productos relacionados</p>
-
-      <div id="carousel2div">
-        <div id="carousel2" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner carousel2">
-
-          </div>
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-
-          <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <blockquote class="blockquote mb-0">
-          <label for="">Agregar comentario.</label>
-          <div class="rating" id="stars">
-            <div id="estrellas">
-              <span class="fa fa-star star" score="1"></span>
-              <span class="fa fa-star star" score="2"></span>
-              <span class="fa fa-star star" score="3"></span>
-              <span class="fa fa-star star" score="4"></span>
-              <span class="fa fa-star star" score="5"></span>
+    <div class="row my-3 mx-3">
+      <div>
+        <div class="row">
+          <div id="carousel1div" class="col-lg-8 col-md-12">
+            <div id="carousel1" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner carousel1 border border-5 rounded">
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carousel1" data-bs-slide="next">
+              </button>
             </div>
           </div>
-          <input type="text" id="commenttext" placeholder="Ingresa un comentario...">
-          <button id="btncommenting" class="btn btn-primary">Enviar</button>
+
+          <div id="productinfo" class="col-lg-4 col-md-12">
+            <div class="row mx-3 card card-body text card-buy border border-1 bgtext">
+              <div id="container" class="mx-3 bgtext">
+              </div>
+              <div class="d-grid gap-2 d-md-block">
+                <button class="btn btn-primary" type="button">Comprar</button>
+                <button class="btn btn-success" id="addtocart" type="button">Agregar al carrito</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
+      <div class="row text mx-auto col-md-12 col-lg-4 border mt-3">
 
-      <div class="card-header">
-        <h3>Comentarios.</h3>
+        <h1 class="badge fs-1 text">Productos relacionados</h1>
+
+
+        <div id="carousel2div">
+          <div id="carousel2" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner carousel2 border-5 rounded">
+
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
       </div>
 
-      <div id="commentsdiv">
+      <div class="card">
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <label for="">Agregar comentario.</label>
+            <div class="rating" id="stars">
+              <div id="estrellas">
+                <span class="fa fa-star star" score="1"></span>
+                <span class="fa fa-star star" score="2"></span>
+                <span class="fa fa-star star" score="3"></span>
+                <span class="fa fa-star star" score="4"></span>
+                <span class="fa fa-star star" score="5"></span>
+              </div>
+            </div>
+            <input type="text" id="commenttext" placeholder="Ingresa un comentario...">
+            <button id="btncommenting" class="btn btn-primary">Enviar</button>
+        </div>
 
-      </div>
+        <div class="card-header">
+          <h3>Comentarios.</h3>
+        </div>
+
+        <div id="commentsdiv">
+
+        </div>
   </main>
   <footer class="text-muted">
     <div class="container">

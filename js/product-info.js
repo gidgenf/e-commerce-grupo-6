@@ -4,9 +4,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const productCat = localStorage.getItem('catID');  //categoria actual del local storage
     const idProduct = localStorage.getItem('productID');
     const btnaddtocart = document.getElementById('addtocart');
-    let actualproduct = null;
-
+    const ratingContainer = document.querySelector('.rating');
+    const stars = ratingContainer.querySelectorAll('.star');
+    let btncommenting = document.getElementById('btncommenting');
+    const PRODUCT_INFO_URL = `https://japceibal.github.io/emercado-api/products/${idProduct}.json`;
     const url = `https://japceibal.github.io/emercado-api/cats_products/${productCat}.json`;
+    let urlComments = "https://japceibal.github.io/emercado-api/products_comments/" + idProduct + ".json"
+    let actualproduct = null;
+    let container = document.getElementById('container');
+    let selectedScore = 0; // Variable global para almacenar la calificación seleccionada.
+    const starsrate = document.querySelectorAll('.rating .star');
+
+    getComments(urlComments)
+    loadCommentsFromLocalStorage(idProduct);
 
     fetch(url)
         .then(response => response.json())
@@ -18,6 +28,16 @@ document.addEventListener("DOMContentLoaded", () => {
             mostrarTarjetas(categoryList, idProduct);
         })
         .catch(error => console.log('Error:', error));
+
+    fetch(PRODUCT_INFO_URL)
+        .then(response => response.json())
+        .then(responseData => {
+            let data = responseData;
+            productImages(data)
+        })
+        .catch(error => console.log('Error:', error));
+
+
 
     function searchProductById(id) {
         if (id) {
@@ -56,29 +76,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-
-    let container = document.getElementById('container');
-
     function showProductInfo(product) {   //crea un elemento div con los datos del producto y lo coloca en el contenedor
 
 
         container.innerHTML = '';
         container.innerHTML = `
                 <div class="row align-self-end">
-                    <div class="text-align-center">
-                        <h2 class="card-title">${product.name}</h2>
-                        <h4 class="card-text text">${product.description}<h4>
-                        <h5 class="card-text">cantidad de ventas: ${product.soldCount}</h5>
-                        <h3 class="card-text">$${product.cost}</h3>
+                    <div class="text-align-center overflow-hidden">
+                        <h1 class="card-title text fs-1">${product.name}</h2>
+                        <h2 class="card-text text fs-3">${product.description}<h4>
+                        <h2 class="card-text text fs-3">cantidad de ventas: ${product.soldCount}</h5>
+                        <h2 class="card-text text fs-3">$${product.cost}</h3>
                     </div>
                 </div>`;
-
-
     }
-  
-
-    const ratingContainer = document.querySelector('.rating');
-    const stars = ratingContainer.querySelectorAll('.star');
 
     stars.forEach(star => {   //se le agrega un evento click a cada estrella que le pasa como argumento setRating()
         star.addEventListener('click', setCommentRating);
@@ -96,8 +107,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    let urlComments = "https://japceibal.github.io/emercado-api/products_comments/" + idProduct + ".json"
-
     function getComments(url) {  //trae los comentarios del objeto en base a su id directo de la api
 
         const promise = fetch(url)
@@ -109,8 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .catch(error => console.log('Error:', error));
     };
-
-    getComments(urlComments)
 
     function showComments(data) {   //funcion que toma la data de los comentarios y los transforma para enviar al html como comentario
         let commentsdiv = document.getElementById('commentsdiv')
@@ -130,7 +137,6 @@ document.addEventListener("DOMContentLoaded", () => {
         for (let i = 0; i < score; i++) {
             starContainer += '<span class="fa fa-star star" style="color: gold;"></span>';
         }
-
         for (let i = score; i < 5; i++) {
             starContainer += '<span class="fa fa-star star" style="color: black;"></span>';
         }
@@ -140,21 +146,14 @@ document.addEventListener("DOMContentLoaded", () => {
     function dateChange(date) {  //cambio de fecha en base a la fecha actual o la fecha dentro del url API comments
         const dateComment = date;
         const dateNew = new Date(dateComment);
-
         const day = dateNew.getDate();
         const month = dateNew.getMonth() + 1;
         const year = dateNew.getFullYear();
-
         const formattedDate = `${day}/${month}/${year}`;
 
         return formattedDate;
     }
 
-    let selectedScore = 0; // Variable global para almacenar la calificación seleccionada.
-
-    loadCommentsFromLocalStorage(idProduct);
-
-    const starsrate = document.querySelectorAll('.rating .star');
     starsrate.forEach(star => {
         star.addEventListener('click', setRating);
     });
@@ -169,8 +168,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-
-    let btncommenting = document.getElementById('btncommenting');
 
     btncommenting.addEventListener('click', () => {
         let userName = localStorage.getItem('user-name');
@@ -198,6 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem('userComments', JSON.stringify(comments));
     }
     // Las funciones saveCommentToLocalStorage y displayComment se encargan de guardar los comentarios en localStorage y mostrarlos en la página, respectivamente.
+
     function displayComment(comment) {
         let commentsdiv = document.getElementById('commentsdiv');
         commentsdiv.innerHTML += `
@@ -244,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // el resto de productos no obtendran la clase active
             const card = `
                 <div class="card-class carousel-item ${index === 0 ? 'active' : ''}" alt="..." onclick="setProductID(${product.id})"> 
-                    <img src="${product.image}" class="d-block w-100" alt="${product.name}"> 
+                    <img src="${product.image}" class="img-fluid" alt="${product.name}"> 
 
                     <div class="carousel-caption d-none d-md-block">
                         <h4 class="product-title text">${product.name}</h4>
@@ -257,19 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const PRODUCT_INFO_URL = `https://japceibal.github.io/emercado-api/products/${idProduct}.json`;
-
-    fetch(PRODUCT_INFO_URL)
-        .then(response => response.json())
-        .then(responseData => {
-            let data = responseData;
-            productImages(data)
-        })
-        .catch(error => console.log('Error:', error));
-
-
     function productImages(productinfo) {
-
         let imagesarray = productinfo.images
         let imagescarousel = document.getElementsByClassName('carousel-inner')[0];
         imagescarousel.innerHTML = '';
@@ -279,15 +265,16 @@ document.addEventListener("DOMContentLoaded", () => {
         imagesarray.forEach((images, index) => {
             console.log(images)
 
-            const imagecard = ` <div class="card-class carousel-item ${index === 0 ? 'active' : ''}" alt="...">
-            <img class="d-block w-100" src="${images}">`
+            const imagecard = ` 
+            
+            <div class="card-class carousel-item ${index === 0 ? 'active' : ''}" alt="...">
+                <img class="h-auto d-inline-block w-100 img-fluid" src="${images}">
+            </div>`
 
             imagescarousel.innerHTML += imagecard;
             ;
         });
     }
-
-
 });
 
 function setProductID(id) {
