@@ -10,6 +10,14 @@ body {
   overflow-x: hidden;
 }
 
+.category-grupe{
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 35px;
+  max-width: 1100px;
+  justify-content: center; 
+}
+
 .jumbotron .display-4 {
   font-weight: bold;
 }
