@@ -18,15 +18,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
       data.products.forEach(x => {                 //por cada producto agrega una tarjeta al elemento vacio
          element.innerHTML += `
-         <div class="cards mouseHover bgtext" onclick="setProductID(${x.id})">
-              <img src="${x.image}" class="img-card" alt="${x.name}">
-              <div class="body-card">
-                <h4 class="text-card text card-title">${x.name}</h4>
-                <p class="text-card text description">${x.description}</p>
-                <p class="text-card text">${x.cost}$</p>
-              </div>
+         <div class="card custom-card mouseHover mx-3 my-3 bgtext" onclick="setProductID(${x.id})">
+         <img src="${x.image}" class="img-card card-img-top" alt="${x.name}">
+         <div class="card-body">
+           <h5 class="card-title text-card text">${x.name}</h5>
+           <p class="card-text text-card text">${x.description}</p>
+           <p class="text-card text">${x.cost}$</p>
          </div>
-         `;
+       </div>
+     `;
       });
    }
 
