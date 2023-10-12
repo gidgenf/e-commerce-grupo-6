@@ -11,16 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const storedCartData = JSON.parse(localStorage.getItem('usercartprecharged'));
 
             const productName = storedCartData.articles[0].name;
-            console.log(productName);
+            console.log(storedCartData);
         })
         .catch(error => console.error('Error:', error));
 });
 
 
-function addproductcart(productstring) {  //funcion que agrega producto al cart del local storage 
-    localStorage.getItem('usercart', listproductstring)
-
-}
 
 
 
