@@ -1,71 +1,80 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const listabusqueda = [];  //declaramos una lista vacia donde iran los resultados del fetch
-    const busqueda = document.getElementById('busqueda'); //declaramos variable busqueda que toma el elemento de id busqueda
+    const listabusqueda = [];  // Declaramos una lista vacía donde irán los resultados del fetch
+    const busqueda = document.getElementById('busqueda'); // Declaramos la variable busqueda que toma el elemento de id busqueda
 
     let idobjetos = 100;
     for (let index = 0; index < 3; index++) {
         idobjetos++;
         let catID_json = idobjetos + ".json";
-        let url = 'https://japceibal.github.io/emercado-api/cats_products/' + catID_json; //arma un url del catid por cada bucle
+        let url = 'https://japceibal.github.io/emercado-api/cats_products/' + catID_json; // Armamos la URL del catid por cada bucle
 
-        fetch(url) //fetch del url anterior armado
+        fetch(url) // Realizamos el fetch de la URL construida anteriormente
             .then(response => response.json())
             .then(responseData => {
                 let data = responseData;
-                listabusqueda.push(...data.products); //se pushea data.products del resultado dentro de la lista vacia
+                listabusqueda.push(data); // Pusheamos todo el objeto de categoría a la lista
             })
             .catch(error => console.log('Error:', error));
     }
 
-    function filtradobusqueda(lista, busqueda) { //funcion que filtra por nombre y descripcion 
-        return lista.filter(products => {
-            return products.name.toLowerCase().includes(busqueda) || products.description.toLowerCase().includes(busqueda); //filtra nombres y descripciones tomando la busqueda como criterio
+    function filtradobusqueda(lista, busqueda) { // Función que filtra por nombre y descripción 
+        return lista.filter(categoria => {
+            return categoria.products.some(product => product.name.toLowerCase().includes(busqueda) || product.description.toLowerCase().includes(busqueda)); // Filtramos categorías que contienen productos que cumplen el criterio de búsqueda
         });
     }
 
-    busqueda.addEventListener('input', () => { //evento input para busqueda
-        let inputtext = busqueda.value; //se toma el valor de la busqueda
+    busqueda.addEventListener('input', () => { // Evento input para búsqueda
+        let inputtext = busqueda.value.trim().toLowerCase(); // Tomamos el valor de la búsqueda, lo convertimos a minúsculas y eliminamos espacios en blanco al principio y al final
         if (inputtext === '') {
             contenedor.innerHTML = ``;
         } else {
-            let busquedafiltrada = filtradobusqueda(listabusqueda, inputtext); //se pasan como argumentos la lista que tiene los datos de los productos y tambien el valor del input de busqueda
-            console.log(busquedafiltrada); //se muestra en consola todos los elementos filtrados
+            let busquedafiltrada = filtradobusqueda(listabusqueda, inputtext); // Pasamos como argumentos la lista que tiene los datos de las categorías y también el valor del input de búsqueda
+            console.log(busquedafiltrada); // Mostramos en la consola todas las categorías que contienen productos filtrados
 
             hojaBusqueda(busquedafiltrada);
         }
     });
 
-    document.getElementById('cerrarSesion').addEventListener('click', function () {  //function que cierra sesión por medio del evento click en el elemento de id "cerrarSesion"
-        localStorage.removeItem('authenticated');
-        window.location.href = "login.html";
-    });
+    let contenedor = document.getElementById("containerSearch"); // Tomamos el contenedor por su id
+
+    function hojaBusqueda(array) {  //toma el array que contiene los  datos de todas las categorias de productos y los mismos
+        console.log(array);
+        let productoslistados = [];  //lista vacia para colocar solo los productos de las categorias
+
+        for (let i = 0; i < array.length; i++) {
+            const categoria = array[i];
+            productoslistados = productoslistados.concat(categoria.products);  //itera entre las categorias de productos y pasa los productos a una lista
+        }
+
+        console.log(productoslistados);
+        contenedor.innerHTML = ``;  //contenedor vacio para las tarjetas de productos
+
+        if (productoslistados.length > 4) {  // esta parte de la funcion solo va a permitir mostrar 4 productos de los encontrados 
+            for (let index = 0; index < 4; index++) {   //las tarjetas creadas al hacerles click se va a ejecutar la funcion setProductIdAndCat que va a alojar en el localstorage el id y categoria del producto seleccionado
+                const producto = productoslistados[index];
+                contenedor.innerHTML += `<div class="srLink btn btn-outline-light btn-lg btn-light btn-block card-class mouseHover" onclick="setProductIdAndCat(${producto.id}, ${array[0].catID})">     
+                <img src="${producto.image}" class="miniImage">
+                <h4>${producto.name}</h4> 
+                <h6>${producto.description}</h6>
+                </div>`;
+            }
+        } else {
+            for (let index = 0; index < productoslistados.length; index++) {
+                const producto = productoslistados[index];
+                contenedor.innerHTML += `<div class="srLink btn btn-outline-light btn-lg btn-light btn-block card-class mouseHover" onclick="setProductIdAndCat(${producto.id}, ${array[0].catID})">     
+                <img src="${producto.image}" class="miniImage">
+                <h4>${producto.name}</h4> 
+                <h6>${producto.description}</h6>
+                </div>`;
+            }
+        }
+    }
+
 });
 
-function setProductID(id) {
-    localStorage.setItem("productID", id);       
+function setProductIdAndCat(id, cat) {   //funcion que cambia los valores de id y catID del localstorage
+    localStorage.setItem("productID", id);
+    localStorage.setItem("catID", cat);
     window.location.href = "product-info.html";
 }
 
-let contenedor = document.getElementById("containerSearch") //tomamos el contenedor por su id
-function hojaBusqueda(array) {
-    contenedor.innerHTML = ``
-    if (array.length > 4) {
-        for (let index = 0; index < 4; index++) {
-            const element = array[index];
-            contenedor.innerHTML += `<div class="srLink btn btn-outilne-light btn-lg  btn-light btn-block mouseHover" onclick="setProductID(${element.id})">
-            <img src="${element.image}" class="miniImage">
-            <h4>${element.name}</h4> 
-<h6>${element.description}</h6>
-</div>`
-        }
-    } else {
-        for (let index = 0; index < array.length; index++) {
-            const element = array[index];
-            contenedor.innerHTML += `<div class="srLink btn btn-outline-light btn-lg btn-light btn-block mouseHover" onclick="setProductID(${element.id})">     
-            <img src="${element.image}" class="miniImage">
-            <h4>${element.name}</h4> 
-    <h6>${element.description}</h6>
-    </div>`
-        }
-    }
-}

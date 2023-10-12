@@ -1,23 +1,17 @@
-body{
+body {
     background-color: rgb(228, 224, 224);
     margin: 0px;
     padding: 0px;
 }
-#container{
-   margin-top: 40px;
-   display: grid;
-   grid-template-columns: 3fr 1fr;
-   gap: 35px;
 
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: rgba(104, 104, 104, 0.226);
+    height: auto;
 }
-.card-buy{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 20px;
-    box-shadow: 1px 1px 10px black;
-    border-radius: 10px;
-}
-.img-main{
 
+.relatedproductsdiv {
+    width: 30%;
+    border-radius: 15px;
+    padding: 3%;
 }

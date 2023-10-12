@@ -18,6 +18,11 @@ body{
   font-family: 'Verdana', serif !important;
 }
 
+body {
+  background-color: rgb(112, 112, 112);
+  overflow-x: hidden;
+}
+
 .jumbotron .display-4 {
   font-weight: bold;
 }
@@ -266,11 +271,16 @@ a.custom-card:hover {
 }
 
 #containerSearch {
+  /*clase del contenedor de las tarjetas de search*/
   background-color: rgba(240, 225, 255, 0.685);
-  text-align: justify;
   border-radius: 10px;
-  margin-left: 400px;
-  margin-right: 400px;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  position: absolute;
+  margin-left: 30%;
+  margin-right: 30%;
+  box-shadow: 10px 10px 10px black;
 }
 
 h4 {
@@ -292,11 +302,12 @@ a:active {
 }
 
 .search-result {
+  /*clase del contenedor de las tarjetas de search*/
   position: absolute;
-  background-color: rgb(20, 22, 58);
-  box-shadow: 2px 4px 10px black;
   margin: 35px 20px;
   margin-top: 10px;
+  z-index: 1;
+
 }
 
 .srLink {
@@ -307,4 +318,20 @@ a:active {
   height: 40px;
   width: auto;
   float: left;
+}
+
+.data-rating {
+  color: orange;
+}
+
+.card-class {
+  /*clase de las tarjetas de search*/
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.noneborder{
+  border: none;
+}
+#containerSearch{
+  z-index: 10;
 }

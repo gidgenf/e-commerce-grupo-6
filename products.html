@@ -31,20 +31,24 @@
             <a class="nav-link" href="categories.html" data-tooltip="Categoria"> <i class="fa-solid fa-list"></i></a>
           </li>
 
-          <li class="barra">
+          <li class="barra nav-item">
             <a class="nav-link" href="sell.html" data-tooltip="Vender"> <i class="fa-solid fa-cart-shopping"></i> </a>
           </li>
-          <input type="search" placeholder="Busca tu articulo aquí" id="busqueda">
+          <input type="search" placeholder="Busca tu articulo aquí..." id="busqueda">
+          <div class="dropdown nav-item">
+               <a class="btn btn-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-user"></i>
+               </a>
 
-          <li>
-            <a class="nav-link" type="button" data-tooltip="Cerrar Sesion" id="cerrarSesion"> <i
-                class="fa-solid fa-arrow-right-from-bracket"></i></a>
-          </li>
-
-          <li id="usuario">
-            <a class="nav-link" href="my-profile.html" data-tooltip="Perfil"> <i class="fa-solid fa-user"></i></a>
-          </li>
-
+                <ul class="dropdown-menu aling-text dropdown-menu-dark">
+                <li class="dropdown-item"  id="usuario">
+                <i class="fa-solid fa-user"></i>
+               </li>
+               <li><a class="dropdown-item" href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+              <li><a class="nav-link dropdown-item" type="button" data-tooltip="Cerrar Sesion" id="cerrarSesion"> <i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+              <li class="dropdown-item"  id="boxButton"></li>
+            </ul>
+           </div>
         </ul>
       </div>
     </div>
@@ -57,6 +61,7 @@
     <div class="container">
       <div class="row">
         <div class="col text-end">
+          
           <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
             <input type="radio" class="btn-check" name="options" id="sortCostAsc">
             <!-- nuevos botones para ordenar los productos-->
@@ -74,7 +79,7 @@
         <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
           <div class="row container p-0 m-0">
             <div class="col">
-              <p class="font-weight-normal text-end my-2">Cost</p>
+              <p class="font-weight-normal text text-end my-2">Cost</p>
             </div>
             <div class="col">
               <input class="form-control" type="number" placeholder="min." id="rangeFilterCostMin">
@@ -95,7 +100,9 @@
       </div>
       <main class="pb-5 container">
         <div class="container">
-          <div class="card-body" id="objet-conteiner"></div>
+          <div class="card-body" id="objet-conteiner">
+            
+          </div>
         </div>
       </main>
       <footer class="text-muted">
@@ -115,10 +122,13 @@
           <div></div>
         </div>
       </div>
+
       <script src="js/bootstrap.bundle.min.js"></script>
       <script src="js/init.js"></script>
       <script src="js/products.js"></script>
       <script src="js/search.js"></script>
+      <script src="js/night.js"></script>
+      <script src="js/profile-menu.js"></script>
 </body>
 
 </html>
