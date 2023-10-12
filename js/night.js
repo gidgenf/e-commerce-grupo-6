@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
     } else {
-      boxButton.innerHTML = '<button class="btn btn-outline-dark" ><i class="fa-solid fa-moon"> Dia / Noche</i></button>';
+      boxButton.innerHTML = '<button class="btn" ><i class="fa-solid fa-moon"> Dia / Noche</i></button>';
       document.body.style.backgroundColor = 'white';
 
       var cardTitles = document.getElementsByClassName('text');

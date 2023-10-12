@@ -15,40 +15,63 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+
+      <div class="collapse navbar-collapse order-lg-last" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
 
+          <div class="dropdown nav-item order-lg-last aling item center">
+            <a class="btn btn-dark dropdown-toggle" id="usuario" href="dropdownmenu" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-user">Usuario</i>
+            </a>
+
+            <ul id="dropdownmenu" class="dropdown-menu aling-text dropdown-menu-dark">
+              <a class="dropdown-item" href="my-profile.html">
+                <i class="fa-solid fa-user"> Mi perfil</i>
+              </a>
+              <li>
+
+                <a class="dropdown-item" href="cart.html">
+                  <i class="fa-solid fa-cart-shopping"> Carrito</i>
+                </a>
+              </li>
+              <div class="row">
+                <li class="dropdown-item col col-4" id="boxButton">
+
+                </li>
+              </div>
+              <li>
+                <a class="dropdown-item" type="button" data-tooltip="Cerrar Sesion" id="cerrarSesion">
+                  <i class="fa-solid fa-arrow-right-from-bracket"> Cerrar sesion</i>
+                </a>
+              </li>
+            </ul>
+          </div>
+
           <li class="nav-item">
-            <a class="nav-link" href="index.html" data-tooltip="Inicio"> <i class="fa-solid fa-house"></i> </a>
+            <a class="nav-link" href="index.html" data-tooltip="Inicio"> <i class="fa-solid fa-house"> Inicio</i> </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="categories.html" data-tooltip="Categoria"> <i class="fa-solid fa-list"></i></a>
+            <a class="nav-link" href="categories.html" data-tooltip="Categoria"> <i class="fa-solid fa-list">
+                Categorias</i></a>
           </li>
 
           <li class="barra nav-item">
-            <a class="nav-link" href="sell.html" data-tooltip="Vender"> <i class="fa-solid fa-cart-shopping"></i> </a>
+            <a class="nav-link" href="sell.html" data-tooltip="Vender"> <i class="fa-solid fa-cart-shopping"> Vender
+                productos</i> </a>
           </li>
-          <input type="search" placeholder="Busca tu articulo aquí..." id="busqueda">
-          <div class="dropdown nav-item">
-               <a class="btn btn-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa-solid fa-user"></i>
-               </a>
 
-                <ul class="dropdown-menu aling-text dropdown-menu-dark">
-                <li class="dropdown-item"  id="usuario">
-                <i class="fa-solid fa-user"></i>
-               </li>
-               <li><a class="dropdown-item" href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-              <li><a class="nav-link dropdown-item" type="button" data-tooltip="Cerrar Sesion" id="cerrarSesion"> <i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
-              <li class="dropdown-item"  id="boxButton"></li>
-            </ul>
-           </div>
+          <form class="d-flex order-lg-0">
+            <input type="search" class="form-control me-2" placeholder="Busca tu artículo aquí..." id="busqueda">
+          </form>
+
         </ul>
       </div>
     </div>
