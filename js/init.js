@@ -49,7 +49,6 @@ document.getElementById('cerrarSesion').addEventListener('click', function () { 
   window.location.href = "login.html";
 });
 
-
 /*verifica que estén autentificado con anterioridad el inicio de sesion, 
 en caso de no estar autentificado redirecciona al login.html*/
 document.addEventListener("DOMContentLoaded", function () {

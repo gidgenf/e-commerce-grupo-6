@@ -9,9 +9,25 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('usercartprecharged', JSON.stringify(cartdata));
 
             const storedCartData = JSON.parse(localStorage.getItem('usercartprecharged'));
+            const storedCart = JSON.parse(localStorage.getItem('usercart'));
 
-            const productName = storedCartData.articles[0].name;
             console.log(storedCartData);
+            console.log(storedCart);
         })
         .catch(error => console.error('Error:', error));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
