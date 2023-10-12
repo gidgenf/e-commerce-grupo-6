@@ -229,23 +229,24 @@ document.addEventListener("DOMContentLoaded", () => {
         productComments.forEach(comment => displayComment(comment));
     }
 
-    function mostrarTarjetas(productosRelacionados, id) {
+    function mostrarTarjetas(productosRelacionados, id) {  //funcion para mostrar los productos relacionados en el segundo carrucel
 
-        let relatedProduct = document.getElementsByClassName('carousel-inner')[0];
+        let relatedProduct = document.getElementsByClassName('carousel-inner')[1];  //de los elementos de clase carousel-inner utiliza el segundo en la lista
 
-        relatedProduct.innerHTML = '';
+        relatedProduct.innerHTML = '';  //se vacia el elemento
 
-        const filteredProducts = productosRelacionados.filter(product => parseInt(product.id) != parseInt(id));
+        const filteredProducts = productosRelacionados.filter(product => parseInt(product.id) != parseInt(id));  //se filtra usando el id del producto mostrado en la pagina para solo manejar los productos relacionados
 
-        filteredProducts.forEach((product, index) => {
-
+        filteredProducts.forEach((product, index) => {  //forEach para cada uno de los productos de los productos relacionados que crea sus respectivas tarjetas
+            // si el producto es el primero en ser mostrado, se le adicionará la clase active que nos servira para que luego el botstrap cambie de imagenes de forma automatica
+            // el resto de productos no obtendran la clase active
             const card = `
                 <div class="card-class carousel-item ${index === 0 ? 'active' : ''}" alt="..." onclick="setProductID(${product.id})"> 
                     <img src="${product.image}" class="img-fluid" alt="${product.name}"> 
 
                     <div class="carousel-caption d-none d-md-block">
-                        <h4 class="product-title">${product.name}</h4>
-                        <p class="product-price">${product.cost}$</p> 
+                        <h4 class="product-title text">${product.name}</h4>
+                        <p class="product-price text ">${product.cost}$</p> 
                     </div>
 
                 </div>
