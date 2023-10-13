@@ -23,13 +23,18 @@ let cart = document.getElementById('cart')
             cart.innerHTML=``
             articles[0].forEach(element => {
                 cart.innerHTML += `
-                <div class="card mt-5 mx-5 text-bg-dark" >
-                <div class="card-body">
-               <h4 class="card-title">${element.name}</h4>
-               <p class="card-text">${element.currency}${element.unitCost}</p>
-               <h5 class="card-text">cantidad:<span class="badge bg-primary rounded-pill">${element.count}</span></h5>
-               </div>
-            </div>`
+                <div class="card m-3 shadow">
+  <div class="card-header">
+ <h5 class="float-end card-text">cantidad:<span class="badge bg-primary rounded-pill">${element.count}</span></h5>
+ <h3 class="card-title">${element.name}</h3>
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+    <img src="${element.image}" style="width: 14rem;" >
+    <p class="card-text">${element.currency}${element.unitCost}</p>
+    </blockquote>
+  </div>
+</div>`
             
 
     });
