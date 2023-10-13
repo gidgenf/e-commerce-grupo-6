@@ -259,7 +259,6 @@ a.custom-card:hover {
 }
 
 #containerSearch {
-  /*clase del contenedor de las tarjetas de search*/
   background-color: rgba(240, 225, 255, 0.685);
   border-radius: 10px;
   justify-content: center;
@@ -268,7 +267,6 @@ a.custom-card:hover {
   position: absolute;
   margin-left: 30%;
   margin-right: 30%;
-  box-shadow: 10px 10px 10px black;
 }
 
 h4 {
