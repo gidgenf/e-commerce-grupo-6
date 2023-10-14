@@ -39,9 +39,9 @@ let cart = document.getElementById('cart')
 
 });
 }
-function changeQuantity(id, increase) {
+function changeQuantity(id, value) {
     let product = articles[0].find(item => item.id === id);
-    if (increase) {
+    if (value) {
         product.count++;
     } else {
         if (product.count > 1) {

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-
+    const btnPurch = document.getElementById('purch')
     const productosRelacionados = [];   //lista a donde van todos los productos de la categoria
     const productCat = localStorage.getItem('catID');  //categoria actual del local storage
     const idProduct = localStorage.getItem('productID');
@@ -44,10 +44,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     btnaddtocart.addEventListener('click', () => {  //evento click para el boton de addtocart
 
-        addtocart(actualproduct)
+        addtocart(actualproduct);
 
     });
-
+    btnPurch.addEventListener('click',()=>{
+        addtocart(actualproduct);
+        window.location.href = "cart.html";
+    })
     function addtocart(productId) {
         let usercart = JSON.parse(localStorage.getItem('usercart')) || [];  //se trae el carrito del local storage o una lista vacia
 
