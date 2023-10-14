@@ -29,11 +29,9 @@ let cart = document.getElementById('cart')
  <h3 class="card-title">${element.name}</h3>
   </div>
   <div class="card-body">
-    <blockquote class="blockquote mb-0">
-    <img src="${element.image}" style="width: 14rem;" >
-    <p class="card-text">${element.currency}${element.unitCost}</p>
-    </blockquote>
-  </div>
+    <img src="${element.image}" style="width: 10rem;" >
+   <p class="btn btn-success position-absolute bottom-0 m-3 end-0" >Total ${element.currency}${element.unitCost*element.count }</p>
+</div>
 </div>`
             
 

@@ -1,16 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const categoryList = [];   //lista a donde van todos los productos de la categoria
+    const productosRelacionados = [];   //lista a donde van todos los productos de la categoria
     const productCat = localStorage.getItem('catID');  //categoria actual del local storage
     const idProduct = localStorage.getItem('productID');
     const btnaddtocart = document.getElementById('addtocart');
     const ratingContainer = document.querySelector('.rating');
     const stars = ratingContainer.querySelectorAll('.star');
     let btncommenting = document.getElementById('btncommenting');
+
     const PRODUCT_INFO_URL = `https://japceibal.github.io/emercado-api/products/${idProduct}.json`;
-    const url = `https://japceibal.github.io/emercado-api/cats_products/${productCat}.json`;
-    let urlComments = "https://japceibal.github.io/emercado-api/products_comments/" + idProduct + ".json"
-    let actualproduct = null;
+    let urlComments = "https://japceibal.github.io/emercado-api/products_comments/" + idProduct + ".json";
+
+    let actualproduct = null;  //se va a usar para manejar el producto en su interacción con el carrito
     let container = document.getElementById('container');
     let selectedScore = 0; // Variable global para almacenar la calificación seleccionada.
     const starsrate = document.querySelectorAll('.rating .star');
@@ -18,67 +19,57 @@ document.addEventListener("DOMContentLoaded", () => {
     getComments(urlComments)
     loadCommentsFromLocalStorage(idProduct);
 
-    fetch(url)
-        .then(response => response.json())
-        .then(responseData => {
-            let data = responseData;
-
-            categoryList.push(...data.products);
-            searchProductById(idProduct);
-            mostrarTarjetas(categoryList, idProduct);
-        })
-        .catch(error => console.log('Error:', error));
-
     fetch(PRODUCT_INFO_URL)
         .then(response => response.json())
         .then(responseData => {
             let data = responseData;
+            actualproduct = data;
+            productosRelacionados.push(data.relatedProducts);
             productImages(data)
+            mostrarTarjetasRelacionadas(productosRelacionados[0]);
+            showProductInfo(data);
         })
         .catch(error => console.log('Error:', error));
 
+    function getComments(url) {  //trae los comentarios del objeto en base a su id directo de la api
 
-
-    function searchProductById(id) {
-        if (id) {
-            actualproduct = categoryList.find(product => parseInt(product.id) === parseInt(id));  //se busca en category list el producto por su id
-            showProductInfo(actualproduct);  //se muestra el producto
-        }
-    }
+        const promise = fetch(url)
+            .then(response => response.json())
+            .then(responseData => {
+                let data = responseData
+                showComments(data)
+            })
+            .catch(error => console.log('Error:', error));
+    };
 
     btnaddtocart.addEventListener('click', () => {  //evento click para el boton de addtocart
-        if (actualproduct) {
-            addtocart(actualproduct);  //se declara funcion
-        }
+
+        addtocart(actualproduct)
+
     });
 
     function addtocart(productId) {
         let usercart = JSON.parse(localStorage.getItem('usercart')) || [];  //se trae el carrito del local storage o una lista vacia
 
-        if (productId) {
-            const productexist = usercart.find(item => item.id === productId.id);  //se busca el producto en el carrito
-
-            if (productexist) {  //si el producto existe en el carrito, se eleva su contador en 1
-                productexist.count++;
-            } else {
-                usercart.push({  //se pushea el producto al carrito
-                    id: productId.id,
-                    name: productId.name,
-                    count: 1,
-                    unitCost: productId.cost,
-                    currency: "USD",
-                    image: productId.image
-                });
-            }
-            localStorage.setItem('usercart', JSON.stringify(usercart));  //se envia el carrito con los nuevos productos al local storage
-
-            console.log(localStorage.getItem('usercart'));
+        const productexist = usercart.find(item => item.id === productId.id);  //se busca el producto en el carrito
+        if (productexist) {  //si el producto existe en el carrito, se eleva su contador en 1
+            productexist.count++;
+        } else {
+            usercart.push({  //se pushea el producto al carrito en caso de no existir en el mismo
+                id: productId.id,
+                name: productId.name,
+                count: 1,
+                unitCost: productId.cost,
+                currency: "USD",
+                image: productId.images[0]
+            });
         }
+        localStorage.setItem('usercart', JSON.stringify(usercart));  //se envia el carrito con los nuevos productos al local storage
+
+        console.log(localStorage.getItem('usercart'));
     }
 
     function showProductInfo(product) {   //crea un elemento div con los datos del producto y lo coloca en el contenedor
-
-
         container.innerHTML = '';
         container.innerHTML = `
                 <div class="row align-self-end">
@@ -106,18 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-
-    function getComments(url) {  //trae los comentarios del objeto en base a su id directo de la api
-
-        const promise = fetch(url)
-            .then(response => response.json())
-            .then(responseData => {
-                let data = responseData
-                showComments(data)
-
-            })
-            .catch(error => console.log('Error:', error));
-    };
 
     function showComments(data) {   //funcion que toma la data de los comentarios y los transforma para enviar al html como comentario
         let commentsdiv = document.getElementById('commentsdiv')
@@ -229,42 +208,27 @@ document.addEventListener("DOMContentLoaded", () => {
         productComments.forEach(comment => displayComment(comment));
     }
 
-    function mostrarTarjetas(productosRelacionados, id) {  //funcion para mostrar los productos relacionados en el segundo carrucel
+    function mostrarTarjetasRelacionadas(productos) {
+        let relatedProduct = document.getElementsByClassName('carousel-inner')[1];
+        relatedProduct.innerHTML = '';
 
-        let relatedProduct = document.getElementsByClassName('carousel-inner')[1];  //de los elementos de clase carousel-inner utiliza el segundo en la lista
-
-        relatedProduct.innerHTML = '';  //se vacia el elemento
-
-        const filteredProducts = productosRelacionados.filter(product => parseInt(product.id) != parseInt(id));  //se filtra usando el id del producto mostrado en la pagina para solo manejar los productos relacionados
-
-        filteredProducts.forEach((product, index) => {  //forEach para cada uno de los productos de los productos relacionados que crea sus respectivas tarjetas
-            // si el producto es el primero en ser mostrado, se le adicionará la clase active que nos servira para que luego el botstrap cambie de imagenes de forma automatica
-            // el resto de productos no obtendran la clase active
+        productos.forEach((product, index) => {
             const card = `
                 <div class="card-class carousel-item ${index === 0 ? 'active' : ''}" alt="..." onclick="setProductID(${product.id})"> 
                     <img src="${product.image}" class="img-fluid" alt="${product.name}"> 
-
-                    <div class="carousel-caption d-none d-md-block">
-                        <h4 class="product-title text">${product.name}</h4>
-                        <p class="product-price text ">${product.cost}$</p> 
-                    </div>
-
                 </div>
             `;
-            relatedProduct.innerHTML += card;  //se suma la tarjeta del producto a relatedProduct para todos los productos
+            relatedProduct.innerHTML += card;
         });
     }
 
     function productImages(productinfo) {
         let imagesarray = productinfo.images
         let imagescarousel = document.getElementsByClassName('carousel-inner')[0];
+
         imagescarousel.innerHTML = '';
 
-        console.log(imagesarray)
-
         imagesarray.forEach((images, index) => {
-            console.log(images)
-
             const imagecard = ` 
             
             <div class="card-class carousel-item ${index === 0 ? 'active' : ''}" alt="...">
