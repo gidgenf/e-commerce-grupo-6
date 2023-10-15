@@ -47,11 +47,14 @@ document.addEventListener("DOMContentLoaded", () => {
         addtocart(actualproduct);
 
     });
-    btnPurch.addEventListener('click',()=>{
+
+    btnPurch.addEventListener('click', () => {
         addtocart(actualproduct);
         window.location.href = "cart.html";
     })
+
     function addtocart(productId) {
+        
         let usercart = JSON.parse(localStorage.getItem('usercart')) || [];  //se trae el carrito del local storage o una lista vacia
 
         const productexist = usercart.find(item => item.id === productId.id);  //se busca el producto en el carrito
@@ -67,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 image: productId.images[0]
             });
         }
+
         localStorage.setItem('usercart', JSON.stringify(usercart));  //se envia el carrito con los nuevos productos al local storage
 
         console.log(localStorage.getItem('usercart'));
