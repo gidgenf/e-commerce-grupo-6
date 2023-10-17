@@ -3,6 +3,7 @@ let localCart = JSON.parse(localStorage.getItem('usercart'));
 let articles = [];
 let cardMoney = document.getElementById('cardMoney')
 let cart = document.getElementById('cart')
+let changespurch = document.getElementById('changespurch')
 fetch(URLidcart)
     .then(response => {
         return response.json();
@@ -18,6 +19,9 @@ fetch(URLidcart)
     })
     .catch(error => console.error('Error:', error));
 
+ changespurch.addEventListener('click',()=>{
+        showMoney(articles);
+    })
 function showarticles(articles) {
     cart.innerHTML = ``
     articles[0].forEach(element => {
