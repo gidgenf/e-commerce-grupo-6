@@ -60,18 +60,21 @@ function changeQuantity(id, value) {
 
 function showMoney(articles){
     let valorActivo = document.querySelector('input[name="listGroupRadio"]:checked').value;
-    let totalCost = 0;
+    let Cost = 0;
     cardMoney.innerHTML=``
   articles[0].forEach(element => {  
-    totalCost += element.unitCost * element.count;
+    Cost += element.unitCost * element.count;
 });
-totalCost= totalCost- totalCost * (valorActivo*0.01);
+let costoDeEnvio =Cost * (valorActivo*0.01)
+totalCost= Cost+ costoDeEnvio;
 cardMoney.innerHTML=`
 <div class="row">
   <div class="col-sm-6">
     <div class="card" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">total a pagar ${totalCost}</h5>
+      <h4>costo de envio  ${costoDeEnvio}<h4>
+      <h4>valor de los objetos ${Cost}<h4>
+    <h5 class="card-title">total a pagar ${totalCost}</h5>
       </div>
     </div>
   </div>`
