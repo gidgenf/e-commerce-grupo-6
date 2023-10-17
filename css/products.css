@@ -1,24 +1,8 @@
 body{
     background-color: aliceblue;
 }
-.cards{
-    display: flex;
-    margin: 40px;
-    padding: 30px;
-    box-shadow: 1px 1px 10px black;
-    border-radius: 40px;
-    background-color: white;
-}
+
 a{
     color: gray;
     text-decoration: none;
-}
-.text-card{
-    margin: 20px;
-}
-
-.img-card{
-    width: 25%;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px aliceblue;
 }

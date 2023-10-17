@@ -26,17 +26,17 @@
         <ul class="navbar-nav w-100 justify-content-between">
 
           <div class="dropdown nav-item order-lg-last aling item center">
-            <a class="btn btn-dark dropdown-toggle" href="dropdownmenu" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
+            <a class="btn btn-dark dropdown-toggle" id="usuario" href="dropdownmenu" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
               <i class="fa-solid fa-user">Usuario</i>
             </a>
 
             <ul id="dropdownmenu" class="dropdown-menu aling-text dropdown-menu-dark">
-              <li class="dropdown-item" id="usuario">
-                <i class="fa-solid fa-user"></i>
-              </li>
-
+              <a class="dropdown-item" href="my-profile.html">
+                <i class="fa-solid fa-user"> Mi perfil</i>
+              </a>
               <li>
+
                 <a class="dropdown-item" href="cart.html">
                   <i class="fa-solid fa-cart-shopping"> Carrito</i>
                 </a>
@@ -98,22 +98,27 @@
             </div>
           </div>
 
-          <div id="productinfo" class="col-lg-4 col-md-12">
-            <div class="row mx-3 card card-body text card-buy border border-1 bgtext">
+          <div id="productinfo" class="col-lg-4 col-md-12 ">
+            <div class="row mx-3 card card-body shadow-lg text card-buy border-2  bgtext">
               <div id="container" class="mx-3 bgtext">
               </div>
               <div class="d-grid gap-2 d-md-block">
-                <button class="btn btn-primary" type="button">Comprar</button>
-                <button class="btn btn-success" id="addtocart" type="button">Agregar al carrito</button>
+                <button class="btn btn-success btn-sm my-3" id="purch" type="button">Comprar</button>
+                <button class="btn btn-primary btn-sm my-3" id="addtocart" type="button">Agregar al carrito <svg
+                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart2"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                  </svg></button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="row text mx-auto col-md-12 col-lg-4 border mx-3 my-3 p-3">
+      <div class="row border-0 text mx-auto col-md-12 col-lg-4 border mx-3 my-3 p-3">
 
-        <h1 class="badge fs-1 text">Productos relacionados</h1>
+        <h3 class="badge text-lg-center fs-2 text">Productos relacionados</h3>
 
 
         <div id="carousel2div">
@@ -138,7 +143,7 @@
       <div class="card">
         <div class="card-body">
           <blockquote class="blockquote mb-0">
-            <label for="">Agregar comentario.</label>
+            <label class="text-decoration-underline my-2">Agregar comentario</label>
             <div class="rating" id="stars">
               <div id="estrellas">
                 <span class="fa fa-star star" score="1"></span>
@@ -148,12 +153,12 @@
                 <span class="fa fa-star star" score="5"></span>
               </div>
             </div>
-            <input type="text" id="commenttext" placeholder="Ingresa un comentario...">
-            <button id="btncommenting" class="btn btn-primary">Enviar</button>
+            <input class="btn-sm my-2" type="text" id="commenttext" placeholder="Ingresa un comentario...">
+            <button id="btncommenting" class="btn btn-primary btn-sm">Enviar</button>
         </div>
 
         <div class="card-header">
-          <h3>Comentarios.</h3>
+          <h3 class="blockquote"><strong>Comentarios</strong></h3>
         </div>
 
         <div id="commentsdiv">
@@ -165,7 +170,8 @@
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      <p class="text-center">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/"
+          target="_blank">Jovenes a Programar</a>
       </p>
     </div>
   </footer>
@@ -186,5 +192,3 @@
   <script src="js/profile-menu.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
 </body>
-
-</html>

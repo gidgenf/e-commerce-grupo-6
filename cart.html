@@ -5,59 +5,129 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+
+      <div class="collapse navbar-collapse order-lg-last" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
 
+          <div class="dropdown nav-item order-lg-last aling item center">
+            <a class="btn btn-dark dropdown-toggle" id="usuario" href="dropdownmenu" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-user">Usuario</i>
+            </a>
+
+            <ul id="dropdownmenu" class="dropdown-menu aling-text dropdown-menu-dark">
+              <a class="dropdown-item" href="my-profile.html">
+                <i class="fa-solid fa-user"> Mi perfil</i>
+              </a>
+              <li>
+
+                <a class="dropdown-item" href="cart.html">
+                  <i class="fa-solid fa-cart-shopping"> Carrito</i>
+                </a>
+              </li>
+              <div class="row">
+                <li class="dropdown-item col col-4" id="boxButton">
+
+                </li>
+              </div>
+              <li>
+                <a class="dropdown-item" type="button" data-tooltip="Cerrar Sesion" id="cerrarSesion">
+                  <i class="fa-solid fa-arrow-right-from-bracket"> Cerrar sesion</i>
+                </a>
+              </li>
+            </ul>
+          </div>
+
           <li class="nav-item">
-            <a class="nav-link" href="index.html" data-tooltip="Inicio"> <i class="fa-solid fa-house"></i> </a>
+            <a class="nav-link" href="index.html" data-tooltip="Inicio"> <i class="fa-solid fa-house"> Inicio</i> </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="categories.html" data-tooltip="Categoria"> <i class="fa-solid fa-list"></i></a>
+            <a class="nav-link" href="categories.html" data-tooltip="Categoria"> <i class="fa-solid fa-list">
+                Categorias</i></a>
           </li>
 
           <li class="barra nav-item">
-            <a class="nav-link" href="sell.html" data-tooltip="Vender"> <i class="fa-solid fa-cart-shopping"></i> </a>
+            <a class="nav-link" href="sell.html" data-tooltip="Vender"> <i class="fa-solid fa-cart-shopping"> Vender
+                productos</i> </a>
           </li>
-          <input type="search" placeholder="Busca tu articulo aquí..." id="busqueda">
-          <div class="dropdown nav-item">
-               <a class="btn btn-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa-solid fa-user"></i>
-               </a>
 
-                <ul class="dropdown-menu aling-text dropdown-menu-dark">
-                <li class="dropdown-item"  id="usuario">
-                <i class="fa-solid fa-user"></i>
-               </li>
-               <li><a class="dropdown-item" href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-              <li><a class="nav-link dropdown-item" type="button" data-tooltip="Cerrar Sesion" id="cerrarSesion"> <i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
-              <li class="dropdown-item"  id="boxButton"></li>
-            </ul>
-           </div>
+          <form class="d-flex order-lg-0">
+            <input type="search" class="form-control me-2" placeholder="Busca tu artículo aquí..." id="busqueda">
+          </form>
+
         </ul>
       </div>
     </div>
     </div>
   </nav>
-  <div class="mini" id="containerSearch"></div>
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+  <div  id="containerSearch"></div>
+  <main class="col-md-6  col-lg-12 col-sm-12">
+    <div class="text-center text p-4">
+      <h2>Carrito de compras</h2>
+    </div>
+    <div class="d-flex justify-content-center mt-5">
+      <button class="btn m-2 btn-success">comprar</button>
+    <button class="btn m-2 btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">direccion del envio</button>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasRightLabel">direccion del envio</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">ciudad</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">barrio</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">calle</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">telefono</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">comentario</label>
+    </div>
+    <button type="button" class="btn btn-primary" data-bs-dismiss="offcanvas" aria-label="Close">continuar...</button>
+  </div>
+</div>
+    <div class="dropdown-center m-2">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      opciones de envio
+      </button>
+      <ul class="dropdown-menu">
+        <li><input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" checked>
+        <label class="form-check-label" for="firstRadio">premium 2 a 5 dias (17%)</label></li>
+        <li><input class="form-check-input me-1" type="radio" name="listGroupRadio" value=""  checked>
+        <label class="form-check-label" for="firstRadio">express 5 a 8 dias (7%)</label></li>
+        <li><input class="form-check-input me-1" type="radio" name="listGroupRadio" value=""  checked>
+        <label class="form-check-label" for="firstRadio">standard 8 a 12 dias (5%) </label></li>
+      </ul>
+  </div>
+    </div>
+    <div id="cart" class="card border-0 bg-transparent d-flex justify-content-center container m-5">
     </div>
   </main>
   <footer class="text-muted">
@@ -79,6 +149,8 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/night.js"></script>
+  <script src="js/search.js"></script>
 </body>
 
 </html>
