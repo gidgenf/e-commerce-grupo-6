@@ -31,13 +31,14 @@ function showarticles(articles) {
    <h5 class="float-end card-text">
     <button onclick="changeQuantity(${element.id}, false)" type="button" class="btn btn-danger btn-sm">Disminuir</button>
     <button onclick="changeQuantity(${element.id}, true)" type="button" class="btn btn-primary btn-sm">Aumentar</button>
+    <button onclick="removeArticle(${element.id})" type="button" class="btn btn-danger">Eliminar</button>
 </h5>
 </div>
 </div>`
+ });
 
+    const newarticles= articles
 
-
-    });
 }
 function changeQuantity(id, value) {
     let product = articles[0].find(item => item.id === id);
@@ -50,6 +51,11 @@ function changeQuantity(id, value) {
     }
     showarticles(articles);
 }
+
+function removeArticle(id) {
+    articles[0] = articles[0].filter((item) => item.id !== id);
+    showarticles(articles);
+  }
 
 
 
