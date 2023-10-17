@@ -24,7 +24,7 @@ function showarticles(articles) {
         cart.innerHTML += `
                 <div class="card m-3 shadow">
   <div class="card-header">
- <h5 class="float-end card-text" onclick="reloco()">cantidad:<span class="badge bg-primary rounded-pill">${element.count}</span></h5>
+ <h5 class="float-end card-text">cantidad:<span class="badge bg-primary rounded-pill">${element.count}</span></h5>
  <h3 class="card-title">${element.name}</h3>
   </div>
   <div class="card-body">
@@ -55,11 +55,13 @@ function changeQuantity(id, value) {
 }
 
 function showMoney(articles){
+    let valorActivo = document.querySelector('input[name="listGroupRadio"]:checked').value;
     let totalCost = 0;
     cardMoney.innerHTML=``
   articles[0].forEach(element => {  
     totalCost += element.unitCost * element.count;
 });
+totalCost= totalCost- totalCost * (valorActivo*0.01);
 cardMoney.innerHTML=`
 <div class="row">
   <div class="col-sm-6">
