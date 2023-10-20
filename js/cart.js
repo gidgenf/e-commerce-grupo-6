@@ -80,3 +80,32 @@ cardMoney.innerHTML=`
   </div>`
 }
 
+
+let creditCardForm = document.getElementById('creditCardForm');
+let bankTransferForm = document.getElementById('bankTransferForm');
+
+let paymentModalButton = document.getElementById('paymentModalButton');
+paymentModalButton.addEventListener('click', function () {
+    creditCardForm.style.display = 'block';
+    bankTransferForm.style.display = 'none';
+});
+
+let creditCardOption = document.getElementById('creditCardOption');
+let bankTransferOption = document.getElementById('bankTransferOption');
+
+creditCardOption.addEventListener('change', function () {
+    if (creditCardOption.checked) {
+        creditCardForm.style.display = 'block';
+        bankTransferForm.style.display = 'none';
+    }
+});
+
+bankTransferOption.addEventListener('change', function () {
+    if (bankTransferOption.checked) {
+        bankTransferForm.style.display = 'block';
+        creditCardForm.style.display = 'none';
+    }
+});
+
+
+
