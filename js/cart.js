@@ -35,11 +35,12 @@ function showarticles(articles) {
 </h5>
 </div>
 </div>`
- });
+    });
 
-    const newarticles= articles
+    const newarticles = articles
 
 }
+
 function changeQuantity(id, value) {
     let product = articles[0].find(item => item.id === id);
     if (value) {
@@ -53,9 +54,29 @@ function changeQuantity(id, value) {
 }
 
 function removeArticle(id) {
+
     articles[0] = articles[0].filter((item) => item.id !== id);
+    removeArticleInLocalStorage(id)
     showarticles(articles);
-  }
+}
+
+
+function removeArticleInLocalStorage(id) { //funcion para remover del carrito el
+
+    let usercart = JSON.parse(localStorage.getItem('usercart')) || []; //se trae el carrito del local storage o una lista vacia
+    const productexist = usercart.find(item => item.id === id); //se busca el producto en el carrito
+    if (productexist) { //si el producto existe se lo elimina del carrito
+        usercart.splice(productexist)
+    } else {
+
+    }
+
+    localStorage.setItem('usercart', JSON.stringify(usercart));  //se envia el carrito con los nuevos productos al local storage
+}
+
+
+
+
 
 
 
