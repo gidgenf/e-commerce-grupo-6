@@ -26,23 +26,21 @@ function showarticles(articles) {
     cart.innerHTML = ``
     articles[0].forEach(element => {
         cart.innerHTML += `
+            <div>
                 <div class="card m-3 shadow">
-  <div class="card-header">
- <h5 class="float-end card-text">cantidad:<span class="badge bg-primary rounded-pill">${element.count}</span></h5>
- <h3 class="card-title">${element.name}</h3>
-  </div>
-  <div class="card-body">
-    <img src="${element.image}" style="width: 10rem;" >
-   <p class="btn btn-success position-absolute bottom-0 m-3 end-0" >Total ${element.currency}${element.unitCost * element.count}</p>
-   <h5 class="float-end card-text">
-    <button onclick="changeQuantity(${element.id}, false)" type="button" class="btn btn-danger btn-sm">Disminuir</button>
-    <button onclick="changeQuantity(${element.id}, true)" type="button" class="btn btn-primary btn-sm">Aumentar</button>
-</h5>
-</div>
-</div>`
-
-
-
+                    <div class="card-header">
+                    <h5 class="float-end card-text">cantidad:<span class="badge bg-primary rounded-pill">${element.count}</span></h5>
+                    <h3 class="card-title">${element.name}</h3>
+                </div>
+                <div class="card-body">
+                    <img src="${element.image}" style="width: 10rem;" >
+                    <p class="btn btn-success position-absolute bottom-0 m-3 end-0" >Total ${element.currency}${element.unitCost * element.count}</p>
+                    <h5 class="float-end card-text">
+                    <button onclick="changeQuantity(${element.id}, false)" type="button" class="btn btn-danger btn-sm">Disminuir</button>
+                    <button onclick="changeQuantity(${element.id}, true)" type="button" class="btn btn-primary btn-sm">Aumentar</button>
+                    </h5>
+                </div>
+            </div>`
     });
 }
 function changeQuantity(id, value) {
@@ -84,8 +82,8 @@ function showMoney(articles) {
 
 let creditCardForm = document.getElementById('creditCardForm');
 let bankTransferForm = document.getElementById('bankTransferForm');
-
 let paymentModalButton = document.getElementById('paymentModalButton');
+
 paymentModalButton.addEventListener('click', function () {
     creditCardForm.style.display = 'block';
     bankTransferForm.style.display = 'none';
