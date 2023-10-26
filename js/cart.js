@@ -35,10 +35,9 @@ function showarticles(articles) {
 </div>
 </div>`
 
-
-
     });
 }
+
 function changeQuantity(id, value) {
     let product = articles[0].find(item => item.id === id);
     if (value) {
