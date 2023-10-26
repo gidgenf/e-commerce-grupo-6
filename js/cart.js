@@ -49,13 +49,10 @@ function changeQuantity(id, value) {
     let product = articles[0].find(item => item.id === id);
     if (value) {
         product.count++;
+        addToCart(id);
     }else if(product.count > 0) {
             product.count--;
-    }
-    if(product.count === 0){
-        removeArticleInLocalStorage(id);
-    }else{
-        addtocart(id)
+            restToCart(id);
     }
 
     showarticles(articles);
@@ -102,8 +99,18 @@ function removeArticleInLocalStorage(id) { //funcion para remover del carrito el
 
     localStorage.setItem('usercart', JSON.stringify(usercart));  //se envia el carrito con los nuevos productos al local storage
 }
+function restToCart(id) {
+        
+    let usercart = JSON.parse(localStorage.getItem('usercart')) || [];  //se trae el carrito del local storage o una lista vacia
 
-function addtocart(id) {
+    const productexist = usercart.find(item => item.id === id);  //se busca el producto en el carrito
+    if (productexist) {  //si el producto existe en el carrito, se eleva su contador en 1
+        productexist.count--;
+         localStorage.setItem('usercart', JSON.stringify(usercart));
+    }
+}
+
+function addToCart(id) {
         
     let usercart = JSON.parse(localStorage.getItem('usercart')) || [];  //se trae el carrito del local storage o una lista vacia
 
