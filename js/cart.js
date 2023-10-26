@@ -19,9 +19,9 @@ fetch(URLidcart)
     })
     .catch(error => console.error('Error:', error));
 
- changespurch.addEventListener('click',()=>{
-        showMoney(articles);
-    })
+changespurch.addEventListener('click', () => {
+    showMoney(articles);
+})
 function showarticles(articles) {
     cart.innerHTML = ``
     articles[0].forEach(element => {
@@ -58,26 +58,27 @@ function changeQuantity(id, value) {
     showMoney(articles)
 }
 
-function showMoney(articles){
+function showMoney(articles) {
     let valorActivo = document.querySelector('input[name="listGroupRadio"]:checked').value;
     let Cost = 0;
-    cardMoney.innerHTML=``
-  articles[0].forEach(element => {  
-    Cost += element.unitCost * element.count;
-});
-let costoDeEnvio =Cost * (valorActivo*0.01)
-totalCost= Cost+ costoDeEnvio;
-cardMoney.innerHTML=`
+    cardMoney.innerHTML = ``
+    articles[0].forEach(element => {
+        Cost += element.unitCost * element.count;
+    });
+
+    let costoDeEnvio = Cost * (valorActivo * 0.01)
+    totalCost = Cost + costoDeEnvio;
+    cardMoney.innerHTML = `
 <div class="row">
-  <div class="col-sm-6">
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-      <h4>costo de envio  ${costoDeEnvio}<h4>
-      <h4>valor de los objetos ${Cost}<h4>
-    <h5 class="card-title">total a pagar ${totalCost}</h5>
-      </div>
+    <div class="col-sm-6">
+        <div class="card" style="width: 18rem;">
+            <h1 class="">Costos</h1>
+        <div class="card-body">
+        <h4 class="border p-3">costo de envio  ${costoDeEnvio}<h4>
+        <h4 class="border p-3">valor de los objetos ${Cost}<h4>
+        <h5 class="border p-3">total a pagar ${totalCost}</h5>
     </div>
-  </div>`
+</div>`
 }
 
 
