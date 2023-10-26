@@ -48,21 +48,27 @@ function showarticles(articles) {
 function changeQuantity(id, value) {
     let product = articles[0].find(item => item.id === id);
     if (value) {
-
-        addtocart(id)
-    } else {
-        if (product.count > 0) {
+        product.count++;
+    }else if(product.count > 0) {
             product.count--;
-        }
-        if (product.count === 0) {
-            removeArticleInLocalStorage(id)
-        }
-
     }
+    if(product.count === 0){
+        removeArticleInLocalStorage(id);
+    }else if(!value){
+    resttocart(id)
+    }else{
+        addtocart(id); 
+    }
+
     showarticles(articles);
     showMoney(articles)
 }
-
+function resttocart(id) {
+    let usercart = JSON.parse(localStorage.getItem('usercart')) || []; 
+    const productexist = usercart.find(item => item.id === id);
+        productexist.count--;
+        localStorage.setItem('usercart', JSON.stringify(usercart)); 
+}
 function showMoney(articles) {
     let valorActivo = document.querySelector('input[name="listGroupRadio"]:checked').value;
     let Cost = 0;
@@ -99,9 +105,7 @@ function removeArticleInLocalStorage(id) { //funcion para remover del carrito el
     const productexist = usercart.find(item => item.id === id); //se busca el producto en el carrito
     if (productexist) { //si el producto existe se lo elimina del carrito
         usercart.splice(productexist, 1)
-    } else {
-
-    }
+    } 
 
     localStorage.setItem('usercart', JSON.stringify(usercart));  //se envia el carrito con los nuevos productos al local storage
 }
@@ -110,7 +114,7 @@ function addtocart(id) {
         
     let usercart = JSON.parse(localStorage.getItem('usercart')) || [];  //se trae el carrito del local storage o una lista vacia
 
-    const productexist = usercart.find(item => item.id === productId.id);  //se busca el producto en el carrito
+    const productexist = usercart.find(item => item.id === id);  //se busca el producto en el carrito
     if (productexist) {  //si el producto existe en el carrito, se eleva su contador en 1
         productexist.count++;
     } else {
