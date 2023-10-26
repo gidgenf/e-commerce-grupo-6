@@ -54,21 +54,14 @@ function changeQuantity(id, value) {
     }
     if(product.count === 0){
         removeArticleInLocalStorage(id);
-    }else if(!value){
-    resttocart(id)
     }else{
-        addtocart(id); 
+        addtocart(id)
     }
 
     showarticles(articles);
     showMoney(articles)
 }
-function resttocart(id) {
-    let usercart = JSON.parse(localStorage.getItem('usercart')) || []; 
-    const productexist = usercart.find(item => item.id === id);
-        productexist.count--;
-        localStorage.setItem('usercart', JSON.stringify(usercart)); 
-}
+
 function showMoney(articles) {
     let valorActivo = document.querySelector('input[name="listGroupRadio"]:checked').value;
     let Cost = 0;
