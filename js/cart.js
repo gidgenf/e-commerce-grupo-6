@@ -33,7 +33,7 @@ function showarticles(articles) {
             </div>
         <div class="card-body">
             <img src="${element.image}" style="width: 10rem;" >
-            <p class="btn btn-success position-absolute bottom-0 m-3 end-0" >Total ${element.currency}${element.unitCost * element.count}</p>
+            <p class="btn btn-success position-absolute bottom-0 m-3 end-0" >Total ${element.currency} ${element.unitCost * element.count}</p>
             <h5 class="float-end card-text">
             <button onclick="changeQuantity(${element.id}, false)" type="button" class="btn btn-danger btn-sm">Disminuir</button>
             <button onclick="changeQuantity(${element.id}, true)" type="button" class="btn btn-primary btn-sm">Aumentar</button>
