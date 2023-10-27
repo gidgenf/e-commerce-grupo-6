@@ -91,32 +91,38 @@ function showMoney(articles) {
 </div>`
 }
 
-
 let creditCardForm = document.getElementById('creditCardForm');
 let bankTransferForm = document.getElementById('bankTransferForm');
-let paymentModalButton = document.getElementById('paymentModalButton');
-
-paymentModalButton.addEventListener('click', function () {
-    creditCardForm.style.display = 'block';
-    bankTransferForm.style.display = 'none';
-});
-
 let creditCardOption = document.getElementById('creditCardOption');
 let bankTransferOption = document.getElementById('bankTransferOption');
 
 creditCardOption.addEventListener('change', function () {
-    if (creditCardOption.checked) {
-        creditCardForm.style.display = 'block';
-        bankTransferForm.style.display = 'none';
-    }
+    toggleRequireAttributes();
+    creditCardForm.style.display = 'block';
+    bankTransferForm.style.display = 'none';
 });
 
 bankTransferOption.addEventListener('change', function () {
-    if (bankTransferOption.checked) {
-        bankTransferForm.style.display = 'block';
-        creditCardForm.style.display = 'none';
-    }
+    toggleRequireAttributes();
+    creditCardForm.style.display = 'none';
+    bankTransferForm.style.display = 'block';
 });
+
+function toggleRequireAttributes() {
+    const numeroTarjeta = document.getElementById('numeroTarjeta');
+    const codigoSeguridad = document.getElementById('codigoSeguridad');
+    const vencimiento = document.getElementById('vencimiento');
+    const numeroCuenta = document.getElementById('numeroCuenta');
+
+    const isBankTransfer = bankTransferOption.checked;
+
+    numeroTarjeta.required = !isBankTransfer;
+    codigoSeguridad.required = !isBankTransfer;
+    vencimiento.required = !isBankTransfer;
+    numeroCuenta.required = isBankTransfer;
+}
+
+
 
 
 
@@ -125,6 +131,7 @@ function removeArticle(id) {
     articles[0] = articles[0].filter((item) => item.id !== id);
     removeArticleInLocalStorage(id)
     showarticles(articles);
+    showMoney(articles);
 }
 
 
@@ -161,6 +168,7 @@ function addtocart(id) {
 
     console.log(localStorage.getItem('usercart'));
 }
+
 
 (() => {
     'use strict'
