@@ -50,9 +50,9 @@ function changeQuantity(id, value) {
     if (value) {
         product.count++;
         addToCart(id);
-    }else if(product.count > 0) {
-            product.count--;
-            restToCart(id);
+    } else if (product.count > 0) {
+        product.count--;
+        restToCart(id);
     }
 
     showarticles(articles);
@@ -111,9 +111,9 @@ function toggleRequireAttributes() {
     vencimiento.required = !isBankTransfer;
     numeroCuenta.required = isBankTransfer;
 
-    numeroTarjeta.disabled  = isBankTransfer;
-    codigoSeguridad.disabled  = isBankTransfer;
-    vencimiento.disabled  = isBankTransfer;
+    numeroTarjeta.disabled = isBankTransfer;
+    codigoSeguridad.disabled = isBankTransfer;
+    vencimiento.disabled = isBankTransfer;
 }
 
 
@@ -135,23 +135,23 @@ function removeArticleInLocalStorage(id) { //funcion para remover del carrito el
     const productexist = usercart.find(item => item.id === id); //se busca el producto en el carrito
     if (productexist) { //si el producto existe se lo elimina del carrito
         usercart.splice(productexist, 1)
-    } 
+    }
 
     localStorage.setItem('usercart', JSON.stringify(usercart));  //se envia el carrito con los nuevos productos al local storage
 }
 function restToCart(id) {
-        
+
     let usercart = JSON.parse(localStorage.getItem('usercart')) || [];  //se trae el carrito del local storage o una lista vacia
 
     const productexist = usercart.find(item => item.id === id);  //se busca el producto en el carrito
     if (productexist) {  //si el producto existe en el carrito, se eleva su contador en 1
         productexist.count--;
-         localStorage.setItem('usercart', JSON.stringify(usercart));
+        localStorage.setItem('usercart', JSON.stringify(usercart));
     }
 }
 
 function addToCart(id) {
-        
+
     let usercart = JSON.parse(localStorage.getItem('usercart')) || [];  //se trae el carrito del local storage o una lista vacia
 
     const productexist = usercart.find(item => item.id === id);  //se busca el producto en el carrito
@@ -176,18 +176,18 @@ function addToCart(id) {
 
 (() => {
     'use strict'
-  
+
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
     const forms = document.querySelectorAll('.needs-validation')
-  
+
 
     Array.from(forms).forEach(form => {
-      form.addEventListener('submit', event => {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-        form.classList.add('was-validated')
-      }, false)
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
     })
-  })()
+})()
