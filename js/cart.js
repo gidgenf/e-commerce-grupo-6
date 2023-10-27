@@ -54,6 +54,7 @@ function changeQuantity(id, value) {
             product.count--;
             restToCart(id);
     }
+
     showarticles(articles);
     showMoney(articles)
 }
