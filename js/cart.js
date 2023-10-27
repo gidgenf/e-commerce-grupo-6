@@ -70,16 +70,45 @@ function showMoney(articles) {
     totalCost = Cost + costoDeEnvio;
     cardMoney.innerHTML = `
 <div class="row">
-  <div class="col-sm-6">
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-      <h4>costo de envio  ${costoDeEnvio}<h4>
-      <h4>valor de los objetos ${Cost}<h4>
-    <h5 class="card-title">total a pagar ${totalCost}</h5>
-      </div>
+    <div class="col-sm-6">
+        <div class="card" style="width: 18rem;">
+            <h1 class="">Costos</h1>
+        <div class="card-body">
+        <h4 class="border p-3">costo de envio  ${costoDeEnvio}<h4>
+        <h4 class="border p-3">valor de los objetos ${Cost}<h4>
+        <h5 class="border p-3">total a pagar ${totalCost}</h5>
     </div>
-  </div>`
+</div>`
 }
+
+
+let creditCardForm = document.getElementById('creditCardForm');
+let bankTransferForm = document.getElementById('bankTransferForm');
+let paymentModalButton = document.getElementById('paymentModalButton');
+
+paymentModalButton.addEventListener('click', function () {
+    creditCardForm.style.display = 'block';
+    bankTransferForm.style.display = 'none';
+});
+
+let creditCardOption = document.getElementById('creditCardOption');
+let bankTransferOption = document.getElementById('bankTransferOption');
+
+creditCardOption.addEventListener('change', function () {
+    if (creditCardOption.checked) {
+        creditCardForm.style.display = 'block';
+        bankTransferForm.style.display = 'none';
+    }
+});
+
+bankTransferOption.addEventListener('change', function () {
+    if (bankTransferOption.checked) {
+        bankTransferForm.style.display = 'block';
+        creditCardForm.style.display = 'none';
+    }
+});
+
+
 
 function removeArticle(id) {
 
@@ -132,3 +161,4 @@ function addToCart(id) {
 
     console.log(localStorage.getItem('usercart'));
 }
+
