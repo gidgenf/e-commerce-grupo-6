@@ -76,7 +76,7 @@ function showMoney(articles) {
     articles[0].forEach(element => {
         Cost += element.unitCost * element.count;
     });
-    let costoDeEnvio = Cost * (valorActivo * 0.01)
+    let costoDeEnvio = Cost * (valorActivo * 0.01);
     totalCost = Cost + costoDeEnvio;
     cardMoney.innerHTML = `
 <div class="row">
@@ -85,7 +85,7 @@ function showMoney(articles) {
             <h1 class="">Costos</h1>
         <div class="card-body">
         <h4 class="border p-3">costo de envio  ${costoDeEnvio}<h4>
-        <h4 class="border p-3">valor de los objetos ${Cost}<h4>
+        <h4 class="border p-3" >valor de los objetos ${Cost}<h4>
         <h5 class="border p-3">total a pagar ${totalCost}</h5>
     </div>
 </div>`
@@ -120,6 +120,10 @@ function toggleRequireAttributes() {
     codigoSeguridad.required = !isBankTransfer;
     vencimiento.required = !isBankTransfer;
     numeroCuenta.required = isBankTransfer;
+
+    numeroTarjeta.disabled  = isBankTransfer;
+    codigoSeguridad.disabled  = isBankTransfer;
+    vencimiento.disabled  = isBankTransfer;
 }
 
 
@@ -176,14 +180,13 @@ function addtocart(id) {
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
     const forms = document.querySelectorAll('.needs-validation')
   
-    // Loop over them and prevent submission
+
     Array.from(forms).forEach(form => {
       form.addEventListener('submit', event => {
         if (!form.checkValidity()) {
           event.preventDefault()
           event.stopPropagation()
         }
-  
         form.classList.add('was-validated')
       }, false)
     })

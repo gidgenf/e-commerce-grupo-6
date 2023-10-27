@@ -188,14 +188,17 @@
                           <form id="formularioTransferenciaBancaria" style="display: none;">
                             <div class="mb-3">
                               <label for="numeroCuenta" class="form-label">Número de Cuenta</label>
-                              <input type="text" class="form-control" id="numeroCuenta" >
+                              <input type="text" pattern="[0-9]{7,}" class="form-control" id="numeroCuenta" >
+                              <div class="invalid-feedback">
+                                ingrese 7 digitos
+                              </div>
                             </div>
                           </form>
                         </form>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary" id="confirmPaymentButton">Confirmar Pago</button>
+                        <button type="submit" class="btn btn-primary" id="confirmPaymentButton">Confirmar Pago</button>
                       </div>
                     </div>
                   </div>
@@ -254,8 +257,7 @@
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" id="confirmPaymentButton">Confirmar Pago</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Confirmar forma de pago</button>
             </div>
           </div>
         </div>
