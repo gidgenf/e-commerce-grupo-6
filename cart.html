@@ -159,6 +159,7 @@
                         <h5 class="modal-title">Forma de Pago</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                       </div>
+                      
                       <div class="modal-body">
                         <div class="form-check">
                           <input class="form-check-input" type="radio" name="paymentMethod" id="creditCardOption" checked>
@@ -250,8 +251,10 @@
               <form id="bankTransferForm" style="display: none;">
                 <form id="formularioTransferenciaBancaria" style="display: none;">
                   <div class="mb-3">
-                    <label for="numeroCuenta" class="form-label">Número de Cuenta</label>
-                    <input type="text" class="form-control" id="numeroCuenta" required>
+                    <input type="text" pattern="[0-9]{7,}" class="form-control" id="numeroCuenta" >
+                    <div class="invalid-feedback">
+                      ingrese 7 digitos
+                    </div>
                   </div>
                 </form>
               </form>
