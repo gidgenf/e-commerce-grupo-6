@@ -116,157 +116,83 @@
 
       <div class="container">
         <div class="row">
-          <div class="row col-4" id="cardMoney">
-
+          <div class="col-4" id="cardMoney">
           </div>
-
+      
           <div class="container col-8 border">
-
-            <h1>
-              Dirección de envío
-            </h1>
-
+            <h1>Dirección de envío</h1>
+      
             <form class="row g-3 needs-validation" novalidate>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Calle</span>
-                <input type="text" class="form-control" id="validationCustom02" value="" required aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <input type="text" class="form-control" id="calle" value="" required aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
               </div>
-              <div class="valid-feedback">
-                correcto
+              <div class="valid-feedback">Correcto</div>
+      
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Número</span>
+                <input type="text" class="form-control" id="numero" value="" required aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
               </div>
-                <div class="input-group mb-3">
-                  <span class="input-group-text" id="inputGroup-sizing-default">Numero</span>
-                  <input type="text" class="form-control" id="validationCustom02" value="" required aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
-                <div class="valid-feedback">
-                  correcto
-                </div>
-                <div class="input-group mb-3">
-                  <span class="input-group-text" id="inputGroup-sizing-default">Esquina</span>
-                  <input type="text" class="form-control" id="validationCustom03" value="" required aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
-                <div class="valid-feedback">
-                  correcto
-                </div>
-                
-                <div class="col-12">
-                  <button class="btn btn-lg btn-primary" type="submit">finalizar compra</button>
-                </div>
-                <div class="modal fade" id="paymentModal">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title">Forma de Pago</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                      </div>
-                      
-                      <div class="modal-body">
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="paymentMethod" id="creditCardOption" checked>
-                          <label class="form-check-label" for="creditCardOption">Tarjeta de Crédito</label>
-                          <form id="creditCardForm">
-                            <form id="formularioTarjetaCredito">
-                              <div class="mb-3">
-                                <label for="numeroTarjeta" class="form-label">Número de Tarjeta</label>
-                                <input type="text" class="form-control" id="numeroTarjeta" required>
-                              </div>
-                              <div class="mb-3">
-                                <label for="codigoSeguridad" class="form-label">Código de Seguridad</label>
-                                <input type="text" class="form-control" id="codigoSeguridad" required>
-                              </div>
-                              <div class="mb-3">
-                                <label for="vencimiento" class="form-label">Vencimiento (MM/AA)</label>
-                                <input type="text" class="form-control" id="vencimiento" required>
-                              </div>
-                            </form>
-                          </form>
+              <div class="valid-feedback">Correcto</div>
+      
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Esquina</span>
+                <input type="text" class="form-control" id="esquina" value="" required aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              </div>
+              <div class="valid-feedback">Correcto</div>
+      
+              <button class="btn m-2 btn-primary mb-3" id="paymentModalButton" data-bs-toggle="modal" data-bs-target="#paymentModal">
+                Seleccionar Forma de Pago
+              </button>
+              <div class="col-lg-6">
+                <button class="btn btn-lg mb-3 btn-primary" type="submit">Finalizar compra</button>
+              </div>   
+              <div class="modal fade" id="paymentModal">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Forma de Pago</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="paymentMethod" id="creditCardOption" checked>
+                        <label class="form-check-label" for="creditCardOption">Tarjeta de Crédito</label>
+                        <div class="mb-3">
+                          <label for="numeroTarjeta" class="form-label">Número de Tarjeta</label>
+                          <input type="text" class="form-control" id="numeroTarjeta" required>
                         </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio"  name="paymentMethod" id="bankTransferOption">
-                          <label class="form-check-label" for="bankTransferOption">Transferencia Bancaria</label>
+                        <div class="mb-3">
+                          <label for="codigoSeguridad" class="form-label">Código de Seguridad</label>
+                          <input type="text" class="form-control" id="codigoSeguridad" required>
                         </div>
-                        <form id="bankTransferForm" style="display: none;">
-                          <form id="formularioTransferenciaBancaria" style="display: none;">
-                            <div class="mb-3">
-                              <label for="numeroCuenta" class="form-label">Número de Cuenta</label>
-                              <input type="text" pattern="[0-9]{7,}" class="form-control" id="numeroCuenta" >
-                              <div class="invalid-feedback">
-                                ingrese 7 digitos
-                              </div>
-                            </div>
-                          </form>
-                        </form>
+                        <div class="mb-3">
+                          <label for="vencimiento" class="form-label">Vencimiento (MM/AA)</label>
+                          <input type="text" class="form-control" id="vencimiento" required>
+                        </div>
                       </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary" id="confirmPaymentButton">Confirmar Pago</button>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="paymentMethod" id="bankTransferOption">
+                        <label class="form-check-label" for="bankTransferOption">Transferencia Bancaria</label>
+                        <div class="mb-3">
+                          <label for="numeroCuenta" class="form-label">Número de Cuenta</label>
+                          <input type="text" pattern="[0-9]{7,}" class="form-control" id="numeroCuenta">
+                          <div class="invalid-feedback">Ingrese 7 dígitos</div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-              </form>
-          </div>
-        </div>
-        
-      </div>
-
-      <button class="btn m-2 btn-primary mb-3" id="paymentModalButton" data-bs-toggle="modal"
-        data-bs-target="#paymentModal">
-        Seleccionar Forma de Pago
-      </button>
-
-      <div class="modal fade" id="paymentModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Forma de Pago</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="paymentMethod" id="creditCardOption" checked>
-                <label class="form-check-label" for="creditCardOption">Tarjeta de Crédito</label>
-                <form id="creditCardForm">
-                  <form id="formularioTarjetaCredito">
-                    <div class="mb-3">
-                      <label for="numeroTarjeta" class="form-label">Número de Tarjeta</label>
-                      <input type="text" class="form-control" id="numeroTarjeta" required>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     </div>
-                    <div class="mb-3">
-                      <label for="codigoSeguridad" class="form-label">Código de Seguridad</label>
-                      <input type="text" class="form-control" id="codigoSeguridad" required>
-                    </div>
-                    <div class="mb-3">
-                      <label for="vencimiento" class="form-label">Vencimiento (MM/AA)</label>
-                      <input type="text" class="form-control" id="vencimiento" required>
-                    </div>
-                  </form>
-                </form>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="paymentMethod" id="bankTransferOption">
-                <label class="form-check-label" for="bankTransferOption">Transferencia Bancaria</label>
-              </div>
-              <form id="bankTransferForm" style="display: none;">
-                <form id="formularioTransferenciaBancaria" style="display: none;">
-                  <div class="mb-3">
-                    <input type="text" pattern="[0-9]{7,}" class="form-control" id="numeroCuenta" >
-                    <div class="invalid-feedback">
-                      ingrese 7 digitos
-                    </div>
-                  </div>
-                </form>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Confirmar forma de pago</button>
-            </div>
+            </form>
           </div>
         </div>
       </div>
-    </div>
-  </main>
+      
+          </div>
+        </div>
+      </div>
+      
 
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
