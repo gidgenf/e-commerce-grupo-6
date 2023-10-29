@@ -26,9 +26,9 @@ function showarticles(articles) {
     cart.innerHTML = ``
     articles[0].forEach(element => {
         cart.innerHTML += `
-        <div class="container m-3 my-5 shadow">
-            <div class="card-header">
-                <h5 class="float-end card-text">cantidad:<span class="badge bg-primary rounded-pill">${element.count}</span></h5>
+        <div class="container text m-3 my-5 shadow">
+            <div class="text card-header">
+                <h5 class="float-end card-text">cantidad:<span class="badge bg-primary  rounded-pill">${element.count}</span></h5>
                 <h3 class="card-title">${element.name}</h3>
             </div>
         <div class="container">
@@ -176,27 +176,29 @@ function addToCart(id) {
 
     console.log(localStorage.getItem('usercart'));
 }
-
+function hasZeroCount() {
+    const cardCounts = document.querySelectorAll(".cardCount");
+    return Array.from(cardCounts).some(element => element.textContent === '0');
+}
 
 (() => {
     'use strict'
 
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
     const forms = document.querySelectorAll('.needs-validation')
     let alertDanger = document.getElementById('alert-danger')
     let alertSuccess = document.getElementById('alert-success')
     Array.from(forms).forEach(form => {
         form.addEventListener('submit', event => {
-            if (!form.checkValidity()) {
+            if (!form.checkValidity() || (hasZeroCount())) {
                 event.preventDefault()
-                event.stopPropagation()   
-            alertDanger.classList.remove('d-none')
-            setTimeout(()=>{alertDanger.classList.add('d-none');},3000)
+                event.stopPropagation()
+                alertDanger.classList.remove('d-none')
+                setTimeout(() => { alertDanger.classList.add('d-none'); }, 3000)
             }
             form.classList.add('was-validated')
             event.preventDefault()
-           alertSuccess.classList.remove('d-none')
-           setTimeout(()=>{alertSuccess.classList.add('d-none');},3000)
+            alertSuccess.classList.remove('d-none')
+            setTimeout(() => { alertSuccess.classList.add('d-none'); }, 3000)
         }, false)
     })
 })()
