@@ -183,15 +183,20 @@ function addToCart(id) {
 
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
     const forms = document.querySelectorAll('.needs-validation')
-
-
+    let alertDanger = document.getElementById('alert-danger')
+    let alertSuccess = document.getElementById('alert-success')
     Array.from(forms).forEach(form => {
         form.addEventListener('submit', event => {
             if (!form.checkValidity()) {
                 event.preventDefault()
-                event.stopPropagation()
+                event.stopPropagation()   
+            alertDanger.classList.remove('d-none')
+            setTimeout(()=>{alertDanger.classList.add('d-none');},3000)
             }
             form.classList.add('was-validated')
+            event.preventDefault()
+           alertSuccess.classList.remove('d-none')
+           setTimeout(()=>{alertSuccess.classList.add('d-none');},3000)
         }, false)
     })
 })()

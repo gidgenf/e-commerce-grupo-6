@@ -113,6 +113,14 @@
       </div>
 
       <hr>
+      <div class="alert alert-success text-center d-none" id="alert-success" role="alert">
+        !!!La compra fue realizada con exito!!!
+     </div>
+
+      <div class="alert alert-danger text-center d-none" id="alert-danger" role="alert">
+         !!!Falta agregar informacion en el formulario!!!
+      </div>
+
 
       <div class=" text-center container">
         <div class="row align-items-start" >
@@ -131,7 +139,7 @@
       
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Número</span>
-                <input type="text" class="form-control" id="numero" value="" required aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <input type="text" pattern="[0-9]{9,}" class="form-control" id="numero" value="" required aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
               </div>
               <div class="valid-feedback">Correcto</div>
       
