@@ -28,7 +28,7 @@ function showarticles(articles) {
         cart.innerHTML += `
         <div class="container text m-3 my-5 shadow">
             <div class="text card-header">
-                <h5 class="float-end card-text">cantidad:<span class="badge bg-primary  rounded-pill">${element.count}</span></h5>
+                <h5 class="float-end card-text">cantidad:<span class="badge bg-primary cardCount rounded-pill">${element.count}</span></h5>
                 <h3 class="card-title">${element.name}</h3>
             </div>
         <div class="container">
