@@ -26,20 +26,23 @@ function showarticles(articles) {
     cart.innerHTML = ``
     articles[0].forEach(element => {
         cart.innerHTML += `
-        <div class="card m-3 shadow">
+        <div class="container m-3 my-5 shadow">
             <div class="card-header">
-                <h5 class="float-end card-text" onclick="reloco()">cantidad:<span class="badge bg-primary rounded-pill">${element.count}</span></h5>
+                <h5 class="float-end card-text">cantidad:<span class="badge bg-primary rounded-pill">${element.count}</span></h5>
                 <h3 class="card-title">${element.name}</h3>
             </div>
-        <div class="card-body">
-            <img src="${element.image}" style="width: 10rem;" >
-            <p class="btn btn-success position-absolute bottom-0 m-3 end-0" >Total ${element.currency} ${element.unitCost * element.count}</p>
-            <h5 class="float-end card-text">
-            <button onclick="changeQuantity(${element.id}, false)" type="button" class="btn btn-danger btn-sm">Disminuir</button>
-            <button onclick="changeQuantity(${element.id}, true)" type="button" class="btn btn-primary btn-sm">Aumentar</button>
-            <button onclick="removeArticle(${element.id})" type="button" class="btn btn-danger">Eliminar</button>
-            </h5>
-        </div>
+        <div class="container">
+        <div class="row align-items-start">
+            <img src="${element.image}" class="col-lg-3 img-fluid mx-2">
+           
+            <button onclick="changeQuantity(${element.id}, false)" type="button" class="btn m-1 col btn-danger btn-sm">Disminuir</button>
+            <button onclick="changeQuantity(${element.id}, true)" type="button" class="btn m-1  col btn-primary btn-sm">Aumentar</button>
+            <button onclick="removeArticle(${element.id})" type="button" class="btn btn-danger m-3 mt-1 col btn-sm">Eliminar</button>
+            <div class="container text-center">
+            <p class="btn float-end col btn-success">Total ${element.currency} ${element.unitCost * element.count}</p>
+        </div>  
+            </div>
+            </div>
     </div>`
     });
 
@@ -70,8 +73,8 @@ function showMoney(articles) {
     totalCost = Cost + costoDeEnvio;
     cardMoney.innerHTML = `
 <div class="row">
-    <div class="col-sm-6">
-        <div class="card" style="width: 18rem;">
+    <div class="col-lg-12">
+        <div class="card">
             <h1 class="">Costos</h1>
         <div class="card-body">
         <h4 class="border p-3">costo de envio  ${costoDeEnvio}<h4>
@@ -114,6 +117,7 @@ function toggleRequireAttributes() {
     numeroTarjeta.disabled = isBankTransfer;
     codigoSeguridad.disabled = isBankTransfer;
     vencimiento.disabled = isBankTransfer;
+    numeroCuenta.disabled = !isBankTransfer;
 }
 
 

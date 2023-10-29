@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 id: product.id,
                 name: product.name,
                 count: 1,
-                unitCost: (product.currency==="USD")? product.cost:product.cost/40,
+                unitCost: (product.currency==="USD")? product.cost: Math.round(product.cost/40),
                 currency: "USD",
                 image: product.images[0]
             });
