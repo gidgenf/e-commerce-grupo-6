@@ -73,84 +73,135 @@
         </ul>
       </div>
     </div>
-    </div>
   </nav>
-  <div  id="containerSearch"></div>
-  <main class="col-md-6  col-lg-12 col-sm-12">
+
+  <div id="containerSearch"></div>
+
+  <main class="container">
+
     <div class="text-center text p-4">
-      <h2>Carrito de compras</h2>
+      <h2 class="text" >Carrito de compras</h2>
     </div>
-<div class="row my-3 mx-3">
-  <div class="row">
-    <div id="cart" class="col-lg-8 col-md-12">
-  </div>
-  </div>
-  <div class="col-lg-4 col-md-12">
-  <div class="dropdown-center m-2">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    opciones de envio
-    </button>
-    <ul class="dropdown-menu" id="changespurch">
-      <li><input class="form-check-input me-1" type="radio" name="listGroupRadio" value="17" checked>
-      <label class="form-check-label" for="firstRadio">premium 2 a 5 dias (17%)</label></li>
-      <li><input class="form-check-input me-1" type="radio" name="listGroupRadio" value="7"  checked>
-      <label class="form-check-label" for="firstRadio">express 5 a 8 dias (7%)</label></li>
-      <li><input class="form-check-input me-1" type="radio" name="listGroupRadio" value="5"  checked>
-      <label class="form-check-label" for="firstRadio">standard 8 a 12 dias (5%) </label></li>
-    </ul>
-    <button class="btn m-2 btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">direccion del envio</button>
-    <div id="cardMoney"></div>
-    <button class="btn m-2 btn-success">comprar</button>
-  </div>
-</div>
-</div>
-</div>
-  </main>
-  <footer class="text-muted">
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasRightLabel">direccion del envio</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">ciudad</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">barrio</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">calle</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">telefono</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">comentario</label>
-        </div>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="offcanvas" aria-label="Close">continuar...</button>
-      </div>
+
+    <div id="cart" class=" border-0 bg-transparent container ">
     </div>
+
+    <hr>
+
+
     <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
-    </div>
-  </footer>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
+      <div>
+        <div class="mb-3 text col">
+          <div>
+            <h1 class="text">
+              Tipo de envío
+            </h1>
+          </div>
+          <div id="changespurch" >
+            <input class="form-check-input me-1 col" type="radio" name="listGroupRadio" value="17" checked>
+            <label class="form-check-label" for="firstRadio">Premium 2 a 5 días (17%)</label>
+            <div>
+            </div>
+            <input class="form-check-input me-1 col" type="radio" name="listGroupRadio" value="7" checked>
+            <label class="form-check-label" for="secondRadio">Express 5 a 8 días (7%)</label>
+            <div>
+            </div>
+            <input class="form-check-input me-1 col" type="radio" name="listGroupRadio" value="5" checked>
+            <label class="form-check-label" for="thirdRadio">Standard 8 a 12 días (5%)</label>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+      <div class="alert alert-success text-center d-none" id="alert-success" role="alert">
+        !!!La compra fue realizada con exito!!!
+     </div>
+
+      <div class="alert alert-danger text-center d-none" id="alert-danger" role="alert">
+         !!!Algo salio mal, verifique la informacion o introdusca un articulo !!!
+      </div>
+
+
+      <div class=" text-center container">
+        <div class="row align-items-start" >
+          <div class="col-sm-12 col-lg-4 " id="cardMoney">
+          </div>
+      
+          <div class="container col-lg-8 col-sm-12 border">
+            <h1 class="text" >Dirección de envío</h1>
+      
+            <form class="row g-3 needs-validation text" novalidate>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Calle</span>
+                <input type="text" class="form-control" id="calle" value="" required aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              </div>
+              <div class="valid-feedback">Correcto</div>
+      
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Número</span>
+                <input type="text" pattern="[0-9]{9,}" class="form-control" id="numero" value="" required aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              </div>
+              <div class="valid-feedback">Correcto</div>
+      
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Esquina</span>
+                <input type="text" class="form-control" id="esquina" value="" required aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              </div>
+              <div class="valid-feedback">Correcto</div>
+      
+              <button class="btn m-2 btn-primary mb-3" id="paymentModalButton" data-bs-toggle="modal" data-bs-target="#paymentModal">
+                Seleccionar Forma de Pago
+              </button>
+              <div class="col-lg-6">
+                <button class="btn btn-lg mb-3 btn-primary" type="submit">Finalizar compra</button>
+              </div>   
+              <div class="modal fade" id="paymentModal">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Forma de Pago</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="paymentMethod" id="creditCardOption" checked>
+                        <label class="form-check-label" for="creditCardOption">Tarjeta de Crédito</label>
+                        <div class="mb-3">
+                          <label for="numeroTarjeta" class="form-label">Número de Tarjeta</label>
+                          <input type="text" class="form-control" id="numeroTarjeta" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="codigoSeguridad" class="form-label">Código de Seguridad</label>
+                          <input type="text" class="form-control" id="codigoSeguridad" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="vencimiento" class="form-label">Vencimiento (MM/AA)</label>
+                          <input type="text" class="form-control" id="vencimiento" required>
+                        </div>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="paymentMethod" id="bankTransferOption">
+                        <label class="form-check-label" for="bankTransferOption">Transferencia Bancaria</label>
+                        <div class="mb-3">
+                          <label for="numeroCuenta" class="form-label">Número de Cuenta</label>
+                          <input type="text" pattern="[0-9]{7,}" class="form-control" id="numeroCuenta">
+                          <div class="invalid-feedback">Ingrese 7 dígitos</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+          </div>
+        </div>
+      </div>
+      
+
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
