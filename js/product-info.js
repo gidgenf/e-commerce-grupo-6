@@ -53,21 +53,21 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "cart.html";
     })
 
-    function addtocart(productId) {
+    function addtocart(product) {
         
         let usercart = JSON.parse(localStorage.getItem('usercart')) || [];  //se trae el carrito del local storage o una lista vacia
 
-        const productexist = usercart.find(item => item.id === productId.id);  //se busca el producto en el carrito
+        const productexist = usercart.find(item => item.id === product.id);  //se busca el producto en el carrito
         if (productexist) {  //si el producto existe en el carrito, se eleva su contador en 1
             productexist.count++;
         } else {
             usercart.push({  //se pushea el producto al carrito en caso de no existir en el mismo
-                id: productId.id,
-                name: productId.name,
+                id: product.id,
+                name: product.name,
                 count: 1,
-                unitCost: productId.cost,
+                unitCost: (product.currency==="USD")? product.cost: Math.round(product.cost/40),
                 currency: "USD",
-                image: productId.images[0]
+                image: product.images[0]
             });
         }
 
