@@ -92,18 +92,18 @@
           <div class="valid-feedback">
             Correcto!
           </div>
+          <div class="invalid-feedback">
+            Debes completar este campo!
+          </div>
         </div>
         <div class="col-md-6">
           <label for="validationCustom02" class="form-label">Segundo Nombre</label>
-          <input type="text" class="form-control" id="validationCustom02" value="" required>
-          <div class="valid-feedback">
-            Correcto!
-          </div>
+          <input type="text" class="form-control" id="validationCustom02" value="" >
         </div>
         <div class="w-100"></div>
         <div class="col-md-6">
           <label for="validationCustomUsername" class="form-label">Apellido</label>
-          <div class="input-group has-validation">
+          <div class="input-group">
             <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend"
               required>
             <div class="invalid-feedback">
@@ -113,7 +113,7 @@
         </div>
         <div class="col-md-6">
           <label for="validationCustom03" class="form-label">Segundo apellido</label>
-          <input type="text" class="form-control" id="validationCustom03" required>
+          <input type="text" class="form-control" id="validationCustom03" >
         </div>
         <div class="w-100"></div>
         <div class="col-md-6">
@@ -125,17 +125,24 @@
         </div>
         <div class="col-md-6">
           <label for="validationCustom05" class="form-label">Teléfono de contacto</label>
-          <input type="text" class="form-control" id="validationCustom05" required>
+          <input type="text" class="form-control" id="">
         </div>
+        <div class="invalid-feedback">
+          You must agree before submitting.
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">Submit form</button>
+    </div>
       </form>
     </div>
   </div>
 
   <script src="js/init.js"></script>
-  <script src="js/product-info.js"></script>
   <script src="js/search.js"></script>
   <script src="js/night.js"></script>
-  <script src="js/profile-menu.js"></script>
+  <script src="js/my-profile.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 
