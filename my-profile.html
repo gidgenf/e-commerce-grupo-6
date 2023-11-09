@@ -5,25 +5,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/product-info.css" rel="stylesheet">
 </head>
 
 <body>
@@ -39,17 +26,17 @@
         <ul class="navbar-nav w-100 justify-content-between">
 
           <div class="dropdown nav-item order-lg-last aling item center">
-            <a class="btn btn-dark dropdown-toggle" href="dropdownmenu" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
+            <a class="btn btn-dark dropdown-toggle" id="usuario" href="dropdownmenu" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
               <i class="fa-solid fa-user">Usuario</i>
             </a>
 
             <ul id="dropdownmenu" class="dropdown-menu aling-text dropdown-menu-dark">
-              <li class="dropdown-item" id="usuario">
-                <i class="fa-solid fa-user"></i>
-              </li>
-
+              <a class="dropdown-item" href="my-profile.html">
+                <i class="fa-solid fa-user"> Mi perfil</i>
+              </a>
               <li>
+
                 <a class="dropdown-item" href="cart.html">
                   <i class="fa-solid fa-cart-shopping"> Carrito</i>
                 </a>
@@ -91,26 +78,71 @@
     </div>
   </nav>
   <div class="mini" id="containerSearch"></div>
-  <main>
-    <div class="container m-5">
-    <h1>Guardar y Recuperar Imagen en Local Storage</h1>
-    <input type="file" id="fileInput" accept="image/*">
-    <button id="saveButton">Guardar Imagen</button>
-    <div id="imageContainer"></div>
-  </div>
-  </main>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+
+  <div class="container col-lg-12">
+    <div class="container col col-lg-10 col-md-8 col-sm-12 mt-5 mb-5 p-3">
+      <h1 class="mt-3 mb-5">Perfil</h1>
+      <hr>
+      <form class="row g-2 needs-validation" novalidate>
+        <div class="col-md-6">
+          <label for="validationCustom01" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="validationCustom01" value="" required
+            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          <div class="valid-feedback">
+            Correcto!
+          </div>
+          <div class="invalid-feedback">
+            Debes completar este campo!
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="validationCustom02" class="form-label">Segundo Nombre</label>
+          <input type="text" class="form-control" id="validationCustom02" value="">
+        </div>
+        <div class="w-100"></div>
+        <div class="col-md-6">
+          <label for="validationCustomUsername" class="form-label">Apellido</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend"
+              required>
+            <div class="invalid-feedback">
+              Debes completar este campo!
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="validationCustom03" class="form-label">Segundo apellido</label>
+          <input type="text" class="form-control" id="validationCustom03">
+        </div>
+        <div class="w-100"></div>
+        <div class="col-md-6">
+          <label for="validationCustom04" class="form-label">E-mail</label>
+          <input type="text" class="form-control" id="validationCustom04" required>
+          <div class="invalid-feedback">
+            Debes completar este campo!
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="validationCustom05" class="form-label">Teléfono de contacto</label>
+          <input type="text" class="form-control" id="">
+        </div>
+        <div class="invalid-feedback">
+          You must agree before submitting.
+        </div>
+        <hr class="my-5">
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+      </form>
     </div>
-  </footer>
-  <script src="js/bootstrap.bundle.min.js"></script>
+  </div>
+
+
   <script src="js/init.js"></script>
-  <script src="js/my-profile.js"></script>
+  <script src="js/search.js"></script>
   <script src="js/night.js"></script>
+  <script src="js/my-profile.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

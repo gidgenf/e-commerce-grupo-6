@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const btnPurch = document.getElementById('purch')
     const productosRelacionados = [];   //lista a donde van todos los productos de la categoria
-    const productCat = localStorage.getItem('catID');  //categoria actual del local storage
+
     const idProduct = localStorage.getItem('productID');
     const btnaddtocart = document.getElementById('addtocart');
     const ratingContainer = document.querySelector('.rating');
@@ -16,10 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let selectedScore = 0; // Variable global para almacenar la calificación seleccionada.
     const starsrate = document.querySelectorAll('.rating .star');
 
-    getComments(urlComments)
-    loadCommentsFromLocalStorage(idProduct);
+    getComments(urlComments) //trae los comentarios del producto
+    loadCommentsFromLocalStorage(idProduct); //trae los comentarios del porducto adicionales segun su id
 
-    fetch(PRODUCT_INFO_URL)
+    fetch(PRODUCT_INFO_URL) 
         .then(response => response.json())
         .then(responseData => {
             let data = responseData;
@@ -42,19 +42,19 @@ document.addEventListener("DOMContentLoaded", () => {
             .catch(error => console.log('Error:', error));
     };
 
-    btnaddtocart.addEventListener('click', () => {  //evento click para el boton de addtocart
+    btnaddtocart.addEventListener('click', () => {  //evento click para el boton de addtocart que agrega el producto actual
 
         addtocart(actualproduct);
 
     });
 
-    btnPurch.addEventListener('click', () => {
+    btnPurch.addEventListener('click', () => { //evento click para el boton de addtocart que agrega el producto actual y redirecciona a la ventana del carrito
         addtocart(actualproduct);
         window.location.href = "cart.html";
     })
 
     function addtocart(product) {
-        
+
         let usercart = JSON.parse(localStorage.getItem('usercart')) || [];  //se trae el carrito del local storage o una lista vacia
 
         const productexist = usercart.find(item => item.id === product.id);  //se busca el producto en el carrito
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 id: product.id,
                 name: product.name,
                 count: 1,
-                unitCost: (product.currency==="USD")? product.cost: Math.round(product.cost/40),
+                unitCost: (product.currency === "USD") ? product.cost : Math.round(product.cost / 40),
                 currency: "USD",
                 image: product.images[0]
             });
@@ -155,6 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    //se le agrega un evento click al boton de enviar comentario que guarda su estructura en el local storage y luego lo muestra como un nuevo comentario del producto
     btncommenting.addEventListener('click', () => {
         let userName = localStorage.getItem('user-name');
         let commentText = document.getElementById('commenttext').value;
@@ -170,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         saveCommentToLocalStorage(commentStructure);
         displayComment(commentStructure);
-        document.getElementById('commenttext').value = '';
+        document.getElementById('commenttext').value = '';  //limpia el campo donde se escribe el comentario ingresado
         resetStars();
 
     });
@@ -202,20 +203,22 @@ document.addEventListener("DOMContentLoaded", () => {
         return stars;
     }
 
-    function resetStars() { // Se invoca después de que un comentario es enviado para reiniciar la calificación seleccionada y las estrellas a su estado inicial.
+    // Se invoca después de que un comentario es enviado para reiniciar la calificación seleccionada y las estrellas a su estado inicial.
+    function resetStars() {
         stars.forEach(star => {
             star.style.color = 'black';
         });
         selectedScore = 0; // Reiniciar la calificación seleccionada.
     }
 
+    //toma el id del producto y trae los comentarios del mismo, luego muestra cada uno por medio de la funcion displayComment
     function loadCommentsFromLocalStorage(productId) {
         let comments = JSON.parse(localStorage.getItem('userComments')) || [];
         const productComments = comments.filter(comment => comment.product === productId);
         productComments.forEach(comment => displayComment(comment));
     }
 
-    function mostrarTarjetasRelacionadas(productos) {
+    function mostrarTarjetasRelacionadas(productos) {  //toma los productos relacionados y los envia dentro de un carrucel
         let relatedProduct = document.getElementsByClassName('carousel-inner')[1];
         relatedProduct.innerHTML = '';
 
@@ -229,7 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    function productImages(productinfo) {
+    function productImages(productinfo) {  //toma la información del producto y accede a sus imagenes para luego convertirlas en elementos de un carrucel
         let imagesarray = productinfo.images
         let imagescarousel = document.getElementsByClassName('carousel-inner')[0];
 

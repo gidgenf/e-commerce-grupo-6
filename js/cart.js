@@ -4,6 +4,11 @@ let articles = [];
 let cardMoney = document.getElementById('cardMoney')
 let cart = document.getElementById('cart')
 let changespurch = document.getElementById('changespurch')
+let creditCardForm = document.getElementById('creditCardForm');
+let bankTransferForm = document.getElementById('bankTransferForm');
+let creditCardOption = document.getElementById('creditCardOption');
+let bankTransferOption = document.getElementById('bankTransferOption');
+
 fetch(URLidcart)
     .then(response => {
         return response.json();
@@ -22,6 +27,7 @@ fetch(URLidcart)
 changespurch.addEventListener('click', () => {
     showMoney(articles);
 })
+
 function showarticles(articles) {
     cart.innerHTML = ``
     articles[0].forEach(element => {
@@ -84,11 +90,6 @@ function showMoney(articles) {
 </div>`
 }
 
-let creditCardForm = document.getElementById('creditCardForm');
-let bankTransferForm = document.getElementById('bankTransferForm');
-let creditCardOption = document.getElementById('creditCardOption');
-let bankTransferOption = document.getElementById('bankTransferOption');
-
 creditCardOption.addEventListener('change', function () {
     toggleRequireAttributes();
     creditCardForm.style.display = 'block';
@@ -120,10 +121,6 @@ function toggleRequireAttributes() {
     numeroCuenta.disabled = !isBankTransfer;
 }
 
-
-
-
-
 function removeArticle(id) {
 
     articles[0] = articles[0].filter((item) => item.id !== id);
@@ -131,7 +128,6 @@ function removeArticle(id) {
     showarticles(articles);
     showMoney(articles);
 }
-
 
 function removeArticleInLocalStorage(id) { //funcion para remover del carrito el
 

@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     const listabusqueda = [];  // Declaramos una lista vacía donde irán los resultados del fetch
     const busqueda = document.getElementById('busqueda'); // Declaramos la variable busqueda que toma el elemento de id busqueda
-
+    let contenedor = document.getElementById("containerSearch"); // Tomamos el contenedor por su id
     let idobjetos = 100;
+
     for (let index = 0; index < 3; index++) {
         idobjetos++;
         let catID_json = idobjetos + ".json";
@@ -34,8 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
             hojaBusqueda(busquedafiltrada);
         }
     });
-
-    let contenedor = document.getElementById("containerSearch"); // Tomamos el contenedor por su id
 
     function hojaBusqueda(array) {  //toma el array que contiene los  datos de todas las categorias de productos y los mismos
         console.log(array);

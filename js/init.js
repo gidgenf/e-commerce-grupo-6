@@ -6,6 +6,9 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/prod
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
+let name_user = localStorage.getItem("user-name");
+let botonDeUsuario = document.getElementById("usuario")
+botonDeUsuario.innerHTML = `<a class="nav-link" data-tooltip="Perfil">${name_user} <i class="fa-solid fa-user"></i></a>`
 
 let showSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "block";
@@ -39,10 +42,6 @@ let getJSONData = function (url) {
       return result;
     });
 }
-let name_user = localStorage.getItem("user-name");
-let botonDeUsuario = document.getElementById("usuario")
-
-botonDeUsuario.innerHTML = `<a class="nav-link" data-tooltip="Perfil">${name_user} <i class="fa-solid fa-user"></i></a>`
 
 document.getElementById('cerrarSesion').addEventListener('click', function () {  // Función que cierra sesión mediante el evento click en el elemento de id "cerrarSesion"
   localStorage.removeItem('authenticated');
