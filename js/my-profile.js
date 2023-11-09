@@ -1,4 +1,4 @@
-const fileInput = document.getElementById('fileInput');
+      const fileInput = document.getElementById('fileInput');
         const saveButton = document.getElementById('saveButton');
         const imageContainer = document.getElementById('imageContainer');
         fileInput.addEventListener('change', () => {
