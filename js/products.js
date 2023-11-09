@@ -3,6 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
    let catID_json = catID + ".json";
    let url = 'https://japceibal.github.io/emercado-api/cats_products/' + catID_json;
 
+   //variables de los botones para ordenado ascendente, decendente y por rel
+   sortProductsAsc = document.getElementById('sortCostAsc');
+   sortProductsDesc = document.getElementById('sortCostDesc');
+   sortByRel = document.getElementById('sortByRel');
+
    fetch(url)                                    //fetch que muestra los productos 
       .then(response => response.json())
       .then(responseData => {
@@ -30,11 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
    }
 
-   sortProductsAsc = document.getElementById('sortCostAsc'); //variables de los botones para ordenado ascendente y decendente
-   sortProductsDesc = document.getElementById('sortCostDesc');
-   sortByRel = document.getElementById('sortByRel');
-
-
    //Orden de relevancia//
 
    sortByRel.addEventListener('click', function () { //evento click para el boton de ordenado ascendente y muestra las tarjetas
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return elemento.cost >= min && elemento.cost <= max;
    }
 
-   const filtrar = document.getElementById('filtrarCosto'); //se declara el boton de filtrado como filtrar
+   const filtrar = document.getElementById('filterCost'); //se declara el boton de id filterCost como filtrar
 
    filtrar.addEventListener('click', function () {  //evento click que retorna los valores del rango minimo y maximo
       min = parseInt(document.getElementById('rangeFilterCostMin').value);
@@ -70,8 +70,8 @@ document.addEventListener("DOMContentLoaded", function () {
       }
    });
 
-   //evento para el el elmento de id limpiarRangos que al darle click limpia los campos de costo de maximo y minimo
-   document.getElementById("limpiarRangos").addEventListener("click", function () {
+   //evento para el el elmento de id clearRange que al darle click limpia los campos de costo de maximo y minimo
+   document.getElementById("clearRange").addEventListener("click", function () {
       document.getElementById("rangeFilterCostMin").value = "";
       document.getElementById("rangeFilterCostMax").value = "";
 

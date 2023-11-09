@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cardTitles[i].style.color = 'white';
       }
 
-       for (var i = 0; i < cardContainerBg.length; i++) {
+      for (var i = 0; i < cardContainerBg.length; i++) {
         cardContainerBg[i].style.backgroundColor = 'rgb(49, 49, 49)';
       }
 
