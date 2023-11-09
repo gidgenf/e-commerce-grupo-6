@@ -11,7 +11,6 @@ document.getElementById('sesionIni').addEventListener('click', function () {
 });
 
 function saveEmail(mail) { //se guarda el email ingresado en el local storage junto con otros datos
-    console.log(userdata)
     localStorage.setItem('userdata', JSON.stringify({
         name: "",
         secondname: "",
