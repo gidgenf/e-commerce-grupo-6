@@ -1,14 +1,26 @@
 document.getElementById('sesionIni').addEventListener('click', function () {
-    const usuario = document.getElementById('usuario').value;
+    const useremail = document.getElementById('usuario').value
     const contrasena = document.getElementById('pswd').value;
-    if (!contrasena || !usuario) {
-        window.alert ("Debes completar los campos vacíos!");
+    if (!contrasena || !useremail) {
+        window.alert("Debes completar los campos vacíos!");
     } else {
         localStorage.setItem('authenticated', 'true');
-        localStorage.setItem("user-name", usuario)
+        saveEmail(useremail)
         window.location.href = "index.html";
     }
 });
+
+function saveEmail(mail) {
+    console.log(userdata)
+    localStorage.setItem('userdata', JSON.stringify({
+        name: "",
+        secondname: "",
+        lastname: "",
+        secondlastname: "",
+        email: mail,
+        phonenumber: ""
+    }));
+}
 
 /*
 Se le agrega un evento 'click' al boton de id="sesionIni", 

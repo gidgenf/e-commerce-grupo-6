@@ -172,6 +172,7 @@ function addToCart(id) {
 
     console.log(localStorage.getItem('usercart'));
 }
+
 function hasZeroCount() {
     const cardCounts = document.querySelectorAll(".cardCount");
     return Array.from(cardCounts).some(element => element.textContent === '0');
