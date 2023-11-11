@@ -1,6 +1,43 @@
+document.addEventListener('DOMContentLoaded', () => {
+    let userdata = JSON.parse(localStorage.getItem('userdata'));
+
+    console.log(userdata);
+    setInputValues(userdata);
+
+});
+
+function setInputValues(array) {
+    document.getElementById('username').value = array.name;
+    document.getElementById('secondname').value = array.secondname;
+    document.getElementById('lastname').value = array.lastname;
+    document.getElementById('secondlastname').value = array.secondlastname;
+    document.getElementById('email').value = array.email;
+    document.getElementById('phonenumber').value = array.phonenumber;
+}
+
+function getInputValuesAndStorage() {
+    let usernameInput = document.getElementById('username').value;
+    let secondnameInput = document.getElementById('secondname').value;
+    let lastnameInput = document.getElementById('lastname').value;
+    let secondlastnameInput = document.getElementById('secondlastname').value;
+    let emailInput = document.getElementById('email').value;
+    let phonenumberInput = document.getElementById('phonenumber').value;
+
+    localStorage.setItem('userdata', JSON.stringify({
+        name: usernameInput,
+        secondname: secondnameInput,
+        lastname: lastnameInput,
+        secondlastname: secondlastnameInput,
+        email: emailInput,
+        phonenumber: phonenumberInput
+    }));
+}
+
+
 const fileInput = document.getElementById('fileInput');
 const saveButton = document.getElementById('saveButton');
 const imageContainer = document.getElementById('imageContainer');
+
 fileInput.addEventListener('change', () => {
     const selectedFile = fileInput.files[0];
     const reader = new FileReader();
@@ -42,6 +79,7 @@ window.addEventListener('load', () => {
     const forms = document.querySelectorAll('.needs-validation')
     Array.from(forms).forEach(form => {
         form.addEventListener('submit', event => {
+            getInputValuesAndStorage()
             if (!form.checkValidity()) {
                 event.preventDefault()
                 event.stopPropagation()
