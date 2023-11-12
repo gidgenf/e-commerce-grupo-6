@@ -19,7 +19,7 @@ function setInputValues(array) {
 function setProfileImage(userdata) {
     const base64ImageData = userdata ? userdata.image : '';
     if (base64ImageData) {
-        imageContainer.innerHTML = `<img src="${base64ImageData}" width="200" height="auto">`;
+        imageContainer1.innerHTML = `<img src="${base64ImageData}" width="200" height="auto">`;
     }
 }
 

@@ -78,13 +78,11 @@
     </div>
   </nav>
   <div class="mini" id="containerSearch"></div>
-  </nav><i class="bi bi-currency-dollar"></i>
 
   <div class="container">
     <div class="container">
       <div class="row">
         <div class="col text-end">
-          
           <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
             <input type="radio" class="btn-check" name="options" id="sortCostAsc">
             <!-- nuevos botones para ordenar los productos-->
@@ -98,63 +96,65 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        
-        <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container" id="cat-list-container">
-          <div class="row container p-0 m-0">
-            <div class="col">
-              <p class="font-weight-normal text text-end my-2">Cost</p>
-            </div>
-            <div class="col">
-              <input class="form-control" type="number" placeholder="min." id="rangeFilterCostMin">
-              <!--campos nuevos para los costos maximos o minimos de los productos-->
-            </div>
-            <div class="col">
-              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCostMax">
-            </div>
-            <div class="col-3 p-0">
-              <div class="btn-group" role="group">
-                <button class="btn btn-light btn-block" id="filterCost">Filtrar</button>
-                <!--Botones para filtrado y limpiar los rangos establecidos-->
-                <button class="btn btn-link btn-sm" id="clearRange">Limpiar</button>
-              </div>
-            </div>
+    </div>
+  </div>
+  <div class="row container">
+    <div class="col-lg-6 offset-lg-6 col-md-12 mb-1" id="cat-list-container">
+      <div class="d-flex container">
+        <div class="">
+          <p class="my-2">Cost:</p>
+        </div>
+        <div class="col">
+          <input class="form-control" type="number" placeholder="min." id="rangeFilterCostMin">
+          <!--campos nuevos para los costos maximos o minimos de los productos-->
+        </div>
+        <div class="col">
+          <input class="form-control" type="number" placeholder="máx." id="rangeFilterCostMax">
+        </div>
+        <div class="col-3 p-0">
+          <div class="btn-group" role="group">
+            <button class="btn btn-light btn-block" id="filterCost">Filtrar</button>
+            <!--Botones para filtrado y limpiar los rangos establecidos-->
+            <button class="btn btn-link btn-sm" id="clearRange">Limpiar</button>
           </div>
         </div>
       </div>
-      <main class="pb-5 container">
-        <div class="container">
-          <div class="col-md-12 col-lg-12 col-sm-12">
-            <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1" id="objet-conteiner"></div>
-          
-            
-          </div>
-        </div>
-      </main>
-      <footer class="text-muted">
-        <div class="container">
-          <p class="float-end">
-            <a href="#">Volver arriba</a>
-          </p>
-          <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a
-              Programar</a></p>
-        </div>
-      </footer>
-      <div id="spinner-wrapper">
-        <div class="lds-ring">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
+    </div>
+  </div>
+  
+  <div>
+    <main class="pb-5 container">
+      <div class="container col-md-12 col-lg-12 col-sm-12">
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1" id="object-conteiner">
 
-      <script src="js/bootstrap.bundle.min.js"></script>
-      <script src="js/init.js"></script>
-      <script src="js/products.js"></script>
-      <script src="js/search.js"></script>
-      <script src="js/night.js"></script>
-      <script src="js/profile-menu.js"></script>
+        </div>
+      </div>
+    </main>
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-end">
+          <a href="#">Volver arriba</a>
+        </p>
+        <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a
+            Programar</a></p>
+      </div>
+    </footer>
+    <div id="spinner-wrapper">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/night.js"></script>
+    <script src="js/profile-menu.js"></script>
 </body>
 
 </html>
