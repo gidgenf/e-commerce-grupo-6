@@ -32,9 +32,9 @@ function showarticles(articles) {
     cart.innerHTML = ``
     articles[0].forEach(element => {
         cart.innerHTML += `
-        <div class="container text my-5 shadow">
+        <div class="container text my-5 shadow cardCount">
             <div class="text card-header">
-                <h5 class="float-end card-text">cantidad:<span class="badge bg-primary cardCount rounded-pill">${element.count}</span></h5>
+                <h5 class="float-end card-text">cantidad:<span class="badge bg-primary rounded-pill">${element.count}</span></h5>
                 <h3 class="card-title">${element.name}</h3>
             </div>
         <div class="container">
@@ -172,8 +172,11 @@ function addToCart(id) {
 
     console.log(localStorage.getItem('usercart'));
 }
-function hasZeroCount() {
+function hasZeroCount() { //en caso de no haber elementos con clase cardCount o que su valor sea 0 devolvera true lo que en consecuencia lanzará un alert
     const cardCounts = document.querySelectorAll(".cardCount");
+    if (cardCounts.length === 0) {
+        return true;  
+    }
     return Array.from(cardCounts).some(element => element.textContent === '0');
 }
 
