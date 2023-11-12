@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log(userdata);
     setInputValues(userdata);
+    setProfileImage(userdata);
 
 });
 
@@ -15,6 +16,13 @@ function setInputValues(array) {
     document.getElementById('phonenumber').value = array.phonenumber;
 }
 
+function setProfileImage(userdata) {
+    const base64ImageData = userdata ? userdata.image : '';
+    if (base64ImageData) {
+        imageContainer.innerHTML = `<img src="${base64ImageData}" width="200" height="auto">`;
+    }
+}
+
 function getInputValuesAndStorage() {
     let usernameInput = document.getElementById('username').value;
     let secondnameInput = document.getElementById('secondname').value;
@@ -23,16 +31,18 @@ function getInputValuesAndStorage() {
     let emailInput = document.getElementById('email').value;
     let phonenumberInput = document.getElementById('phonenumber').value;
 
+    const base64ImageData = localStorage.getItem('imagenBase64') || '';
+
     localStorage.setItem('userdata', JSON.stringify({
         name: usernameInput,
         secondname: secondnameInput,
         lastname: lastnameInput,
         secondlastname: secondlastnameInput,
         email: emailInput,
-        phonenumber: phonenumberInput
+        phonenumber: phonenumberInput,
+        image: base64ImageData
     }));
 }
-
 
 const fileInput = document.getElementById('fileInput');
 const saveButton = document.getElementById('saveButton');
@@ -62,16 +72,6 @@ saveButton.addEventListener('click', () => {
         alert('Primero selecciona una imagen antes de guardar.');
     }
 });
-
-window.addEventListener('load', () => {
-    const base64ImageData = localStorage.getItem('imagenBase64');
-    if (base64ImageData) {
-        imageContainer.innerHTML = `<img src="${base64ImageData}" width="200" height="auto">`;
-    }
-});
-
-
-
 
 (() => {
     'use strict'

@@ -86,8 +86,8 @@
       <form class="row g-2 needs-validation" novalidate>
         <div class="col-md-6">
           <label for="username" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="username" value="" required
-            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          <input type="text" class="form-control" id="username" value="" required aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default">
           <div class="valid-feedback">
             Correcto!
           </div>
@@ -103,8 +103,7 @@
         <div class="col-md-6">
           <label for="lastname" class="form-label">Apellido</label>
           <div class="input-group">
-            <input type="text" class="form-control" id="lastname" aria-describedby="inputGroupPrepend"
-              required>
+            <input type="text" class="form-control" id="lastname" aria-describedby="inputGroupPrepend" required>
             <div class="invalid-feedback">
               Debes completar este campo!
             </div>
@@ -130,11 +129,11 @@
           You must agree before submitting.
         </div>
         <hr class="my-5">
-        <div class="input-group mb-3">
-          <input type="file" class="form-control" id="fileInput">
-          <label class="input-group-text" for="fileInput">Subir</label>
-          <div id="imageContainer"></div>
+        <div class="input-group mb-3 row">
+          <label class="form-label row" for="fileInput">Selecciona una imagen de perfil</label>
         </div>
+        <input class="form-control row" type="file" id="fileInput">
+        <div id="imageContainer"></div>
         <div class="col-12">
           <button class="btn btn-primary" type="submit" id="saveButton">Submit form</button>
         </div>

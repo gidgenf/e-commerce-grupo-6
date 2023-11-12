@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/products.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <form class="row g-2 needs-validation my-5 mx-5 justify-content-center " novalidate>
+            <div class="col-md-6">
+                <label for="username" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="username" value="" required
+                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+                <div class="invalid-feedback">
+                    Debes completar este campo!
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="secondname" class="form-label">Segundo Nombre</label>
+                <input type="text" class="form-control" id="secondname" value="">
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-6">
+                <label for="lastname" class="form-label">Apellido</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="lastname" aria-describedby="inputGroupPrepend" required>
+                    <div class="invalid-feedback">
+                        Debes completar este campo!
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="secondlastname" class="form-label">Segundo apellido</label>
+                <input type="text" class="form-control" id="secondlastname">
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-6">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="text" class="form-control" id="email" required>
+                <div class="invalid-feedback">
+                    Debes completar este campo!
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="phonenumber" class="form-label">Teléfono de contacto</label>
+                <input type="text" class="form-control" id="phonenumber">
+            </div>
+            <div class="invalid-feedback">
+                You must agree before submitting.
+            </div>
+            <hr class="my-5">
+
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit" id="saveButton">Submit form</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/night.js"></script>
+    <script src="js/profile-menu.js"></script>
+</body>
+
+</html>
