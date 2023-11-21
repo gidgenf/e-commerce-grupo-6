@@ -82,12 +82,17 @@
   <div class="container col-lg-12">
     <div class="container col col-lg-10 col-md-8 col-sm-12 mt-5 mb-5 p-3">
       <h1 class="mt-3 mb-5">Perfil</h1>
+      <div id="containerUserImage" class="container border border-1">
+        <div id="imageContainer1" class="text-center">
+
+        </div>
+      </div>
       <hr>
       <form class="row g-2 needs-validation" novalidate>
         <div class="col-md-6">
-          <label for="validationCustom01" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="validationCustom01" value="" required
-            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          <label for="username" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="username" value="" required aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default">
           <div class="valid-feedback">
             Correcto!
           </div>
@@ -96,43 +101,48 @@
           </div>
         </div>
         <div class="col-md-6">
-          <label for="validationCustom02" class="form-label">Segundo Nombre</label>
-          <input type="text" class="form-control" id="validationCustom02" value="">
+          <label for="secondname" class="form-label">Segundo Nombre</label>
+          <input type="text" class="form-control" id="secondname" value="">
         </div>
         <div class="w-100"></div>
         <div class="col-md-6">
-          <label for="validationCustomUsername" class="form-label">Apellido</label>
+          <label for="lastname" class="form-label">Apellido</label>
           <div class="input-group">
-            <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend"
-              required>
+            <input type="text" class="form-control" id="lastname" aria-describedby="inputGroupPrepend" required>
             <div class="invalid-feedback">
               Debes completar este campo!
             </div>
           </div>
         </div>
         <div class="col-md-6">
-          <label for="validationCustom03" class="form-label">Segundo apellido</label>
-          <input type="text" class="form-control" id="validationCustom03">
+          <label for="secondlastname" class="form-label">Segundo apellido</label>
+          <input type="text" class="form-control" id="secondlastname">
         </div>
         <div class="w-100"></div>
         <div class="col-md-6">
-          <label for="validationCustom04" class="form-label">E-mail</label>
-          <input type="text" class="form-control" id="validationCustom04" required>
+          <label for="email" class="form-label">E-mail</label>
+          <input type="text" class="form-control" id="email" required>
           <div class="invalid-feedback">
             Debes completar este campo!
           </div>
         </div>
         <div class="col-md-6">
-          <label for="validationCustom05" class="form-label">Teléfono de contacto</label>
-          <input type="text" class="form-control" id="">
+          <label for="phonenumber" class="form-label">Teléfono de contacto</label>
+          <input type="number" class="form-control" id="phonenumber">
         </div>
         <div class="invalid-feedback">
           You must agree before submitting.
         </div>
         <hr class="my-5">
-        <div class="col-12">
-          <button class="btn btn-primary" type="submit">Submit form</button>
+        <div class="input-group mb-3 row">
+          <label class="form-label row" for="fileInput">Selecciona una imagen de perfil</label>
         </div>
+        <input class="form-control row" type="file" id="fileInput">
+        <div id="imageContainer"></div>
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit" id="saveButton">Submit form</button>
+        </div>
+
       </form>
     </div>
   </div>
