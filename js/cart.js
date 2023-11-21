@@ -32,18 +32,18 @@ function showarticles(articles) {
     cart.innerHTML = ``
     articles[0].forEach(element => {
         cart.innerHTML += `
-        <div class="container text m-3 my-5 shadow">
+        <div class="container text my-5 shadow cardCount">
             <div class="text card-header">
-                <h5 class="float-end card-text">cantidad:<span class="badge bg-primary cardCount rounded-pill">${element.count}</span></h5>
+                <h5 class="float-end card-text">cantidad:<span class="badge bg-primary rounded-pill">${element.count}</span></h5>
                 <h3 class="card-title">${element.name}</h3>
             </div>
         <div class="container">
         <div class="row align-items-start">
-            <img src="${element.image}" class="col-lg-3 img-fluid mx-2">
+            <img src="${element.image}" class="col-lg-3 img-fluid">
            
-            <button onclick="changeQuantity(${element.id}, false)" type="button" class="btn m-1 col btn-danger btn-sm">Disminuir</button>
-            <button onclick="changeQuantity(${element.id}, true)" type="button" class="btn m-1  col btn-primary btn-sm">Aumentar</button>
-            <button onclick="removeArticle(${element.id})" type="button" class="btn btn-danger m-3 mt-1 col btn-sm">Eliminar</button>
+            <button onclick="changeQuantity(${element.id}, false)" type="button" class=" my-2 btn col btn-danger btn-sm">Disminuir</button>
+            <button onclick="changeQuantity(${element.id}, true)" type="button" class="my-2 btn col btn-primary btn-sm">Aumentar</button>
+            <button onclick="removeArticle(${element.id})" type="button" class="my-2 btn btn-danger col btn-sm">Eliminar</button>
             <div class="container text-center">
             <p class="btn float-end col btn-success">Total ${element.currency} ${element.unitCost * element.count}</p>
         </div>  
@@ -172,9 +172,11 @@ function addToCart(id) {
 
     console.log(localStorage.getItem('usercart'));
 }
-
-function hasZeroCount() {
+function hasZeroCount() { //en caso de no haber elementos con clase cardCount o que su valor sea 0 devolvera true lo que en consecuencia lanzará un alert
     const cardCounts = document.querySelectorAll(".cardCount");
+    if (cardCounts.length === 0) {
+        return true;  
+    }
     return Array.from(cardCounts).some(element => element.textContent === '0');
 }
 

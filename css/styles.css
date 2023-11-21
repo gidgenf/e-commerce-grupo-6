@@ -315,9 +315,18 @@ a:active {
   border: 1px solid rgb(0, 0, 0);
 }
 
-.noneborder{
+.noneborder {
   border: none;
 }
-#containerSearch{
+
+#containerSearch {
   z-index: 10;
+}
+
+.profileImage {
+  border: 1px solid black;
+}
+
+#containerUserImage {
+  width: 220px;
 }

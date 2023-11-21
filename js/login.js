@@ -11,6 +11,7 @@ document.getElementById('sesionIni').addEventListener('click', function () {
 });
 
 function saveEmail(mail) { //se guarda el email ingresado en el local storage junto con otros datos
+    
     localStorage.setItem('userdata', JSON.stringify({
         name: "",
         secondname: "",
@@ -21,13 +22,5 @@ function saveEmail(mail) { //se guarda el email ingresado en el local storage ju
     }));
 }
 
-/*
-Se le agrega un evento 'click' al boton de id="sesionIni", 
-establece las constantes locales de usuario y contraseña 
-y luego atravez de un if en el caso de que falten la contraseña o
-el usuario, el boton sesionIni no responderá y se ejecutará una alerta, y en caso positivo
-redireccionará a index.html y establecera en localStorage
-authentificated con valor true
-*/
 
 
