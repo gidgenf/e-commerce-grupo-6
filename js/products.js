@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
    const catID = localStorage.getItem("catID");  //se declara la constante catID del local storage catID
    let catID_json = catID + ".json";
-   let url = 'https://japceibal.github.io/emercado-api/cats_products/' + catID_json;
+   let url = PRODUCTS_URL + catID_json;
 
    //variables de los botones para ordenado ascendente, decendente y por rel
    sortProductsAsc = document.getElementById('sortCostAsc');
