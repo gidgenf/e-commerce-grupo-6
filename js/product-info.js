@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //se le agrega un evento click al boton de enviar comentario que guarda su estructura en el local storage y luego lo muestra como un nuevo comentario del producto
     btncommenting.addEventListener('click', () => {
-        let userName = localStorage.getItem('userdata');
+        let userData = JSON.parse(localStorage.getItem('userdata'));
         let commentText = document.getElementById('commenttext').value;
         let dateTipe = new Date().toLocaleString();
 
@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
             score: selectedScore,
             description: commentText,
             date: dateTipe,
-            user: userName
+            user: userData.name
         };
 
         saveCommentToLocalStorage(commentStructure);
