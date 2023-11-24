@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const stars = ratingContainer.querySelectorAll('.star');
     let btncommenting = document.getElementById('btncommenting');
 
-    const PRODUCT_INFO_URL = `https://japceibal.github.io/emercado-api/products/${idProduct}.json`;
+    const URL = PRODUCT_INFO_URL + `${idProduct}.json`;
     let urlComments = "https://japceibal.github.io/emercado-api/products_comments/" + idProduct + ".json";
 
     let actualproduct = null;  //se va a usar para manejar el producto en su interacción con el carrito
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     getComments(urlComments) //trae los comentarios del producto
     loadCommentsFromLocalStorage(idProduct); //trae los comentarios del porducto adicionales segun su id
 
-    fetch(PRODUCT_INFO_URL) 
+    fetch(URL) 
         .then(response => response.json())
         .then(responseData => {
             let data = responseData;
@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //se le agrega un evento click al boton de enviar comentario que guarda su estructura en el local storage y luego lo muestra como un nuevo comentario del producto
     btncommenting.addEventListener('click', () => {
-        let userName = localStorage.getItem('user-name');
+        let userData = JSON.parse(localStorage.getItem('userdata'));
         let commentText = document.getElementById('commenttext').value;
         let dateTipe = new Date().toLocaleString();
 
@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
             score: selectedScore,
             description: commentText,
             date: dateTipe,
-            user: userName
+            user: userData.name
         };
 
         saveCommentToLocalStorage(commentStructure);

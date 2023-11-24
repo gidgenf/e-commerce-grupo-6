@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
    const catID = localStorage.getItem("catID");  //se declara la constante catID del local storage catID
    let catID_json = catID + ".json";
-   let url = 'https://japceibal.github.io/emercado-api/cats_products/' + catID_json;
+   let url = PRODUCTS_URL + catID_json;
 
    //variables de los botones para ordenado ascendente, decendente y por rel
    sortProductsAsc = document.getElementById('sortCostAsc');
@@ -18,12 +18,12 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch(error => console.log('Error:', error));
 
    function mostrarTarjetas() {                    //funcion que muestra las tarjetas de los productos
-      let element = document.getElementById('objet-conteiner');
+      let element = document.getElementById('object-conteiner');
       element.innerHTML = '';                      //elemento vacio
 
       data.products.forEach(x => {                 //por cada producto agrega una tarjeta al elemento vacio
          element.innerHTML += `
-         <div class="card custom-card mouseHover mx-3 my-3 bgtext" onclick="setProductID(${x.id})">
+         <div class="card custom-card mouseHover my-3 bgtext" onclick="setProductID(${x.id})">
          <img src="${x.image}" class="img-card card-img-top" alt="${x.name}">
          <div class="card-body">
            <h5 class="card-title text-card text">${x.name}</h5>

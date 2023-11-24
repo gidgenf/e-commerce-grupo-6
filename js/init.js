@@ -6,9 +6,11 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/prod
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
-let name_user = localStorage.getItem("user-name");
+
+let name_user = JSON.parse(localStorage.getItem('userdata'));
+console.log(name_user)
 let botonDeUsuario = document.getElementById("usuario")
-botonDeUsuario.innerHTML = `<a class="nav-link" data-tooltip="Perfil">${name_user} <i class="fa-solid fa-user"></i></a>`
+botonDeUsuario.innerHTML = `<a class="nav-link" data-tooltip="Perfil">${name_user.email} <i class="fa-solid fa-user"></i></a>`
 
 let showSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "block";
