@@ -43,6 +43,8 @@ app.use("/users", (req, res, next) => {
 
 app.use("/users", usersRouter);
 
+app,get('/')
+
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
 });
