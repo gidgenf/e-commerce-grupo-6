@@ -1,0 +1,15 @@
+{
+  "name": "workspace-inicial",
+  "version": "1.0.0",
+  "description": "server shop",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "grup 6",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
