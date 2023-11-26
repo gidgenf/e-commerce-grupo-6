@@ -1,29 +1,50 @@
 const express = require("express");
+const jwt = require("jsonwebtoken");
+const SECRET_KEY = "CLAVE ULTRA SECRETA";
+const usersModel = require('./models/usersModel');
+const usersRouter = require("./routes/usersRoute");
+
 const app = express();
 const port = 3000;
-const path = require('path'); // Agregado
+app.use(express.static("public"));
+app.use(express.json());
 
-const cats = require("./api/cats/cat.json");
-app.get('/cats', (req, res) => {
-  res.json(cats);
+app.get("/", (req, res) => {
+  res.send("<h1>Bienvenid@ al servidor</h1>");
 });
 
+app.post("/login", async (req, res) => {  
+  const { username, password } = req.body;
 
-app.get('/cats_products/:id', (req, res) => {
-  let idCat = req.params.id;
-  let cats_products = require('./api/cats_products/' + idCat + '.json');
-  res.json(cats_products);
+  try {
+    const user = await usersModel.getUserByUsernameAndPassword(username, password);  //pasa como argumentos username y password a getUserByUsernameAndPassword
+    if (user) {
+      const token = jwt.sign({ username, userId: user.id }, SECRET_KEY);  //se genera el token
+      res.status(200).json({ token }); //se envia como respuesta
+    } else {
+      res.status(401).json({ message: "Usuario y/o contraseña incorrecto" });
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ message: "Error del servidor" });
+  }
 });
-app.get('/products/:id', (req, res) => {
-  let idproduct = req.params.id;
-  let products = require('./api/products/'+ idproduct + '.json');
-  res.json(products);
+
+app.use("/users", (req, res, next) => {
+  try {
+    const decoded = jwt.verify(req.headers["access-token"], SECRET_KEY); //verifica el token
+    req.userId = decoded.userId; 
+    console.log(decoded);
+    next();
+  } catch (error) {
+    res.status(401).json({ message: "Usuario no autorizado" });
+  }
 });
-app.get('/products_comments/:id',(req,res)=>{
-let idcomment = req.params.id;
-let commentProduct = require('./api/products_comments/'+ idcomment + '.json');
-res.json(commentProduct);
-})
+
+app.use("/users", usersRouter);
+
+app,get('/')
+
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
 });
