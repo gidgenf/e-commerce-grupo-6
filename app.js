@@ -51,13 +51,10 @@ app.get('/cart', (req, res) => {
  
 });
 
-app.get('/api/cats', (req, res) => {
-  const externalJSON = {
-    externalKey: "externalValue",
-    internalJSON: internalJSON  // Aquí se coloca el JSON interno dentro del JSON externo
-  };
+app.get('/cats/cat.json', (req, res) => {
+  let cat = require('./api/cats/cat.json') 
 
-  res.json(externalJSON); // Envía el JSON externo como respuesta
+  res.json(cat); 
 });
 
 app.get('/cats_products/:id', (req, res) => {
