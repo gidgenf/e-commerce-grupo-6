@@ -52,7 +52,7 @@ app.get('/cart', (req, res) => {
 });
 
 app.get('/cats/cat.json', (req, res) => {
-  let cat = require('./api/cats/cat.json') 
+  let cat = require('./api/cats/cat.json') //espero que no de error
 
   res.json(cat); 
 });
