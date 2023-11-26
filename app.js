@@ -2,10 +2,12 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const cors = require("cors");
-
+const jwt = require("jsonwebtoken");
+const SECRET_KEY = "CLAVE ULTRA SECRETA";
 app.use(express.static("public"));
 app.use(cors());
-
+app.use(express.json());
+const usersModel = require('./models/models.js');
 const cats = require("./api/cats/cat.json");
 
 
@@ -30,11 +32,32 @@ app.post("/login", async (req, res) => {  //logeo que recibe los datos de userna
   }
 });
 
-app.get('/api/cats', (req, res) => {
-  const catJsonPath = path.join(__dirname, 'api', 'cats', 'cat.json');
+app.use("/users", (req, res, next) => {
+  try {
+    const decoded = jwt.verify(req.headers["access-token"], SECRET_KEY); //verifica el token
+    req.userId = decoded.userId; 
+    console.log(decoded);
+    next();
+  } catch (error) {
+    res.status(401).json({ message: "Usuario no autorizado" });
+  }
+});
 
-  // Lee y envía el contenido de cat.json como respuesta
-  res.sendFile(catJsonPath);
+app.post('/cart', (req, res) => {
+
+});
+
+app.get('/cart', (req, res) => {
+ 
+});
+
+app.get('/api/cats', (req, res) => {
+  const externalJSON = {
+    externalKey: "externalValue",
+    internalJSON: internalJSON  // Aquí se coloca el JSON interno dentro del JSON externo
+  };
+
+  res.json(externalJSON); // Envía el JSON externo como respuesta
 });
 
 app.get('/cats_products/:id', (req, res) => {
@@ -48,14 +71,17 @@ app.get('/products/:id', (req, res) => {
   let products = require('./api/products/' + idproduct + '.json');
   res.json(products);
 });
+
 app.get('/user_cart', (req, res) => {
   let user_cart = require('./api/user_cart/25801.json');
   res.json(user_cart);
 });
+
 app.get('/sell', (req, res) => {
   let sell = require('./api/sell/publish.json');
   req.json(sell);
 })
+
 app.get('/products_comments/:id', (req, res) => {
   let idcomment = req.params.id;
   let commentProduct = require('./api/products_comments/' + idcomment + '.json');

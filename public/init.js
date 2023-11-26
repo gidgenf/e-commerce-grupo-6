@@ -1,4 +1,4 @@
-const CATEGORIES_URL = "https://japceibal.github.io/emercado-api/cats/cat.json";
+const CATEGORIES_URL = "http://localhost:3000/cats/cat.json";
 const PUBLISH_PRODUCT_URL = "http://localhost:3000/sell/publish.json";
 const PRODUCTS_URL = "http://localhost:3000/cats_products/";
 const PRODUCT_INFO_URL = "http://localhost:3000/products/";
