@@ -6,8 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     for (let index = 0; index < 3; index++) {
         idobjetos++;
-        let catID_json = idobjetos + ".json";
-        let url = 'https://japceibal.github.io/emercado-api/cats_products/' + catID_json; // Armamos la URL del catid por cada bucle
+        let url = 'http://localhost:3000/cats_products/' + idobjetos; // Armamos la URL del catid por cada bucle
 
         fetch(url) // Realizamos el fetch de la URL construida anteriormente
             .then(response => response.json())

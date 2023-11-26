@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
    const catID = localStorage.getItem("catID");  //se declara la constante catID del local storage catID
-   let catID_json = catID + ".json";
-   let url = 'http://localhost:3000/cats_products/' + 102;
+   let url = 'http://localhost:3000/cats_products/' + catID;
 
    //variables de los botones para ordenado ascendente, decendente y por rel
    sortProductsAsc = document.getElementById('sortCostAsc');
