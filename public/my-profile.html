@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/product-info.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse order-lg-last" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+
+          <div class="dropdown nav-item order-lg-last aling item center">
+            <a class="btn btn-dark dropdown-toggle" id="usuario" href="dropdownmenu" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-user">Usuario</i>
+            </a>
+
+            <ul id="dropdownmenu" class="dropdown-menu aling-text dropdown-menu-dark">
+              <a class="dropdown-item" href="my-profile.html">
+                <i class="fa-solid fa-user"> Mi perfil</i>
+              </a>
+              <li>
+
+                <a class="dropdown-item" href="cart.html">
+                  <i class="fa-solid fa-cart-shopping"> Carrito</i>
+                </a>
+              </li>
+              <div class="row">
+                <li class="dropdown-item col col-4" id="boxButton">
+
+                </li>
+              </div>
+              <li>
+                <a class="dropdown-item" type="button" data-tooltip="Cerrar Sesion" id="cerrarSesion">
+                  <i class="fa-solid fa-arrow-right-from-bracket"> Cerrar sesion</i>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.html" data-tooltip="Inicio"> <i class="fa-solid fa-house"> Inicio</i> </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html" data-tooltip="Categoria"> <i class="fa-solid fa-list">
+                Categorias</i></a>
+          </li>
+
+          <li class="barra nav-item">
+            <a class="nav-link" href="sell.html" data-tooltip="Vender"> <i class="fa-solid fa-cart-shopping"> Vender
+                productos</i> </a>
+          </li>
+
+          <form class="d-flex order-lg-0">
+            <input type="search" class="form-control me-2" placeholder="Busca tu artículo aquí..." id="busqueda">
+          </form>
+
+        </ul>
+      </div>
+    </div>
+    </div>
+  </nav>
+  <div class="mini" id="containerSearch"></div>
+
+  <div class="container col-lg-12">
+    <div class="container col col-lg-10 col-md-8 col-sm-12 mt-5 mb-5 p-3">
+      <h1 class="mt-3 mb-5">Perfil</h1>
+      <div id="containerUserImage" class="container border border-1">
+        <div id="imageContainer1" class="text-center">
+
+        </div>
+      </div>
+      <hr>
+      <form class="row g-2 needs-validation" novalidate>
+        <div class="col-md-6">
+          <label for="username" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="username" value="" required aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default">
+          <div class="valid-feedback">
+            Correcto!
+          </div>
+          <div class="invalid-feedback">
+            Debes completar este campo!
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="secondname" class="form-label">Segundo Nombre</label>
+          <input type="text" class="form-control" id="secondname" value="">
+        </div>
+        <div class="w-100"></div>
+        <div class="col-md-6">
+          <label for="lastname" class="form-label">Apellido</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="lastname" aria-describedby="inputGroupPrepend" required>
+            <div class="invalid-feedback">
+              Debes completar este campo!
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="secondlastname" class="form-label">Segundo apellido</label>
+          <input type="text" class="form-control" id="secondlastname">
+        </div>
+        <div class="w-100"></div>
+        <div class="col-md-6">
+          <label for="email" class="form-label">E-mail</label>
+          <input type="text" class="form-control" id="email" required>
+          <div class="invalid-feedback">
+            Debes completar este campo!
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="phonenumber" class="form-label">Teléfono de contacto</label>
+          <input type="number" class="form-control" id="phonenumber">
+        </div>
+        <div class="invalid-feedback">
+          You must agree before submitting.
+        </div>
+        <hr class="my-5">
+        <div class="input-group mb-3 row">
+          <label class="form-label row" for="fileInput">Selecciona una imagen de perfil</label>
+        </div>
+        <input class="form-control row" type="file" id="fileInput">
+        <div id="imageContainer"></div>
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit" id="saveButton">Submit form</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+
+  <script src="init.js"></script>
+  <script src="search.js"></script>
+  <script src="night.js"></script>
+  <script src="my-profile.js"></script>
+  <script src="bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/product-info.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse order-lg-last" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+
+          <div class="dropdown nav-item order-lg-last aling item center">
+            <a class="btn btn-dark dropdown-toggle" id="usuario" href="dropdownmenu" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-user">Usuario</i>
+            </a>
+
+            <ul id="dropdownmenu" class="dropdown-menu aling-text dropdown-menu-dark">
+              <a class="dropdown-item" href="my-profile.html">
+                <i class="fa-solid fa-user"> Mi perfil</i>
+              </a>
+              <li>
+
+                <a class="dropdown-item" href="cart.html">
+                  <i class="fa-solid fa-cart-shopping"> Carrito</i>
+                </a>
+              </li>
+              <div class="row">
+                <li class="dropdown-item col col-4" id="boxButton">
+
+                </li>
+              </div>
+              <li>
+                <a class="dropdown-item" type="button" data-tooltip="Cerrar Sesion" id="cerrarSesion">
+                  <i class="fa-solid fa-arrow-right-from-bracket"> Cerrar sesion</i>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.html" data-tooltip="Inicio"> <i class="fa-solid fa-house"> Inicio</i> </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html" data-tooltip="Categoria"> <i class="fa-solid fa-list">
+                Categorias</i></a>
+          </li>
+
+          <li class="barra nav-item">
+            <a class="nav-link" href="sell.html" data-tooltip="Vender"> <i class="fa-solid fa-cart-shopping"> Vender
+                productos</i> </a>
+          </li>
+
+          <form class="d-flex order-lg-0">
+            <input type="search" class="form-control me-2" placeholder="Busca tu artículo aquí..." id="busqueda">
+          </form>
+
+        </ul>
+      </div>
+    </div>
+    </div>
+  </nav>
+
+  <div class="text-lg-center text-md-center" id="containerSearch">
+
+  </div>
+
+  <main>
+
+    <div class="row my-3 mx-3">
+      <div>
+        <div class="row">
+          <div id="carousel1div" class="col-lg-8 col-md-12">
+            <div id="carousel1" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner carousel1 border border-5 rounded">
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carousel1" data-bs-slide="next">
+              </button>
+            </div>
+          </div>
+
+          <div id="productinfo" class="col-lg-4 col-md-12 ">
+            <div class="row mx-3 card card-body shadow-lg text card-buy border-2  bgtext">
+              <div id="container" class="mx-3 bgtext">
+              </div>
+              <div class="d-grid gap-2 d-md-block">
+                <button class="btn btn-success btn-sm my-3" id="purch" type="button">Comprar</button>
+                <button class="btn btn-primary btn-sm my-3" id="addtocart" type="button">Agregar al carrito <svg
+                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart2"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                  </svg></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row border-0 text mx-auto col-md-12 col-lg-4 border mx-3 my-3 p-3">
+
+        <h3 class="badge text-lg-center fs-2 text">Productos relacionados</h3>
+
+
+        <div id="carousel2div">
+          <div id="carousel2" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner carousel2 border-5 rounded">
+
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <label class="text-decoration-underline my-2">Agregar comentario</label>
+            <div class="rating" id="stars">
+              <div id="estrellas">
+                <span class="fa fa-star star" score="1"></span>
+                <span class="fa fa-star star" score="2"></span>
+                <span class="fa fa-star star" score="3"></span>
+                <span class="fa fa-star star" score="4"></span>
+                <span class="fa fa-star star" score="5"></span>
+              </div>
+            </div>
+            <input class="btn-sm my-2" type="text" id="commenttext" placeholder="Ingresa un comentario...">
+            <button id="btncommenting" class="btn btn-primary btn-sm">Enviar</button>
+        </div>
+
+        <div class="card-header">
+          <h3 class="blockquote"><strong>Comentarios</strong></h3>
+        </div>
+
+        <div id="commentsdiv">
+
+        </div>
+  </main>
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p class="text-center">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/"
+          target="_blank">Jovenes a Programar</a>
+      </p>
+    </div>
+  </footer>
+
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <script src="init.js"></script>
+  <script src="product-info.js"></script>
+  <script src="search.js"></script>
+  <script src="night.js"></script>
+  <script src="bootstrap.bundle.min.js"></script>
+</body>
