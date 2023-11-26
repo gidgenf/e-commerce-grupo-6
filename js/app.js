@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-const path = require('path'); // Agregado
+const cors = require("cors");
+
 
 const cats = require("./api/cats/cat.json");
 app.get('/cats', (req, res) => {
