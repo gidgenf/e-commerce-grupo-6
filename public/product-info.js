@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
             score: selectedScore,
             description: commentText,
             date: dateTipe,
-            user: userData.name
+            user: userData.name || userData.email //si no hay aún un name asignado, este tomará el email
         };
 
         saveCommentToLocalStorage(commentStructure);
