@@ -8,7 +8,6 @@ app.use(express.static("public"));
 app.use(cors());
 app.use(express.json());
 const usersModel = require('./models/models.js');
-const cats = require("./api/cats/cat.json");
 
 
 app.get("/", (req, res) => {
