@@ -53,6 +53,9 @@ if (!token) {
 
 document.getElementById('cerrarSesion').addEventListener('click', function () {  // Función que cierra sesión mediante el evento click en el elemento de id "cerrarSesion"
   localStorage.removeItem('authenticated');
+  if (localStorage.getItem('access-token')) {  //ahora se elimina el token al cerrar sesión
+    localStorage.removeItem('access-token');
+  }
   window.location.href = "login.html";
 });
 

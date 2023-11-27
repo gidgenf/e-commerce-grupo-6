@@ -41,7 +41,7 @@ login.addEventListener('click', (event) => {
         })
         .then(data => {
             if (data.token) {
-                alert(data.token);
+                alert("este es su token:" + data.token);
                 localStorage.setItem('access-token', data.token);
                 console.log('Token almacenado en localStorage:', data.token);
                 window.location.href = '/index.html';

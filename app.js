@@ -35,7 +35,18 @@ app.post("/login", async (req, res) => {  //logeo que recibe los datos de userna
 app.use("/users", (req, res, next) => {
   try {
     const decoded = jwt.verify(req.headers["access-token"], SECRET_KEY); //verifica el token
-    req.userId = decoded.userId; 
+    req.userId = decoded.userId;
+    console.log(decoded);
+    next();
+  } catch (error) {
+    res.status(401).json({ message: "Usuario no autorizado" });
+  }
+});
+
+app.use("/cart", (req, res, next) => {
+  try {
+    const decoded = jwt.verify(req.headers["access-token"], SECRET_KEY); // Verifica el token
+    req.userId = decoded.userId;
     console.log(decoded);
     next();
   } catch (error) {
@@ -44,17 +55,17 @@ app.use("/users", (req, res, next) => {
 });
 
 app.post('/cart', (req, res) => {
-
+  res.send("<h1>Bienvenid@ al servidor</h1>");
 });
 
 app.get('/cart', (req, res) => {
- 
+  res.send("<h1>Bienvenid@ al servidor</h1>");
 });
 
 app.get('/cats/cat.json', (req, res) => {
   let cat = require('./api/cats/cat.json') //espero que no de error
 
-  res.json(cat); 
+  res.json(cat);
 });
 
 app.get('/cats_products/:id', (req, res) => {
