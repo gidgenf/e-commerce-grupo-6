@@ -190,7 +190,7 @@ function saveDataBase() {
             'Content-Type': 'application/json',
             'access-token': token
         },
-        body: JSON.stringify({ cart: localCart }) 
+        body: JSON.stringify(localCart) 
     })
         .then(response => {
             if (response.ok) {
