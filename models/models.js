@@ -26,7 +26,24 @@ const getUserByUsernameAndPassword = async (username, password) => {  //toma el 
   return false;  //retorna false si no encuentra nada
 };
 
+async function addToCart(cartItem) {
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    const { name, count, unitCost, currency, image } = cartItem;
+    const result = await conn.query(
+      'INSERT INTO cart (name, count, unitCost, currency, image) VALUES (?, ?, ?, ?, ?)',
+      [name, count, unitCost, currency, image]
+    );
+    return result;
+  } catch (error) {
+    throw error;
+  } finally {
+    if (conn) conn.end();
+  }
+}
+
 module.exports = {
-    getUserByUsernameAndPassword,
-  };
-  
+  getUserByUsernameAndPassword,
+  addToCart
+};

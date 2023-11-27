@@ -13,8 +13,8 @@ usersRouter.put("/:id", usersController.updateUser);
 
 usersRouter.delete("/:id", usersController.deleteUser);
 
-usersRouter.post("/cart")
+usersRouter.post('/cart', cartController.addToCart);
 
-usersRouter.get("/cart")
+usersRoutes.get('/cart', cartController.addToCart);
 
 module.exports = usersRouter;

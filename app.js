@@ -53,14 +53,6 @@ app.use("/cart", (req, res, next) => {
   }
 });
 
-app.post('/cart', (req, res) => {
-  res.send("<h1>Bienvenid@ al servidor</h1>");
-});
-
-app.get('/cart', (req, res) => {
-  res.send("<h1>Bienvenid@ al servidor</h1>");
-});
-
 app.get('/cats/cat.json', (req, res) => {
   let cat = require('./api/cats/cat.json') //espero que no de error
 

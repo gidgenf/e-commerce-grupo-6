@@ -174,9 +174,36 @@ function addToCart(id) {
 function hasZeroCount() { //en caso de no haber elementos con clase cardCount o que su valor sea 0 devolvera true lo que en consecuencia lanzará un alert
     const cardCounts = document.querySelectorAll(".cardCount");
     if (cardCounts.length === 0) {
-        return true;  
+        return true;
     }
     return Array.from(cardCounts).some(element => element.textContent === '0');
+}
+
+
+function saveDataBase() {
+    let localCart = JSON.parse(localStorage.getItem('usercart')); // Obtener el carrito del Local Storage
+    let token = localStorage.getItem('access-token');
+
+    fetch('http://localhost:3000/cart', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'access-token': token
+        },
+        body: JSON.stringify({ cart: localCart }) 
+    })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Error al enviar los datos al servidor');
+        })
+        .then(data => {
+            console.log('Datos enviados al servidor:', data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
 
 (() => {
@@ -196,6 +223,7 @@ function hasZeroCount() { //en caso de no haber elementos con clase cardCount o 
             form.classList.add('was-validated')
             event.preventDefault()
             alertSuccess.classList.remove('d-none')
+            saveDataBase()
             setTimeout(() => { alertSuccess.classList.add('d-none'); }, 3000)
         }, false)
     })
