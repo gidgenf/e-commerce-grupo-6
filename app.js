@@ -87,6 +87,33 @@ app.get('/products_comments/:id', (req, res) => {
   res.json(commentProduct);
 });
 
+
+app.post('/cart/addProduct/',(req, res) =>{
+
+  let data = req()
+
+
+
+})
+
+app.get('/cart/dataproduct/:id',(req,res)=>{
+  const userId = req.params.id;
+
+})
+
+app.put('/cart/editProduct/:id',(req,res)=>{
+const userIdEdit = req.params.id;
+
+});
+
+app.delete('/cart/delete/:id',(req,res)=>{
+
+const userIdDelete = req.params.id;
+
+
+
+})
+
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
 });
