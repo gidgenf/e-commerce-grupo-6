@@ -40,9 +40,31 @@ app.post("/login", async (req, res) => {
   }
 });
 
+app.post('/logIn', async (req, res) => {
+  let conn;
+  try {
+    const { username, password } = req.body;
+
+    conn = await pool.getConnection();
+    const result = await conn.query("SELECT * FROM users WHERE username = ? AND password = ?", [username, password]);
+
+    if (result.length > 0) {
+      const token = jwt.sign({ username, userId: result[0].id }, SECRET_KEY);
+      res.status(200).json({ message: 'Inicio de sesión exitoso', token });
+    } else {
+      res.status(401).json({ error: 'Credenciales incorrectas' });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  } finally {
+    if (conn) return conn.end();
+  }
+});
+
 app.use("/users", (req, res, next) => {
   try {
-    const decoded = jwt.verify(req.headers["access-token"], SECRET_KEY); //verifica el token
+    const decoded = jwt.verify(req.headers["access-token"], SECRET_KEY); 
     req.userId = decoded.userId;
     console.log(decoded);
     next();
@@ -53,7 +75,7 @@ app.use("/users", (req, res, next) => {
 
 app.use("/cart", (req, res, next) => {
   try {
-    const decoded = jwt.verify(req.headers["access-token"], SECRET_KEY); // Verifica el token
+    const decoded = jwt.verify(req.headers["access-token"], SECRET_KEY); 
     req.userId = decoded.userId;
     console.log(decoded);
     next();
@@ -63,7 +85,7 @@ app.use("/cart", (req, res, next) => {
 });
 
 app.get('/cats/cat.json', (req, res) => {
-  let cat = require('./api/cats/cat.json') //espero que no de error
+  let cat = require('./api/cats/cat.json') 
 
   res.json(cat);
 });
