@@ -96,10 +96,22 @@ app.post('/cart/addProduct/',(req, res) =>{
 
 })
 
-app.get('/cart/dataproduct/:id',(req,res)=>{
+app.get('/cart/dataproduct/:id', async(req,res)=>{
   const userId = req.params.id;
 
-})
+   let conn;
+    try {
+        conn = await pool.getConnection();
+        const rows = await conn.query("SELECT  FROM cart WHERE idUser = ? "),[userId];
+        res.json(rows);  
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Error interno del servidor");
+    } finally {
+        if (conn) return conn.end(); 
+    }
+});
+
 
 app.put('/cart/editProduct/:id',(req,res)=>{
 const userIdEdit = req.params.id;
