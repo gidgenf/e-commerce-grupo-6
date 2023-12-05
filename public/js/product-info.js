@@ -251,6 +251,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+
+function productExist(){
+
+fetch('/cart/dataproduct/'+ productId) 
+.then(response => response.json())
+.then(responseData => {
+    let data = responseData;
+    data
+})
+.catch(error => console.log('Error:', error));
+}
+
+
 function setProductID(id) {
     localStorage.setItem("productID", id);        //setea el ID del producto y nos relocaliza a product-info.html
     window.location.href = "product-info.html";

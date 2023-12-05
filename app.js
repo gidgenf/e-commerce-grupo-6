@@ -14,20 +14,29 @@ app.get("/", (req, res) => {
   res.send("<h1>Bienvenid@ al servidor</h1>");
 });
 
-app.post("/login", async (req, res) => {  //logeo que recibe los datos de username y password del body
+app.post("/login", async (req, res) => {
   const { username, password } = req.body;
-
+  let conn;
   try {
-    const user = await usersModel.getUserByUsernameAndPassword(username, password);  //pasa como argumentos username y password a getUserByUsernameAndPassword
+    const user = await usersModel.getUserByUsernameAndPassword(username, password);
+
     if (user) {
-      const token = jwt.sign({ username, userId: user.id }, SECRET_KEY);  //se genera el token
-      res.status(200).json({ token }); //se envia como respuesta
+      conn = await pool.getConnection();
+       await conn.query(
+        "INSERT INTO users (username, password) VALUES (?, ?)", 
+        [username, password]
+      );
+
+      const token = jwt.sign({ username, userId: user.id }, SECRET_KEY);
+      res.status(200).json({ token });
     } else {
       res.status(401).json({ message: "Usuario y/o contraseña incorrecto" });
     }
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({ message: "Error del servidor" });
+  } finally {
+    if (conn) conn.end();
   }
 });
 
@@ -88,13 +97,32 @@ app.get('/products_comments/:id', (req, res) => {
 });
 
 
-app.post('/cart/addProduct/',(req, res) =>{
+app.post('/cart/addProduct/',async(req, res) =>{
+  let conn;
+  try {
+      const { idProduct, name, count, unitCost, currency, image, idUser } = req.body;
+  
+      conn = await pool.getConnection();
+          
+          const result = await conn.query(
+              "INSERT INTO cart  (idUser, idProduct ,name , count , unitCost, currency, image)", 
+              [idUser,idProduct,name, count, unitCost, currency, image,]
+          );
+  
+          
+          if (result.affectedRows > 0) {
+              res.status(200).json({ message: 'Datos agregados correctamente' });
+          } else {
+              res.status(404).json({ error: 'No se encontró el registro para actualizar' });
+          }
+      } catch (err) {
+          console.error(err);
+          res.status(500).json({ error: 'Error interno del servidor' });
+      } finally {
+          if (conn) return conn.end(); 
+      }
 
-  let data = req()
 
-
-
-})
 
 app.get('/cart/dataproduct/:id', async(req,res)=>{
   const userId = req.params.id;
@@ -102,7 +130,7 @@ app.get('/cart/dataproduct/:id', async(req,res)=>{
    let conn;
     try {
         conn = await pool.getConnection();
-        const rows = await conn.query("SELECT  FROM cart WHERE idUser = ? "),[userId];
+        const rows = await conn.query("SELECT  FROM cart WHERE idUser = ? ", [userId]);
         res.json(rows);  
     } catch (err) {
         console.error(err);
@@ -113,16 +141,53 @@ app.get('/cart/dataproduct/:id', async(req,res)=>{
 });
 
 
-app.put('/cart/editProduct/:id',(req,res)=>{
-const userIdEdit = req.params.id;
+app.put('/cart/editProduct/', async(req,res)=>{
+let conn;
+try {
+    const { idProduct, count, idUser } = req.body;
+
+    conn = await pool.getConnection();
+        
+    const result = await conn.query(
+      "UPDATE cart SET count=? WHERE idProduct=? AND idUser=?", 
+      [count, idProduct, idUser]
+    );
+
+        
+        if (result.affectedRows > 0) {
+            res.status(200).json({ message: 'Datos actualizados correctamente' });
+        } else {
+            res.status(404).json({ error: 'No se encontró el registro para actualizar' });
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Error interno del servidor' });
+    } finally {
+        if (conn) return conn.end(); 
+    }
+});
 
 });
 
-app.delete('/cart/delete/:id',(req,res)=>{
+app.delete('/cart/delete/:id',async(req,res)=>{
+  let conn;
+  try {
+      const id = req.params.id;
 
-const userIdDelete = req.params.id;
+      conn = await pool.getConnection();
+      const result = await conn.query("DELETE FROM cart WHERE id = ?", [id]);
 
-
+      if (result.affectedRows > 0) {
+          res.status(200).json({ message: 'Item eliminado con éxito' });
+      } else {
+          res.status(404).json({ error: 'No se encontró el elemento para eliminar' });
+      }
+  } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Error interno del servidor' });
+  } finally {
+      if (conn) return conn.end();
+  }
 
 })
 
